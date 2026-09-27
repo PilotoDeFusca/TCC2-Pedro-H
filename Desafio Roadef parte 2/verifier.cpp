@@ -1,0 +1,199 @@
+#include "loader.h"
+
+#include <iostream>
+#include <sstream>
+#include <unordered_map>
+#include <algorithm>
+
+using namespace std;
+
+// -------- Helpers --------
+
+// For each slot, get the path assigned to demand d (or nullptr if none)
+static const DemandPath* find_path(const Solution& sol, int slot, int demand_index)
+{
+    for (const auto& dp : sol.paths) {
+        if (dp.time_slot == slot && dp.demand_index == demand_index)
+            return &dp;
+    }
+    return nullptr;
+}
+
+// Build a fast lookup: link_id -> Link* for the instance
+static unordered_map<int, const Link*> build_link_index(const Instance& inst)
+{
+    unordered_map<int, const Link*> idx;
+    for (const auto& l : inst.net.links)
+        idx[l.id] = &l;
+    return idx;
+}
+
+// Build a fast lookup: (slot, link_id) -> load entry
+static unordered_map<long long, const LinkLoad*> build_load_index(const Solution& sol)
+{
+    unordered_map<long long, const LinkLoad*> idx;
+    for (const auto& ll : sol.link_loads) {
+        long long key = (static_cast<long long>(ll.time_slot) << 32)
+                        | static_cast<unsigned int>(ll.link_id);
+        idx[key] = &ll;
+    }
+    return idx;
+}
+
+// -------- Verifier --------
+
+VerificationReport verify_solution(const Solution& sol, const Instance& inst)
+{
+    VerificationReport rep;
+    rep.instance_name = inst.name;
+    rep.ok = true;
+
+    auto link_idx = build_link_index(inst);
+    auto load_idx = build_link_index(inst);  // reusing for speed, see below
+
+    // --- 1. Capacity violations ---
+    // For each (slot, link), check load > 1.0
+    for (const auto& ll : sol.link_loads) {
+        if (ll.load > 1.0 + 1e-9) {
+            rep.ok = false;
+            VerificationIssue iss;
+            iss.kind         = "capacity";
+            iss.time_slot    = ll.time_slot;
+            iss.demand_index = -1;
+            iss.link_id      = ll.link_id;
+            ostringstream oss;
+            oss << "Link " << ll.link_id
+                << " at slot " << ll.time_slot
+                << " has load " << ll.load
+                << " (" << ll.total_demand << "/" << ll.capacity << ")";
+            iss.message = oss.str();
+            rep.issues.push_back(iss);
+        }
+    }
+
+    // --- 2. Unserved demands ---
+    // For each demand and each slot, check there is a feasible path.
+    // A zero-traffic demand counts as served (nothing to route).
+    for (int slot = 0; slot < inst.num_time_slots; ++slot) {
+        for (size_t d = 0; d < inst.demands.size(); ++d) {
+            const Demand& dem = inst.demands[d];
+            double traffic = (slot < (int)dem.v.size()) ? dem.v[slot] : 0.0;
+
+            const DemandPath* dp = find_path(sol, slot, (int)d);
+
+            if (dp == nullptr) {
+                rep.ok = false;
+                VerificationIssue iss;
+                iss.kind         = "unserved";
+                iss.time_slot    = slot;
+                iss.demand_index = (int)d;
+                iss.link_id      = -1;
+                iss.message = "No path entry for demand";
+                rep.issues.push_back(iss);
+                continue;
+            }
+
+            if (!dp->feasible && traffic > 0.0) {
+                rep.ok = false;
+                VerificationIssue iss;
+                iss.kind         = "unserved";
+                iss.time_slot    = slot;
+                iss.demand_index = (int)d;
+                iss.link_id      = -1;
+                ostringstream oss;
+                oss << "Demand #" << d
+                    << " (s=" << dem.s << ", t=" << dem.t << ")"
+                    << " at slot " << slot
+                    << " has traffic " << traffic
+                    << " but no feasible path";
+                iss.message = oss.str();
+                rep.issues.push_back(iss);
+            }
+        }
+    }
+
+    // --- 3. Forbidden links (intervention links) ---
+    // Build the set of forbidden link ids *per slot* from the scenario.
+    // The scenario lists interventions with a time index "t". We interpret
+    // t as the time slot during which the listed links are *intervened*
+    // (i.e. unavailable for routing).
+    unordered_map<int, vector<int>> forbidden; // slot -> link ids
+    for (const auto& iv : inst.scenario.interventions) {
+        forbidden[iv.t].insert(forbidden[iv.t].end(),
+                               iv.links.begin(), iv.links.end());
+    }
+
+    for (const auto& dp : sol.paths) {
+        auto it = forbidden.find(dp.time_slot);
+        if (it == forbidden.end()) continue;
+
+        const auto& fset = it->second;
+        for (int lid : dp.links) {
+            if (std::find(fset.begin(), fset.end(), lid) != fset.end()) {
+                rep.ok = false;
+                VerificationIssue iss;
+                iss.kind         = "intervention";
+                iss.time_slot    = dp.time_slot;
+                iss.demand_index = dp.demand_index;
+                iss.link_id      = lid;
+                ostringstream oss;
+                oss << "Demand #" << dp.demand_index
+                    << " at slot " << dp.time_slot
+                    << " uses forbidden link " << lid;
+                iss.message = oss.str();
+                rep.issues.push_back(iss);
+            }
+        }
+    }
+
+    // --- 4. Path length vs max_segments ---
+    const int max_seg = inst.scenario.max_segments;
+    for (const auto& dp : sol.paths) {
+        if (!dp.feasible) continue;
+        if ((int)dp.links.size() > max_seg) {
+            rep.ok = false;
+            VerificationIssue iss;
+            iss.kind         = "segments";
+            iss.time_slot    = dp.time_slot;
+            iss.demand_index = dp.demand_index;
+            iss.link_id      = -1;
+            ostringstream oss;
+            oss << "Demand #" << dp.demand_index
+                << " at slot " << dp.time_slot
+                << " has path length " << dp.links.size()
+                << " links, exceeds max_segments=" << max_seg;
+            iss.message = oss.str();
+            rep.issues.push_back(iss);
+        }
+    }
+
+    return rep;
+}
+
+// -------- Pretty print --------
+
+void print_verification(const VerificationReport& rep)
+{
+    cout << "\n=== Verification of " << rep.instance_name << " ===\n";
+
+    if (rep.ok) {
+        cout << "  OK: no issues detected.\n";
+        return;
+    }
+
+    cout << "  FAILED: " << rep.issues.size() << " issue(s)\n";
+
+    // Group by kind for readability
+    for (const string& kind : {"capacity", "unserved", "intervention", "segments"}) {
+        int n = 0;
+        for (const auto& iss : rep.issues)
+            if (iss.kind == kind) ++n;
+        if (n == 0) continue;
+
+        cout << "\n  [" << kind << "] " << n << " issue(s):\n";
+        for (const auto& iss : rep.issues) {
+            if (iss.kind != kind) continue;
+            cout << "    - " << iss.message << "\n";
+        }
+    }
+}
