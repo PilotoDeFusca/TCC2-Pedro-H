@@ -137,6 +137,7 @@ Solution solve_shortest_paths(const Instance& inst)
             DemandPath dp;
             dp.demand_index = static_cast<int>(d);
             dp.time_slot    = slot;
+            dp.waypoints    = {};
 
             double traffic = (slot < static_cast<int>(dem.v.size()))
                              ? dem.v[slot]

@@ -3,9 +3,46 @@
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
+#include <unordered_set>
 #include <algorithm>
+#include <cstdint>
 
 using namespace std;
+
+static uint64_t pack_seg(int u, int v)
+{
+    return (static_cast<uint64_t>(static_cast<uint32_t>(u)) << 32)
+           | static_cast<uint32_t>(v);
+}
+
+static void segment_pairs(int s, int t, const vector<int>& w,
+                          unordered_set<uint64_t>& segs)
+{
+    segs.clear();
+    if (s == t && w.empty())
+        return;
+    int prev = s;
+    for (int x : w) {
+        if (x == prev) continue;
+        segs.insert(pack_seg(prev, x));
+        prev = x;
+    }
+    if (prev != t)
+        segs.insert(pack_seg(prev, t));
+}
+
+static int segment_distance(int s, int t, const vector<int>& a, const vector<int>& b)
+{
+    unordered_set<uint64_t> sa, sb;
+    segment_pairs(s, t, a, sa);
+    segment_pairs(s, t, b, sb);
+    int dist = 0;
+    for (auto x : sa)
+        if (!sb.count(x)) ++dist;
+    for (auto x : sb)
+        if (!sa.count(x)) ++dist;
+    return dist;
+}
 
 // -------- Helpers --------
 
@@ -19,37 +56,13 @@ static const DemandPath* find_path(const Solution& sol, int slot, int demand_ind
     return nullptr;
 }
 
-// Build a fast lookup: link_id -> Link* for the instance
-static unordered_map<int, const Link*> build_link_index(const Instance& inst)
-{
-    unordered_map<int, const Link*> idx;
-    for (const auto& l : inst.net.links)
-        idx[l.id] = &l;
-    return idx;
-}
-
-// Build a fast lookup: (slot, link_id) -> load entry
-static unordered_map<long long, const LinkLoad*> build_load_index(const Solution& sol)
-{
-    unordered_map<long long, const LinkLoad*> idx;
-    for (const auto& ll : sol.link_loads) {
-        long long key = (static_cast<long long>(ll.time_slot) << 32)
-                        | static_cast<unsigned int>(ll.link_id);
-        idx[key] = &ll;
-    }
-    return idx;
-}
-
-// -------- Verifier --------
+// For each slot, get the path assigned to demand d (or nullptr if none)
 
 VerificationReport verify_solution(const Solution& sol, const Instance& inst)
 {
     VerificationReport rep;
     rep.instance_name = inst.name;
     rep.ok = true;
-
-    auto link_idx = build_link_index(inst);
-    auto load_idx = build_link_index(inst);  // reusing for speed, see below
 
     // --- 1. Capacity violations ---
     // For each (slot, link), check load > 1.0
@@ -146,11 +159,13 @@ VerificationReport verify_solution(const Solution& sol, const Instance& inst)
         }
     }
 
-    // --- 4. Path length vs max_segments ---
+    // --- 4. SR segments vs max_segments ---
+    // Number of segments = |waypoints| + 1 (source -> first WP -> ... -> dest)
     const int max_seg = inst.scenario.max_segments;
     for (const auto& dp : sol.paths) {
         if (!dp.feasible) continue;
-        if ((int)dp.links.size() > max_seg) {
+        const int nseg = static_cast<int>(dp.waypoints.size()) + 1;
+        if (nseg > max_seg) {
             rep.ok = false;
             VerificationIssue iss;
             iss.kind         = "segments";
@@ -160,8 +175,43 @@ VerificationReport verify_solution(const Solution& sol, const Instance& inst)
             ostringstream oss;
             oss << "Demand #" << dp.demand_index
                 << " at slot " << dp.time_slot
-                << " has path length " << dp.links.size()
-                << " links, exceeds max_segments=" << max_seg;
+                << " has " << nseg
+                << " SR segments, exceeds max_segments=" << max_seg;
+            iss.message = oss.str();
+            rep.issues.push_back(iss);
+        }
+    }
+
+    // --- 5. Budget between consecutive time slots ---
+    unordered_map<int, double> budget_of;
+    for (const auto& b : inst.scenario.budget)
+        budget_of[b.t] = b.value;
+
+    for (int slot = 1; slot < inst.num_time_slots; ++slot) {
+        double limit = 0.0;
+        auto bit = budget_of.find(slot);
+        if (bit != budget_of.end())
+            limit = bit->second;
+
+        int cost = 0;
+        for (size_t d = 0; d < inst.demands.size(); ++d) {
+            const DemandPath* prev = find_path(sol, slot - 1, static_cast<int>(d));
+            const DemandPath* cur  = find_path(sol, slot, static_cast<int>(d));
+            if (!prev || !cur) continue;
+            const Demand& dem = inst.demands[d];
+            cost += segment_distance(dem.s, dem.t, prev->waypoints, cur->waypoints);
+        }
+
+        if (cost > limit + 1e-9) {
+            rep.ok = false;
+            VerificationIssue iss;
+            iss.kind         = "budget";
+            iss.time_slot    = slot;
+            iss.demand_index = -1;
+            iss.link_id      = -1;
+            ostringstream oss;
+            oss << "Budget violated at slot " << slot
+                << ": cost=" << cost << " > budget=" << limit;
             iss.message = oss.str();
             rep.issues.push_back(iss);
         }
@@ -184,7 +234,7 @@ void print_verification(const VerificationReport& rep)
     cout << "  FAILED: " << rep.issues.size() << " issue(s)\n";
 
     // Group by kind for readability
-    for (const string& kind : {"capacity", "unserved", "intervention", "segments"}) {
+    for (const string& kind : {"capacity", "unserved", "intervention", "segments", "budget"}) {
         int n = 0;
         for (const auto& iss : rep.issues)
             if (iss.kind == kind) ++n;

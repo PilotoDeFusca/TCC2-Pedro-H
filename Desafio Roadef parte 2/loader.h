@@ -63,7 +63,8 @@ struct Instance {
 struct DemandPath {
     int demand_index;
     int time_slot;
-    std::vector<int> links;
+    std::vector<int> waypoints;  // SR nodes between source and destination
+    std::vector<int> links;      // expanded IGP link sequence
     double total_metric;
     double routed_demand;
     bool   feasible;
@@ -95,7 +96,9 @@ std::vector<Instance> load_all_instances(
 
 // ---------- Algorithm ----------
 Solution solve_shortest_paths(const Instance& inst);
+Solution solve_amns(const Instance& inst);
 void     print_solution(const Solution& sol, const Instance& inst);
+void     write_srpaths(const Solution& sol, const std::string& path);
 
 // ---------- Verifier ----------
 struct VerificationIssue {
