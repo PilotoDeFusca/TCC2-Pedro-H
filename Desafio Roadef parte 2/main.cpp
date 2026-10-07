@@ -56,7 +56,7 @@ static void print_sr_nodes(const Solution& sol, const Instance& inst)
 }
 
 int main() {
-    vector<Instance> instances = load_all_instances({"setA"}, 5);
+    vector<Instance> instances = load_all_instances({"setA","setB"}, 20);
 
     cout << "\n==================== FINAL SUMMARY ====================\n";
     vector<VerificationReport> reports;
