@@ -80,13 +80,19 @@ struct LinkLoad {
 
 struct Solution {
     std::string instance_name;
-    std::vector<DemandPath> paths;
+    double max_link_load = 0.0;
+    int    max_link_id   = -1;
+    int    max_link_slot = -1;
+    double total_metric  = 0.0;
+    double solve_time_seconds = 0.0;
 
-    std::vector<LinkLoad> link_loads;  // now one entry per (slot, link)
-    double max_link_load;              // worst over all slots
-    int    max_link_id;
-    int    max_link_slot;              // NEW
-    double total_metric;
+    // Per-slot max-load history.
+    // max_load_history[slot] = list of (iteration_within_slot, max_load)
+    // recorded whenever the accepted solution's max link load dropped.
+    std::vector<std::vector<std::pair<long long, double>>> max_load_history;
+
+    std::vector<DemandPath> paths;
+    std::vector<LinkLoad>   link_loads;
 };
 
 // ---------- Loading function ----------
@@ -97,8 +103,10 @@ std::vector<Instance> load_all_instances(
 // ---------- Algorithm ----------
 Solution solve_shortest_paths(const Instance& inst);
 Solution solve_amns(const Instance& inst);
+Solution solve_classical(const Instance& inst);
 void     print_solution(const Solution& sol, const Instance& inst);
 void     write_srpaths(const Solution& sol, const std::string& path);
+void     write_solution(const Solution& sol, const std::string& path);
 
 // ---------- Verifier ----------
 struct VerificationIssue {

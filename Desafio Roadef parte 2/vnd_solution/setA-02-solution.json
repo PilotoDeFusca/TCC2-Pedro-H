@@ -1,0 +1,3472 @@
+{
+  "instance_name": "setA/setA-02",
+  "link_loads": [
+    {
+      "capacity": 317.0,
+      "link_id": 0,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 232.0,
+      "link_id": 1,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 914.0,
+      "link_id": 2,
+      "load": 0.07838085339168487,
+      "t": 0,
+      "total_demand": 71.64009999999996
+    },
+    {
+      "capacity": 247.0,
+      "link_id": 3,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 106.0,
+      "link_id": 4,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 119.0,
+      "link_id": 5,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 186.0,
+      "link_id": 6,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 722.0,
+      "link_id": 7,
+      "load": 0.06494695290858724,
+      "t": 0,
+      "total_demand": 46.891699999999986
+    },
+    {
+      "capacity": 895.0,
+      "link_id": 8,
+      "load": 0.28452301675977437,
+      "t": 0,
+      "total_demand": 254.64809999999807
+    },
+    {
+      "capacity": 521.0,
+      "link_id": 9,
+      "load": 0.5387698656429943,
+      "t": 0,
+      "total_demand": 280.69910000000004
+    },
+    {
+      "capacity": 977.0,
+      "link_id": 10,
+      "load": 0.18065025588536252,
+      "t": 0,
+      "total_demand": 176.4952999999992
+    },
+    {
+      "capacity": 881.0,
+      "link_id": 11,
+      "load": 0.08870930760499438,
+      "t": 0,
+      "total_demand": 78.15290000000005
+    },
+    {
+      "capacity": 803.0,
+      "link_id": 12,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 310.0,
+      "link_id": 13,
+      "load": 0.3109309677419353,
+      "t": 0,
+      "total_demand": 96.38859999999994
+    },
+    {
+      "capacity": 755.0,
+      "link_id": 14,
+      "load": 0.15182013245033146,
+      "t": 0,
+      "total_demand": 114.62420000000026
+    },
+    {
+      "capacity": 156.0,
+      "link_id": 15,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 587.0,
+      "link_id": 16,
+      "load": 0.1830667802385008,
+      "t": 0,
+      "total_demand": 107.46019999999996
+    },
+    {
+      "capacity": 562.0,
+      "link_id": 17,
+      "load": 0.3152072953736652,
+      "t": 0,
+      "total_demand": 177.14649999999983
+    },
+    {
+      "capacity": 958.0,
+      "link_id": 18,
+      "load": 0.059824739039666015,
+      "t": 0,
+      "total_demand": 57.312100000000044
+    },
+    {
+      "capacity": 615.0,
+      "link_id": 19,
+      "load": 0.17685008130081323,
+      "t": 0,
+      "total_demand": 108.76280000000014
+    },
+    {
+      "capacity": 700.0,
+      "link_id": 20,
+      "load": 0.002791142857142859,
+      "t": 0,
+      "total_demand": 1.953800000000001
+    },
+    {
+      "capacity": 719.0,
+      "link_id": 21,
+      "load": 0.23279193324061206,
+      "t": 0,
+      "total_demand": 167.37740000000008
+    },
+    {
+      "capacity": 441.0,
+      "link_id": 22,
+      "load": 0.06941020408163287,
+      "t": 0,
+      "total_demand": 30.609900000000096
+    },
+    {
+      "capacity": 688.0,
+      "link_id": 23,
+      "load": 0.034078343023255804,
+      "t": 0,
+      "total_demand": 23.44589999999999
+    },
+    {
+      "capacity": 482.0,
+      "link_id": 24,
+      "load": 0.1486309128630705,
+      "t": 0,
+      "total_demand": 71.64009999999999
+    },
+    {
+      "capacity": 518.0,
+      "link_id": 25,
+      "load": 0.09052451737451729,
+      "t": 0,
+      "total_demand": 46.89169999999996
+    },
+    {
+      "capacity": 763.0,
+      "link_id": 26,
+      "load": 0.03755714285714231,
+      "t": 0,
+      "total_demand": 28.656099999999583
+    },
+    {
+      "capacity": 195.0,
+      "link_id": 27,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 238.0,
+      "link_id": 28,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 500.0,
+      "link_id": 29,
+      "load": 0.15760839999999998,
+      "t": 0,
+      "total_demand": 78.8042
+    },
+    {
+      "capacity": 592.0,
+      "link_id": 30,
+      "load": 0.4785542229729729,
+      "t": 0,
+      "total_demand": 283.30409999999995
+    },
+    {
+      "capacity": 420.0,
+      "link_id": 31,
+      "load": 0.36595404761904476,
+      "t": 0,
+      "total_demand": 153.7006999999988
+    },
+    {
+      "capacity": 552.0,
+      "link_id": 32,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 356.0,
+      "link_id": 33,
+      "load": 0.11159466292134831,
+      "t": 0,
+      "total_demand": 39.7277
+    },
+    {
+      "capacity": 662.0,
+      "link_id": 34,
+      "load": 0.2843175226586091,
+      "t": 0,
+      "total_demand": 188.21819999999923
+    },
+    {
+      "capacity": 969.0,
+      "link_id": 35,
+      "load": 0.04099865841073292,
+      "t": 0,
+      "total_demand": 39.7277000000002
+    },
+    {
+      "capacity": 668.0,
+      "link_id": 36,
+      "load": 2.1273734603595815e-17,
+      "t": 0,
+      "total_demand": 1.4210854715202004e-14
+    },
+    {
+      "capacity": 309.0,
+      "link_id": 37,
+      "load": 0.4805517799352751,
+      "t": 0,
+      "total_demand": 148.4905
+    },
+    {
+      "capacity": 732.0,
+      "link_id": 38,
+      "load": 0.1663774590163927,
+      "t": 0,
+      "total_demand": 121.78829999999945
+    },
+    {
+      "capacity": 768.0,
+      "link_id": 39,
+      "load": 0.21200325520833316,
+      "t": 0,
+      "total_demand": 162.81849999999986
+    },
+    {
+      "capacity": 344.0,
+      "link_id": 40,
+      "load": 0.0037866279069766976,
+      "t": 0,
+      "total_demand": 1.302599999999984
+    },
+    {
+      "capacity": 246.0,
+      "link_id": 41,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 627.0,
+      "link_id": 42,
+      "load": 0.259678628389154,
+      "t": 0,
+      "total_demand": 162.81849999999957
+    },
+    {
+      "capacity": 855.0,
+      "link_id": 43,
+      "load": 0.2825996491228054,
+      "t": 0,
+      "total_demand": 241.6226999999986
+    },
+    {
+      "capacity": 409.0,
+      "link_id": 44,
+      "load": 0.18949046454767685,
+      "t": 0,
+      "total_demand": 77.50159999999983
+    },
+    {
+      "capacity": 820.0,
+      "link_id": 45,
+      "load": 0.20332451219512077,
+      "t": 0,
+      "total_demand": 166.72609999999904
+    },
+    {
+      "capacity": 798.0,
+      "link_id": 46,
+      "load": 1.7808088615541357e-17,
+      "t": 0,
+      "total_demand": 1.4210854715202004e-14
+    },
+    {
+      "capacity": 283.0,
+      "link_id": 47,
+      "load": 0.14038056537102522,
+      "t": 0,
+      "total_demand": 39.72770000000014
+    },
+    {
+      "capacity": 332.0,
+      "link_id": 48,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 604.0,
+      "link_id": 49,
+      "load": 0.16928807947019925,
+      "t": 0,
+      "total_demand": 102.25000000000034
+    },
+    {
+      "capacity": 718.0,
+      "link_id": 50,
+      "load": 0.06077353760445707,
+      "t": 0,
+      "total_demand": 43.635400000000175
+    },
+    {
+      "capacity": 596.0,
+      "link_id": 51,
+      "load": 0.07867734899328871,
+      "t": 0,
+      "total_demand": 46.89170000000007
+    },
+    {
+      "capacity": 320.0,
+      "link_id": 52,
+      "load": 0.4823496875,
+      "t": 0,
+      "total_demand": 154.3519
+    },
+    {
+      "capacity": 760.0,
+      "link_id": 53,
+      "load": 7.47939721852737e-17,
+      "t": 0,
+      "total_demand": 5.684341886080802e-14
+    },
+    {
+      "capacity": 348.0,
+      "link_id": 54,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 841.0,
+      "link_id": 55,
+      "load": 0.047238644470868014,
+      "t": 0,
+      "total_demand": 39.7277
+    },
+    {
+      "capacity": 591.0,
+      "link_id": 56,
+      "load": 0.23582504230118287,
+      "t": 0,
+      "total_demand": 139.37259999999907
+    },
+    {
+      "capacity": 328.0,
+      "link_id": 57,
+      "load": 0.11913536585365847,
+      "t": 0,
+      "total_demand": 39.07639999999998
+    },
+    {
+      "capacity": 752.0,
+      "link_id": 58,
+      "load": 0.069284574468085,
+      "t": 0,
+      "total_demand": 52.10199999999992
+    },
+    {
+      "capacity": 587.0,
+      "link_id": 59,
+      "load": 0.2773739352640535,
+      "t": 0,
+      "total_demand": 162.8184999999994
+    },
+    {
+      "capacity": 400.0,
+      "link_id": 60,
+      "load": 0.047217249999999995,
+      "t": 0,
+      "total_demand": 18.886899999999997
+    },
+    {
+      "capacity": 688.0,
+      "link_id": 61,
+      "load": 0.06247688953488382,
+      "t": 0,
+      "total_demand": 42.98410000000007
+    },
+    {
+      "capacity": 327.0,
+      "link_id": 62,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 947.0,
+      "link_id": 63,
+      "load": 0.20425385427666315,
+      "t": 0,
+      "total_demand": 193.4284
+    },
+    {
+      "capacity": 470.0,
+      "link_id": 64,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 809.0,
+      "link_id": 65,
+      "load": 0.2857877626699621,
+      "t": 0,
+      "total_demand": 231.20229999999933
+    },
+    {
+      "capacity": 864.0,
+      "link_id": 66,
+      "load": 0.05653414351851867,
+      "t": 0,
+      "total_demand": 48.84550000000013
+    },
+    {
+      "capacity": 455.0,
+      "link_id": 67,
+      "load": 0.04866659340659322,
+      "t": 0,
+      "total_demand": 22.143299999999915
+    },
+    {
+      "capacity": 208.0,
+      "link_id": 68,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 126.0,
+      "link_id": 69,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 179.0,
+      "link_id": 70,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 998.0,
+      "link_id": 71,
+      "load": 0.08614038076152304,
+      "t": 0,
+      "total_demand": 85.96809999999999
+    },
+    {
+      "capacity": 723.0,
+      "link_id": 72,
+      "load": 0.18646431535269664,
+      "t": 0,
+      "total_demand": 134.81369999999967
+    },
+    {
+      "capacity": 930.0,
+      "link_id": 73,
+      "load": 0.1659697849462365,
+      "t": 0,
+      "total_demand": 154.35189999999994
+    },
+    {
+      "capacity": 875.0,
+      "link_id": 74,
+      "load": 0.11387988571428721,
+      "t": 0,
+      "total_demand": 99.64490000000131
+    },
+    {
+      "capacity": 319.0,
+      "link_id": 75,
+      "load": -8.909626780690911e-17,
+      "t": 0,
+      "total_demand": -2.842170943040401e-14
+    },
+    {
+      "capacity": 384.0,
+      "link_id": 76,
+      "load": 0.13907421874999995,
+      "t": 0,
+      "total_demand": 53.404499999999985
+    },
+    {
+      "capacity": 658.0,
+      "link_id": 77,
+      "load": 0.1187734042553192,
+      "t": 0,
+      "total_demand": 78.15290000000003
+    },
+    {
+      "capacity": 834.0,
+      "link_id": 78,
+      "load": 0.0858994004796163,
+      "t": 0,
+      "total_demand": 71.6401
+    },
+    {
+      "capacity": 714.0,
+      "link_id": 79,
+      "load": 0.20796988795518184,
+      "t": 0,
+      "total_demand": 148.49049999999983
+    },
+    {
+      "capacity": 162.0,
+      "link_id": 80,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 667.0,
+      "link_id": 81,
+      "load": 0.041986206896552046,
+      "t": 0,
+      "total_demand": 28.004800000000216
+    },
+    {
+      "capacity": 618.0,
+      "link_id": 82,
+      "load": 0.24659886731391603,
+      "t": 0,
+      "total_demand": 152.3981000000001
+    },
+    {
+      "capacity": 103.0,
+      "link_id": 83,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 650.0,
+      "link_id": 84,
+      "load": 0.2925723076923073,
+      "t": 0,
+      "total_demand": 190.17199999999974
+    },
+    {
+      "capacity": 536.0,
+      "link_id": 85,
+      "load": 0.07411884328358209,
+      "t": 0,
+      "total_demand": 39.7277
+    },
+    {
+      "capacity": 600.0,
+      "link_id": 86,
+      "load": 0.2561678333333331,
+      "t": 0,
+      "total_demand": 153.70069999999987
+    },
+    {
+      "capacity": 106.0,
+      "link_id": 87,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 233.0,
+      "link_id": 88,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 437.0,
+      "link_id": 89,
+      "load": 6.829014851698903e-16,
+      "t": 0,
+      "total_demand": 2.984279490192421e-13
+    },
+    {
+      "capacity": 501.0,
+      "link_id": 90,
+      "load": 0.5485780439121756,
+      "t": 0,
+      "total_demand": 274.83759999999995
+    },
+    {
+      "capacity": 801.0,
+      "link_id": 91,
+      "load": 0.5228078651685393,
+      "t": 0,
+      "total_demand": 418.7691
+    },
+    {
+      "capacity": 898.0,
+      "link_id": 92,
+      "load": 0.32056024498886354,
+      "t": 0,
+      "total_demand": 287.86309999999946
+    },
+    {
+      "capacity": 286.0,
+      "link_id": 93,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 114.0,
+      "link_id": 94,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 960.0,
+      "link_id": 95,
+      "load": 0.21369927083333326,
+      "t": 0,
+      "total_demand": 205.15129999999994
+    },
+    {
+      "capacity": 813.0,
+      "link_id": 96,
+      "load": 0.15060209102091068,
+      "t": 0,
+      "total_demand": 122.43950000000038
+    },
+    {
+      "capacity": 969.0,
+      "link_id": 97,
+      "load": 0.08132528379772967,
+      "t": 0,
+      "total_demand": 78.80420000000005
+    },
+    {
+      "capacity": 462.0,
+      "link_id": 98,
+      "load": 0.09021969696969666,
+      "t": 0,
+      "total_demand": 41.68149999999986
+    },
+    {
+      "capacity": 906.0,
+      "link_id": 99,
+      "load": -3.137054021015895e-17,
+      "t": 0,
+      "total_demand": -2.842170943040401e-14
+    },
+    {
+      "capacity": 126.0,
+      "link_id": 100,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 609.0,
+      "link_id": 101,
+      "load": 0.06095665024630543,
+      "t": 0,
+      "total_demand": 37.122600000000006
+    },
+    {
+      "capacity": 368.0,
+      "link_id": 102,
+      "load": 0.0017698369565217174,
+      "t": 0,
+      "total_demand": 0.651299999999992
+    },
+    {
+      "capacity": 134.0,
+      "link_id": 103,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 100.0,
+      "link_id": 104,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 336.0,
+      "link_id": 105,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 437.0,
+      "link_id": 106,
+      "load": 0.47541510297482914,
+      "t": 0,
+      "total_demand": 207.75640000000033
+    },
+    {
+      "capacity": 393.0,
+      "link_id": 107,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 175.0,
+      "link_id": 108,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 801.0,
+      "link_id": 109,
+      "load": 0.03496229712858939,
+      "t": 0,
+      "total_demand": 28.004800000000103
+    },
+    {
+      "capacity": 660.0,
+      "link_id": 110,
+      "load": 0.09769106060606031,
+      "t": 0,
+      "total_demand": 64.4760999999998
+    },
+    {
+      "capacity": 370.0,
+      "link_id": 111,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 502.0,
+      "link_id": 112,
+      "load": 0.24260617529880468,
+      "t": 0,
+      "total_demand": 121.78829999999995
+    },
+    {
+      "capacity": 940.0,
+      "link_id": 113,
+      "load": 0.16351138297872223,
+      "t": 0,
+      "total_demand": 153.7006999999989
+    },
+    {
+      "capacity": 131.0,
+      "link_id": 114,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 585.0,
+      "link_id": 115,
+      "load": 0.07347709401709399,
+      "t": 0,
+      "total_demand": 42.984099999999984
+    },
+    {
+      "capacity": 149.0,
+      "link_id": 116,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 916.0,
+      "link_id": 117,
+      "load": 0.16779552401746717,
+      "t": 0,
+      "total_demand": 153.70069999999993
+    },
+    {
+      "capacity": 796.0,
+      "link_id": 118,
+      "load": 0.0008182160804015358,
+      "t": 0,
+      "total_demand": 0.6512999999996225
+    },
+    {
+      "capacity": 289.0,
+      "link_id": 119,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 614.0,
+      "link_id": 120,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 549.0,
+      "link_id": 121,
+      "load": 0.29657285974499087,
+      "t": 0,
+      "total_demand": 162.81849999999997
+    },
+    {
+      "capacity": 919.0,
+      "link_id": 122,
+      "load": 0.26150163220892364,
+      "t": 0,
+      "total_demand": 240.32000000000085
+    },
+    {
+      "capacity": 429.0,
+      "link_id": 123,
+      "load": 0.3248778554778544,
+      "t": 0,
+      "total_demand": 139.37259999999955
+    },
+    {
+      "capacity": 767.0,
+      "link_id": 124,
+      "load": 0.19359908735332412,
+      "t": 0,
+      "total_demand": 148.4904999999996
+    },
+    {
+      "capacity": 938.0,
+      "link_id": 125,
+      "load": 0.04235362473347427,
+      "t": 0,
+      "total_demand": 39.72769999999886
+    },
+    {
+      "capacity": 286.0,
+      "link_id": 126,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 915.0,
+      "link_id": 127,
+      "load": 0.17367311475409758,
+      "t": 0,
+      "total_demand": 158.9108999999993
+    },
+    {
+      "capacity": 170.0,
+      "link_id": 128,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 223.0,
+      "link_id": 129,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 617.0,
+      "link_id": 130,
+      "load": 0.03588865478119936,
+      "t": 0,
+      "total_demand": 22.143300000000007
+    },
+    {
+      "capacity": 547.0,
+      "link_id": 131,
+      "load": 0.032146983546617894,
+      "t": 0,
+      "total_demand": 17.584399999999988
+    },
+    {
+      "capacity": 308.0,
+      "link_id": 132,
+      "load": -9.516197353929913e-17,
+      "t": 0,
+      "total_demand": -2.930988785010413e-14
+    },
+    {
+      "capacity": 459.0,
+      "link_id": 133,
+      "load": 0.16884880174291925,
+      "t": 0,
+      "total_demand": 77.50159999999994
+    },
+    {
+      "capacity": 208.0,
+      "link_id": 134,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 796.0,
+      "link_id": 135,
+      "load": 0.15054572864321644,
+      "t": 0,
+      "total_demand": 119.83440000000029
+    },
+    {
+      "capacity": 358.0,
+      "link_id": 136,
+      "load": 0.14007849162011182,
+      "t": 0,
+      "total_demand": 50.14810000000003
+    },
+    {
+      "capacity": 952.0,
+      "link_id": 137,
+      "load": -1.4927368398321432e-17,
+      "t": 0,
+      "total_demand": -1.4210854715202004e-14
+    },
+    {
+      "capacity": 847.0,
+      "link_id": 138,
+      "load": 0.056131168831168775,
+      "t": 0,
+      "total_demand": 47.54309999999995
+    },
+    {
+      "capacity": 719.0,
+      "link_id": 139,
+      "load": 0.2853286509040333,
+      "t": 0,
+      "total_demand": 205.15129999999994
+    },
+    {
+      "capacity": 295.0,
+      "link_id": 140,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 474.0,
+      "link_id": 141,
+      "load": 0.10579767932489452,
+      "t": 0,
+      "total_demand": 50.1481
+    },
+    {
+      "capacity": 492.0,
+      "link_id": 142,
+      "load": 0.31372337398373973,
+      "t": 0,
+      "total_demand": 154.35189999999994
+    },
+    {
+      "capacity": 804.0,
+      "link_id": 143,
+      "load": 0.04617238805970139,
+      "t": 0,
+      "total_demand": 37.12259999999992
+    },
+    {
+      "capacity": 283.0,
+      "link_id": 144,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 642.0,
+      "link_id": 145,
+      "load": 0.15216682242990645,
+      "t": 0,
+      "total_demand": 97.69109999999995
+    },
+    {
+      "capacity": 910.0,
+      "link_id": 146,
+      "load": 0.20683318681318685,
+      "t": 0,
+      "total_demand": 188.21820000000002
+    },
+    {
+      "capacity": 648.0,
+      "link_id": 147,
+      "load": 0.27337422839506076,
+      "t": 0,
+      "total_demand": 177.14649999999938
+    },
+    {
+      "capacity": 163.0,
+      "link_id": 148,
+      "load": 0.0,
+      "t": 0,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 910.0,
+      "link_id": 149,
+      "load": 0.3778819780219779,
+      "t": 0,
+      "total_demand": 343.8725999999999
+    },
+    {
+      "capacity": 317.0,
+      "link_id": 0,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 232.0,
+      "link_id": 1,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 914.0,
+      "link_id": 2,
+      "load": 0.09619474835886217,
+      "t": 1,
+      "total_demand": 87.92200000000003
+    },
+    {
+      "capacity": 247.0,
+      "link_id": 3,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 106.0,
+      "link_id": 4,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 119.0,
+      "link_id": 5,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 186.0,
+      "link_id": 6,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 722.0,
+      "link_id": 7,
+      "load": 0.034277562326869813,
+      "t": 1,
+      "total_demand": 24.748400000000007
+    },
+    {
+      "capacity": 895.0,
+      "link_id": 8,
+      "load": 0.187013966480447,
+      "t": 1,
+      "total_demand": 167.37750000000005
+    },
+    {
+      "capacity": 521.0,
+      "link_id": 9,
+      "load": 0.4512666026871402,
+      "t": 1,
+      "total_demand": 235.10990000000004
+    },
+    {
+      "capacity": 977.0,
+      "link_id": 10,
+      "load": 0.14198710337768675,
+      "t": 1,
+      "total_demand": 138.72139999999996
+    },
+    {
+      "capacity": 881.0,
+      "link_id": 11,
+      "load": 0.2225124858115779,
+      "t": 1,
+      "total_demand": 196.03350000000012
+    },
+    {
+      "capacity": 803.0,
+      "link_id": 12,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 310.0,
+      "link_id": 13,
+      "load": 0.09874161290322583,
+      "t": 1,
+      "total_demand": 30.60990000000001
+    },
+    {
+      "capacity": 755.0,
+      "link_id": 14,
+      "load": 0.04485589403973509,
+      "t": 1,
+      "total_demand": 33.86619999999999
+    },
+    {
+      "capacity": 156.0,
+      "link_id": 15,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 587.0,
+      "link_id": 16,
+      "load": 0.1109495741056218,
+      "t": 1,
+      "total_demand": 65.1274
+    },
+    {
+      "capacity": 562.0,
+      "link_id": 17,
+      "load": 0.20048113879003468,
+      "t": 1,
+      "total_demand": 112.67039999999949
+    },
+    {
+      "capacity": 958.0,
+      "link_id": 18,
+      "load": -1.4833877573279752e-17,
+      "t": 1,
+      "total_demand": -1.4210854715202004e-14
+    },
+    {
+      "capacity": 615.0,
+      "link_id": 19,
+      "load": 0.012707804878048746,
+      "t": 1,
+      "total_demand": 7.815299999999979
+    },
+    {
+      "capacity": 700.0,
+      "link_id": 20,
+      "load": 0.09490000000000001,
+      "t": 1,
+      "total_demand": 66.43
+    },
+    {
+      "capacity": 719.0,
+      "link_id": 21,
+      "load": 0.11594311543810845,
+      "t": 1,
+      "total_demand": 83.36309999999997
+    },
+    {
+      "capacity": 441.0,
+      "link_id": 22,
+      "load": 0.6778566893424036,
+      "t": 1,
+      "total_demand": 298.9348
+    },
+    {
+      "capacity": 688.0,
+      "link_id": 23,
+      "load": 0.12968677325581396,
+      "t": 1,
+      "total_demand": 89.2245
+    },
+    {
+      "capacity": 482.0,
+      "link_id": 24,
+      "load": 0.15673817427385892,
+      "t": 1,
+      "total_demand": 75.5478
+    },
+    {
+      "capacity": 518.0,
+      "link_id": 25,
+      "load": 0.13830135135135133,
+      "t": 1,
+      "total_demand": 71.64009999999999
+    },
+    {
+      "capacity": 763.0,
+      "link_id": 26,
+      "load": 0.1476676277850594,
+      "t": 1,
+      "total_demand": 112.67040000000031
+    },
+    {
+      "capacity": 195.0,
+      "link_id": 27,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 238.0,
+      "link_id": 28,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 500.0,
+      "link_id": 29,
+      "load": 0.04168159999999989,
+      "t": 1,
+      "total_demand": 20.840799999999945
+    },
+    {
+      "capacity": 592.0,
+      "link_id": 30,
+      "load": 0.3740423986486486,
+      "t": 1,
+      "total_demand": 221.43309999999997
+    },
+    {
+      "capacity": 420.0,
+      "link_id": 31,
+      "load": 0.009303809523809534,
+      "t": 1,
+      "total_demand": 3.907600000000004
+    },
+    {
+      "capacity": 552.0,
+      "link_id": 32,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 356.0,
+      "link_id": 33,
+      "load": 0.038417977528089876,
+      "t": 1,
+      "total_demand": 13.676799999999997
+    },
+    {
+      "capacity": 662.0,
+      "link_id": 34,
+      "load": 0.037384290030211494,
+      "t": 1,
+      "total_demand": 24.748400000000007
+    },
+    {
+      "capacity": 969.0,
+      "link_id": 35,
+      "load": 0.12165180598555218,
+      "t": 1,
+      "total_demand": 117.88060000000007
+    },
+    {
+      "capacity": 668.0,
+      "link_id": 36,
+      "load": 0.036073502994011915,
+      "t": 1,
+      "total_demand": 24.09709999999996
+    },
+    {
+      "capacity": 309.0,
+      "link_id": 37,
+      "load": 0.18547605177993523,
+      "t": 1,
+      "total_demand": 57.31209999999999
+    },
+    {
+      "capacity": 732.0,
+      "link_id": 38,
+      "load": 0.21887076502732233,
+      "t": 1,
+      "total_demand": 160.21339999999995
+    },
+    {
+      "capacity": 768.0,
+      "link_id": 39,
+      "load": 0.40450221354166666,
+      "t": 1,
+      "total_demand": 310.6577
+    },
+    {
+      "capacity": 344.0,
+      "link_id": 40,
+      "load": 0.9030747093023251,
+      "t": 1,
+      "total_demand": 310.65769999999986
+    },
+    {
+      "capacity": 246.0,
+      "link_id": 41,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 627.0,
+      "link_id": 42,
+      "load": 0.4954668261562998,
+      "t": 1,
+      "total_demand": 310.6577
+    },
+    {
+      "capacity": 855.0,
+      "link_id": 43,
+      "load": 0.19500140350877185,
+      "t": 1,
+      "total_demand": 166.72619999999992
+    },
+    {
+      "capacity": 409.0,
+      "link_id": 44,
+      "load": 0.2468154034229817,
+      "t": 1,
+      "total_demand": 100.94749999999951
+    },
+    {
+      "capacity": 820.0,
+      "link_id": 45,
+      "load": 0.11516426829268295,
+      "t": 1,
+      "total_demand": 94.43470000000002
+    },
+    {
+      "capacity": 798.0,
+      "link_id": 46,
+      "load": 0.05876152882205514,
+      "t": 1,
+      "total_demand": 46.8917
+    },
+    {
+      "capacity": 283.0,
+      "link_id": 47,
+      "load": 0.28536395759717326,
+      "t": 1,
+      "total_demand": 80.75800000000004
+    },
+    {
+      "capacity": 332.0,
+      "link_id": 48,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 604.0,
+      "link_id": 49,
+      "load": 0.10351374172185426,
+      "t": 1,
+      "total_demand": 62.52229999999997
+    },
+    {
+      "capacity": 718.0,
+      "link_id": 50,
+      "load": 0.000907103064066861,
+      "t": 1,
+      "total_demand": 0.6513000000000062
+    },
+    {
+      "capacity": 596.0,
+      "link_id": 51,
+      "load": 0.007649161073825493,
+      "t": 1,
+      "total_demand": 4.558899999999994
+    },
+    {
+      "capacity": 320.0,
+      "link_id": 52,
+      "load": 0.07123312500000001,
+      "t": 1,
+      "total_demand": 22.794600000000003
+    },
+    {
+      "capacity": 760.0,
+      "link_id": 53,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 348.0,
+      "link_id": 54,
+      "load": 0.011228735632183925,
+      "t": 1,
+      "total_demand": 3.9076000000000057
+    },
+    {
+      "capacity": 841.0,
+      "link_id": 55,
+      "load": 0.369390844233056,
+      "t": 1,
+      "total_demand": 310.6577000000001
+    },
+    {
+      "capacity": 591.0,
+      "link_id": 56,
+      "load": 0.10579069373942471,
+      "t": 1,
+      "total_demand": 62.5223
+    },
+    {
+      "capacity": 328.0,
+      "link_id": 57,
+      "load": 0.2521701219512196,
+      "t": 1,
+      "total_demand": 82.71180000000001
+    },
+    {
+      "capacity": 752.0,
+      "link_id": 58,
+      "load": 0.11864960106382978,
+      "t": 1,
+      "total_demand": 89.22449999999999
+    },
+    {
+      "capacity": 587.0,
+      "link_id": 59,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 400.0,
+      "link_id": 60,
+      "load": 0.021166500000000005,
+      "t": 1,
+      "total_demand": 8.466600000000001
+    },
+    {
+      "capacity": 688.0,
+      "link_id": 61,
+      "load": 0.45153735465116274,
+      "t": 1,
+      "total_demand": 310.6577
+    },
+    {
+      "capacity": 327.0,
+      "link_id": 62,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 947.0,
+      "link_id": 63,
+      "load": 0.21938373812038015,
+      "t": 1,
+      "total_demand": 207.75639999999999
+    },
+    {
+      "capacity": 470.0,
+      "link_id": 64,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 809.0,
+      "link_id": 65,
+      "load": 0.11512014833127315,
+      "t": 1,
+      "total_demand": 93.13219999999998
+    },
+    {
+      "capacity": 864.0,
+      "link_id": 66,
+      "load": 0.07764027777777777,
+      "t": 1,
+      "total_demand": 67.0812
+    },
+    {
+      "capacity": 455.0,
+      "link_id": 67,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 208.0,
+      "link_id": 68,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 126.0,
+      "link_id": 69,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 179.0,
+      "link_id": 70,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 998.0,
+      "link_id": 71,
+      "load": 0.03197635270541089,
+      "t": 1,
+      "total_demand": 31.912400000000066
+    },
+    {
+      "capacity": 723.0,
+      "link_id": 72,
+      "load": 0.14682932226832657,
+      "t": 1,
+      "total_demand": 106.15760000000012
+    },
+    {
+      "capacity": 930.0,
+      "link_id": 73,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 875.0,
+      "link_id": 74,
+      "load": 0.10494811428571432,
+      "t": 1,
+      "total_demand": 91.82960000000003
+    },
+    {
+      "capacity": 319.0,
+      "link_id": 75,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 384.0,
+      "link_id": 76,
+      "load": 0.17469088541666666,
+      "t": 1,
+      "total_demand": 67.0813
+    },
+    {
+      "capacity": 658.0,
+      "link_id": 77,
+      "load": 0.15341565349544053,
+      "t": 1,
+      "total_demand": 100.94749999999988
+    },
+    {
+      "capacity": 834.0,
+      "link_id": 78,
+      "load": 0.07965227817745804,
+      "t": 1,
+      "total_demand": 66.43
+    },
+    {
+      "capacity": 714.0,
+      "link_id": 79,
+      "load": 0.23624649859943966,
+      "t": 1,
+      "total_demand": 168.67999999999992
+    },
+    {
+      "capacity": 162.0,
+      "link_id": 80,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 667.0,
+      "link_id": 81,
+      "load": 0.15915697151424302,
+      "t": 1,
+      "total_demand": 106.15770000000009
+    },
+    {
+      "capacity": 618.0,
+      "link_id": 82,
+      "load": 0.10854563106796111,
+      "t": 1,
+      "total_demand": 67.08119999999997
+    },
+    {
+      "capacity": 103.0,
+      "link_id": 83,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 650.0,
+      "link_id": 84,
+      "load": 0.100196,
+      "t": 1,
+      "total_demand": 65.1274
+    },
+    {
+      "capacity": 536.0,
+      "link_id": 85,
+      "load": 0.025516417910447786,
+      "t": 1,
+      "total_demand": 13.676800000000014
+    },
+    {
+      "capacity": 600.0,
+      "link_id": 86,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 106.0,
+      "link_id": 87,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 233.0,
+      "link_id": 88,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 437.0,
+      "link_id": 89,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 501.0,
+      "link_id": 90,
+      "load": 0.3184872255489022,
+      "t": 1,
+      "total_demand": 159.5621
+    },
+    {
+      "capacity": 801.0,
+      "link_id": 91,
+      "load": 0.40572509363295883,
+      "t": 1,
+      "total_demand": 324.98580000000004
+    },
+    {
+      "capacity": 898.0,
+      "link_id": 92,
+      "load": 0.11386414253897544,
+      "t": 1,
+      "total_demand": 102.24999999999994
+    },
+    {
+      "capacity": 286.0,
+      "link_id": 93,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 114.0,
+      "link_id": 94,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 960.0,
+      "link_id": 95,
+      "load": 0.059021666666666674,
+      "t": 1,
+      "total_demand": 56.66080000000001
+    },
+    {
+      "capacity": 813.0,
+      "link_id": 96,
+      "load": 0.06008068880688808,
+      "t": 1,
+      "total_demand": 48.845600000000005
+    },
+    {
+      "capacity": 969.0,
+      "link_id": 97,
+      "load": 0.021507533539731626,
+      "t": 1,
+      "total_demand": 20.840799999999945
+    },
+    {
+      "capacity": 462.0,
+      "link_id": 98,
+      "load": 0.05215822510822533,
+      "t": 1,
+      "total_demand": 24.0971000000001
+    },
+    {
+      "capacity": 906.0,
+      "link_id": 99,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 126.0,
+      "link_id": 100,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 609.0,
+      "link_id": 101,
+      "load": 0.15078752052545155,
+      "t": 1,
+      "total_demand": 91.8296
+    },
+    {
+      "capacity": 368.0,
+      "link_id": 102,
+      "load": 0.07963940217391303,
+      "t": 1,
+      "total_demand": 29.307299999999998
+    },
+    {
+      "capacity": 134.0,
+      "link_id": 103,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 100.0,
+      "link_id": 104,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 336.0,
+      "link_id": 105,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 437.0,
+      "link_id": 106,
+      "load": 0.1654265446224255,
+      "t": 1,
+      "total_demand": 72.29139999999995
+    },
+    {
+      "capacity": 393.0,
+      "link_id": 107,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 175.0,
+      "link_id": 108,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 801.0,
+      "link_id": 109,
+      "load": 0.0837468164794007,
+      "t": 1,
+      "total_demand": 67.08119999999997
+    },
+    {
+      "capacity": 660.0,
+      "link_id": 110,
+      "load": 0.05229924242424236,
+      "t": 1,
+      "total_demand": 34.517499999999956
+    },
+    {
+      "capacity": 370.0,
+      "link_id": 111,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 502.0,
+      "link_id": 112,
+      "load": 0.08432828685258963,
+      "t": 1,
+      "total_demand": 42.33279999999999
+    },
+    {
+      "capacity": 940.0,
+      "link_id": 113,
+      "load": 0.004157021276595747,
+      "t": 1,
+      "total_demand": 3.907600000000002
+    },
+    {
+      "capacity": 131.0,
+      "link_id": 114,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 585.0,
+      "link_id": 115,
+      "load": 0.05009794871794874,
+      "t": 1,
+      "total_demand": 29.307300000000012
+    },
+    {
+      "capacity": 149.0,
+      "link_id": 116,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 916.0,
+      "link_id": 117,
+      "load": 0.11447063318777301,
+      "t": 1,
+      "total_demand": 104.85510000000008
+    },
+    {
+      "capacity": 796.0,
+      "link_id": 118,
+      "load": 0.036818216080402005,
+      "t": 1,
+      "total_demand": 29.307299999999998
+    },
+    {
+      "capacity": 289.0,
+      "link_id": 119,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 614.0,
+      "link_id": 120,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 549.0,
+      "link_id": 121,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 919.0,
+      "link_id": 122,
+      "load": 0.21756376496191512,
+      "t": 1,
+      "total_demand": 199.9411
+    },
+    {
+      "capacity": 429.0,
+      "link_id": 123,
+      "load": 0.14573962703962703,
+      "t": 1,
+      "total_demand": 62.5223
+    },
+    {
+      "capacity": 767.0,
+      "link_id": 124,
+      "load": 0.07472242503259452,
+      "t": 1,
+      "total_demand": 57.3121
+    },
+    {
+      "capacity": 938.0,
+      "link_id": 125,
+      "load": 0.09928805970149243,
+      "t": 1,
+      "total_demand": 93.1321999999999
+    },
+    {
+      "capacity": 286.0,
+      "link_id": 126,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 915.0,
+      "link_id": 127,
+      "load": 0.15160808743169393,
+      "t": 1,
+      "total_demand": 138.72139999999996
+    },
+    {
+      "capacity": 170.0,
+      "link_id": 128,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 223.0,
+      "link_id": 129,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 617.0,
+      "link_id": 130,
+      "load": 0.039055267423014586,
+      "t": 1,
+      "total_demand": 24.0971
+    },
+    {
+      "capacity": 547.0,
+      "link_id": 131,
+      "load": 0.054768921389396694,
+      "t": 1,
+      "total_demand": 29.95859999999999
+    },
+    {
+      "capacity": 308.0,
+      "link_id": 132,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 459.0,
+      "link_id": 133,
+      "load": 0.18729455337690631,
+      "t": 1,
+      "total_demand": 85.9682
+    },
+    {
+      "capacity": 208.0,
+      "link_id": 134,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 796.0,
+      "link_id": 135,
+      "load": 0.17018216080402007,
+      "t": 1,
+      "total_demand": 135.46499999999997
+    },
+    {
+      "capacity": 358.0,
+      "link_id": 136,
+      "load": 0.012734357541899416,
+      "t": 1,
+      "total_demand": 4.558899999999991
+    },
+    {
+      "capacity": 952.0,
+      "link_id": 137,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 847.0,
+      "link_id": 138,
+      "load": 0.0046134592680047255,
+      "t": 1,
+      "total_demand": 3.907600000000002
+    },
+    {
+      "capacity": 719.0,
+      "link_id": 139,
+      "load": 0.15398692628650928,
+      "t": 1,
+      "total_demand": 110.71660000000017
+    },
+    {
+      "capacity": 295.0,
+      "link_id": 140,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 474.0,
+      "link_id": 141,
+      "load": 0.009617932489451494,
+      "t": 1,
+      "total_demand": 4.558900000000008
+    },
+    {
+      "capacity": 492.0,
+      "link_id": 142,
+      "load": 0.2290048780487805,
+      "t": 1,
+      "total_demand": 112.6704
+    },
+    {
+      "capacity": 804.0,
+      "link_id": 143,
+      "load": 0.08586442786069651,
+      "t": 1,
+      "total_demand": 69.035
+    },
+    {
+      "capacity": 283.0,
+      "link_id": 144,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 642.0,
+      "link_id": 145,
+      "load": 0.05782336448598127,
+      "t": 1,
+      "total_demand": 37.12259999999998
+    },
+    {
+      "capacity": 910.0,
+      "link_id": 146,
+      "load": 0.02719604395604402,
+      "t": 1,
+      "total_demand": 24.74840000000006
+    },
+    {
+      "capacity": 648.0,
+      "link_id": 147,
+      "load": 0.16382361111111102,
+      "t": 1,
+      "total_demand": 106.15769999999993
+    },
+    {
+      "capacity": 163.0,
+      "link_id": 148,
+      "load": 0.0,
+      "t": 1,
+      "total_demand": 0.0
+    },
+    {
+      "capacity": 910.0,
+      "link_id": 149,
+      "load": 0.14671560439560444,
+      "t": 1,
+      "total_demand": 133.51120000000003
+    }
+  ],
+  "max_link_id": 40,
+  "max_link_load": 0.9030747093023251,
+  "max_link_slot": 1,
+  "max_load_history": [
+    [
+      {
+        "iter": 0,
+        "max_load": 1.0
+      },
+      {
+        "iter": 3001,
+        "max_load": 0.6597544270833334
+      },
+      {
+        "iter": 3003,
+        "max_load": 0.574134856175973
+      },
+      {
+        "iter": 3004,
+        "max_load": 0.5737768878718535
+      },
+      {
+        "iter": 3007,
+        "max_load": 0.5668789731051344
+      },
+      {
+        "iter": 3009,
+        "max_load": 0.5485780439121756
+      }
+    ],
+    [
+      {
+        "iter": 0,
+        "max_load": 1.1832738372093021
+      },
+      {
+        "iter": 3,
+        "max_load": 1.0980781976744183
+      },
+      {
+        "iter": 44,
+        "max_load": 0.9030747093023251
+      }
+    ]
+  ],
+  "paths": [
+    {
+      "d": 0,
+      "feasible": true,
+      "links": [
+        60,
+        21
+      ],
+      "routed_demand": 18.8869,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 1,
+      "feasible": true,
+      "links": [
+        82,
+        136,
+        141
+      ],
+      "routed_demand": 50.1481,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        13
+      ]
+    },
+    {
+      "d": 2,
+      "feasible": true,
+      "links": [
+        109,
+        58,
+        26,
+        81,
+        74,
+        91
+      ],
+      "routed_demand": 5.8615,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        25
+      ]
+    },
+    {
+      "d": 3,
+      "feasible": true,
+      "links": [
+        63
+      ],
+      "routed_demand": 5.2102,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 4,
+      "feasible": true,
+      "links": [
+        22
+      ],
+      "routed_demand": 30.6099,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 5,
+      "feasible": true,
+      "links": [
+        8,
+        44,
+        77
+      ],
+      "routed_demand": 77.5016,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 6,
+      "feasible": true,
+      "links": [
+        65,
+        133,
+        91
+      ],
+      "routed_demand": 77.5016,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 7,
+      "feasible": true,
+      "links": [
+        138,
+        21,
+        79,
+        9
+      ],
+      "routed_demand": 46.2405,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        10
+      ]
+    },
+    {
+      "d": 8,
+      "feasible": true,
+      "links": [
+        56,
+        123
+      ],
+      "routed_demand": 139.3726,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 9,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        25,
+        110,
+        71,
+        51
+      ],
+      "routed_demand": 46.8917,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        12,
+        16
+      ]
+    },
+    {
+      "d": 10,
+      "feasible": true,
+      "links": [
+        90,
+        77,
+        138,
+        61,
+        40
+      ],
+      "routed_demand": 0.6513,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 11,
+      "feasible": true,
+      "links": [
+        112,
+        38,
+        97,
+        29
+      ],
+      "routed_demand": 78.8042,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        7
+      ]
+    },
+    {
+      "d": 12,
+      "feasible": true,
+      "links": [
+        95,
+        139
+      ],
+      "routed_demand": 205.1513,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 13,
+      "feasible": true,
+      "links": [
+        127,
+        10,
+        43
+      ],
+      "routed_demand": 158.9109,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 14,
+      "feasible": true,
+      "links": [
+        42,
+        39,
+        121,
+        59
+      ],
+      "routed_demand": 162.8185,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 15,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        57
+      ],
+      "routed_demand": 39.0764,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 16,
+      "feasible": true,
+      "links": [
+        33,
+        96,
+        85,
+        125,
+        47
+      ],
+      "routed_demand": 39.7277,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        16
+      ]
+    },
+    {
+      "d": 17,
+      "feasible": true,
+      "links": [
+        58,
+        23
+      ],
+      "routed_demand": 23.4459,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 18,
+      "feasible": true,
+      "links": [
+        110,
+        131,
+        18,
+        10,
+        106
+      ],
+      "routed_demand": 17.5844,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        9,
+        5
+      ]
+    },
+    {
+      "d": 19,
+      "feasible": true,
+      "links": [
+        90,
+        16,
+        19
+      ],
+      "routed_demand": 65.7787,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 20,
+      "feasible": true,
+      "links": [
+        37,
+        124
+      ],
+      "routed_demand": 148.4905,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 21,
+      "feasible": true,
+      "links": [
+        92,
+        84,
+        106
+      ],
+      "routed_demand": 190.172,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 22,
+      "feasible": true,
+      "links": [
+        90,
+        16,
+        135
+      ],
+      "routed_demand": 41.6815,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 23,
+      "feasible": true,
+      "links": [
+        109,
+        58,
+        26,
+        81,
+        67,
+        130
+      ],
+      "routed_demand": 22.1433,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        25
+      ]
+    },
+    {
+      "d": 24,
+      "feasible": true,
+      "links": [
+        115,
+        19,
+        66,
+        74,
+        13
+      ],
+      "routed_demand": 42.9841,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        9,
+        8
+      ]
+    },
+    {
+      "d": 25,
+      "feasible": true,
+      "links": [
+        9
+      ],
+      "routed_demand": 95.086,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 26,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        142,
+        73,
+        52,
+        91
+      ],
+      "routed_demand": 154.3519,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        26
+      ]
+    },
+    {
+      "d": 27,
+      "feasible": true,
+      "links": [
+        90,
+        45,
+        149
+      ],
+      "routed_demand": 166.7261,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 28,
+      "feasible": true,
+      "links": [
+        55,
+        61,
+        98,
+        18,
+        35
+      ],
+      "routed_demand": 39.7277,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        20
+      ]
+    },
+    {
+      "d": 29,
+      "feasible": true,
+      "links": [
+        117,
+        65,
+        86,
+        113,
+        31
+      ],
+      "routed_demand": 153.7007,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        16
+      ]
+    },
+    {
+      "d": 30,
+      "feasible": true,
+      "links": [
+        8,
+        149,
+        147,
+        17,
+        91
+      ],
+      "routed_demand": 177.1465,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        11
+      ]
+    },
+    {
+      "d": 31,
+      "feasible": true,
+      "links": [
+        20,
+        61,
+        98,
+        66
+      ],
+      "routed_demand": 1.9538,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 32,
+      "feasible": true,
+      "links": [
+        66,
+        74,
+        91
+      ],
+      "routed_demand": 3.9076,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        25
+      ]
+    },
+    {
+      "d": 33,
+      "feasible": true,
+      "links": [
+        11,
+        135
+      ],
+      "routed_demand": 78.1529,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 34,
+      "feasible": true,
+      "links": [
+        138,
+        61,
+        40,
+        58,
+        26,
+        118,
+        102
+      ],
+      "routed_demand": 0.6513,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        20,
+        13,
+        28
+      ]
+    },
+    {
+      "d": 35,
+      "feasible": true,
+      "links": [
+        74,
+        7
+      ],
+      "routed_demand": 46.8917,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 36,
+      "feasible": true,
+      "links": [
+        30,
+        112,
+        38,
+        14
+      ],
+      "routed_demand": 42.9841,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 37,
+      "feasible": true,
+      "links": [
+        76,
+        13
+      ],
+      "routed_demand": 53.4045,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 38,
+      "feasible": true,
+      "links": [
+        14,
+        2,
+        24,
+        78
+      ],
+      "routed_demand": 71.6401,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        1,
+        12
+      ]
+    },
+    {
+      "d": 39,
+      "feasible": true,
+      "links": [
+        92,
+        145,
+        72
+      ],
+      "routed_demand": 97.6911,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        26
+      ]
+    },
+    {
+      "d": 40,
+      "feasible": true,
+      "links": [
+        101,
+        72,
+        143,
+        9
+      ],
+      "routed_demand": 37.1226,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        26,
+        13
+      ]
+    },
+    {
+      "d": 41,
+      "feasible": true,
+      "links": [
+        71,
+        96,
+        43
+      ],
+      "routed_demand": 39.0764,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 42,
+      "feasible": true,
+      "links": [
+        49,
+        82,
+        21,
+        79,
+        9
+      ],
+      "routed_demand": 102.25,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": [
+        24,
+        10
+      ]
+    },
+    {
+      "d": 43,
+      "feasible": true,
+      "links": [
+        34,
+        146,
+        63
+      ],
+      "routed_demand": 188.2182,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 44,
+      "feasible": true,
+      "links": [
+        50,
+        96,
+        43
+      ],
+      "routed_demand": 43.6354,
+      "t": 0,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 0,
+      "feasible": true,
+      "links": [
+        60,
+        21
+      ],
+      "routed_demand": 8.4666,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 1,
+      "feasible": true,
+      "links": [
+        82,
+        136,
+        141
+      ],
+      "routed_demand": 4.5589,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        13
+      ]
+    },
+    {
+      "d": 2,
+      "feasible": true,
+      "links": [
+        46,
+        101,
+        52,
+        91
+      ],
+      "routed_demand": 22.7946,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        18
+      ]
+    },
+    {
+      "d": 3,
+      "feasible": true,
+      "links": [
+        63
+      ],
+      "routed_demand": 183.008,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 4,
+      "feasible": true,
+      "links": [
+        22
+      ],
+      "routed_demand": 298.9348,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 5,
+      "feasible": true,
+      "links": [
+        8,
+        44,
+        77
+      ],
+      "routed_demand": 100.9475,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 6,
+      "feasible": true,
+      "links": [
+        65,
+        133,
+        91
+      ],
+      "routed_demand": 85.9682,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 7,
+      "feasible": true,
+      "links": [
+        117,
+        2,
+        24,
+        9
+      ],
+      "routed_demand": 75.5478,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        12
+      ]
+    },
+    {
+      "d": 8,
+      "feasible": true,
+      "links": [
+        56,
+        123
+      ],
+      "routed_demand": 62.5223,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 9,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        25,
+        110,
+        71,
+        51
+      ],
+      "routed_demand": 4.5589,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        12,
+        16
+      ]
+    },
+    {
+      "d": 10,
+      "feasible": true,
+      "links": [
+        90,
+        45,
+        25,
+        125,
+        47,
+        109
+      ],
+      "routed_demand": 67.0812,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        23
+      ]
+    },
+    {
+      "d": 11,
+      "feasible": true,
+      "links": [
+        112,
+        38,
+        97,
+        29
+      ],
+      "routed_demand": 20.8408,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        16
+      ]
+    },
+    {
+      "d": 12,
+      "feasible": true,
+      "links": [
+        95,
+        139
+      ],
+      "routed_demand": 44.2866,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 13,
+      "feasible": true,
+      "links": [
+        127,
+        10,
+        43
+      ],
+      "routed_demand": 138.7214,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 14,
+      "feasible": true,
+      "links": [
+        42,
+        39,
+        55,
+        61,
+        40
+      ],
+      "routed_demand": 310.6577,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        19
+      ]
+    },
+    {
+      "d": 15,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        57
+      ],
+      "routed_demand": 82.7118,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 16,
+      "feasible": true,
+      "links": [
+        33,
+        96,
+        85,
+        125,
+        47
+      ],
+      "routed_demand": 13.6768,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        16
+      ]
+    },
+    {
+      "d": 17,
+      "feasible": true,
+      "links": [
+        58,
+        23
+      ],
+      "routed_demand": 89.2245,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 18,
+      "feasible": true,
+      "links": [
+        110,
+        131,
+        66,
+        74,
+        13
+      ],
+      "routed_demand": 29.9586,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        9,
+        8
+      ]
+    },
+    {
+      "d": 19,
+      "feasible": true,
+      "links": [
+        90,
+        16,
+        19
+      ],
+      "routed_demand": 7.8153,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 20,
+      "feasible": true,
+      "links": [
+        37,
+        124
+      ],
+      "routed_demand": 57.3121,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 21,
+      "feasible": true,
+      "links": [
+        92,
+        84,
+        106
+      ],
+      "routed_demand": 65.1274,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 22,
+      "feasible": true,
+      "links": [
+        90,
+        16,
+        135
+      ],
+      "routed_demand": 57.3121,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 23,
+      "feasible": true,
+      "links": [
+        46,
+        36,
+        98,
+        130
+      ],
+      "routed_demand": 24.0971,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        20
+      ]
+    },
+    {
+      "d": 24,
+      "feasible": true,
+      "links": [
+        65,
+        96,
+        106
+      ],
+      "routed_demand": 7.164,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        16,
+        7
+      ]
+    },
+    {
+      "d": 25,
+      "feasible": true,
+      "links": [
+        9
+      ],
+      "routed_demand": 28.0048,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 26,
+      "feasible": true,
+      "links": [
+        30,
+        122,
+        142,
+        26,
+        17,
+        91
+      ],
+      "routed_demand": 112.6704,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        13
+      ]
+    },
+    {
+      "d": 27,
+      "feasible": true,
+      "links": [
+        90,
+        45,
+        149
+      ],
+      "routed_demand": 27.3535,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 28,
+      "feasible": true,
+      "links": [
+        38,
+        11,
+        35
+      ],
+      "routed_demand": 117.8806,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        5
+      ]
+    },
+    {
+      "d": 29,
+      "feasible": true,
+      "links": [
+        138,
+        54,
+        113,
+        31
+      ],
+      "routed_demand": 3.9076,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 30,
+      "feasible": true,
+      "links": [
+        8,
+        78,
+        20,
+        139,
+        76,
+        91
+      ],
+      "routed_demand": 66.43,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        27
+      ]
+    },
+    {
+      "d": 31,
+      "feasible": true,
+      "links": [
+        79,
+        149,
+        147,
+        81
+      ],
+      "routed_demand": 106.1577,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        22
+      ]
+    },
+    {
+      "d": 32,
+      "feasible": true,
+      "links": [
+        66,
+        74,
+        91
+      ],
+      "routed_demand": 37.1226,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        25
+      ]
+    },
+    {
+      "d": 33,
+      "feasible": true,
+      "links": [
+        11,
+        135
+      ],
+      "routed_demand": 78.1529,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 34,
+      "feasible": true,
+      "links": [
+        117,
+        115,
+        118,
+        102
+      ],
+      "routed_demand": 29.3073,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        1,
+        5,
+        28
+      ]
+    },
+    {
+      "d": 35,
+      "feasible": true,
+      "links": [
+        74,
+        7
+      ],
+      "routed_demand": 24.7484,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 36,
+      "feasible": true,
+      "links": [
+        30,
+        112,
+        38,
+        14
+      ],
+      "routed_demand": 21.492,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 37,
+      "feasible": true,
+      "links": [
+        76,
+        13
+      ],
+      "routed_demand": 0.6513,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 38,
+      "feasible": true,
+      "links": [
+        14,
+        2,
+        125,
+        95,
+        21
+      ],
+      "routed_demand": 12.3742,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        1,
+        27
+      ]
+    },
+    {
+      "d": 39,
+      "feasible": true,
+      "links": [
+        92,
+        145,
+        72
+      ],
+      "routed_demand": 37.1226,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        26
+      ]
+    },
+    {
+      "d": 40,
+      "feasible": true,
+      "links": [
+        101,
+        72,
+        143,
+        9
+      ],
+      "routed_demand": 69.035,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        26,
+        13
+      ]
+    },
+    {
+      "d": 41,
+      "feasible": true,
+      "links": [
+        71,
+        96,
+        43
+      ],
+      "routed_demand": 27.3535,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 42,
+      "feasible": true,
+      "links": [
+        49,
+        82,
+        21,
+        79,
+        9
+      ],
+      "routed_demand": 62.5223,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": [
+        24,
+        10
+      ]
+    },
+    {
+      "d": 43,
+      "feasible": true,
+      "links": [
+        34,
+        146,
+        63
+      ],
+      "routed_demand": 24.7484,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 44,
+      "feasible": true,
+      "links": [
+        50,
+        96,
+        43
+      ],
+      "routed_demand": 0.6513,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    }
+  ],
+  "solve_time_seconds": 0.081298793,
+  "total_metric": 0.0
+}

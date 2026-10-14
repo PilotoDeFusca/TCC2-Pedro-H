@@ -3,7 +3,7 @@ CXXFLAGS   := -std=c++17 -O2 -Wall -Wextra -I.
 LDFLAGS    :=
 
 TARGET     := solver
-SRCS       := main.cpp loader.cpp trivial_solution.cpp verifier.cpp amns.cpp
+SRCS       := main.cpp loader.cpp trivial_solution.cpp verifier.cpp amns.cpp classical_solution.cpp
 DEPS       := loader.h
 
 BUILD_DIR  := build

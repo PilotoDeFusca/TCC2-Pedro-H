@@ -252,6 +252,25 @@ static bool better(const Obj& a, const Obj& b)
     return a.sum_sq < b.sum_sq - 1e-12;
 }
 
+// Records the moments where the accepted solution's max link load dropped.
+// Each entry is (global_iteration, new_max_load).
+// A global iteration counter is shared across slots so the whole run shows
+// up as a single monotone-decreasing series.
+struct MaxLoadHistory {
+    std::vector<std::pair<long long, double>> entries;
+
+    // Call after an accepted move. Only records if the new max_load is
+    // strictly lower than the last recorded value (or if nothing has been
+    // recorded yet).
+    void record(long long iter, double max_load)
+    {
+        if (!std::isfinite(max_load)) return;
+        if (entries.empty() || max_load < entries.back().second - 1e-12) {
+            entries.emplace_back(iter, max_load);
+        }
+    }
+};
+
 // Per-slot search state. Owns the candidate waypoints for every demand,
 // the aggregated link flow, and the cached objective.
 struct SlotSearch {
@@ -273,14 +292,19 @@ struct SlotSearch {
     Obj obj;                             // cached objective
     mt19937 rng;                         // per-slot RNG
 
+    MaxLoadHistory* history = nullptr;   // recorder for max-load drops
+    long long iter_index = 0;            // global iteration (set by caller)
+
     // Initialize for a slot. Warm-starts from `prev` if provided.
     void init(const Instance& in, const Router& rt, int sl,
-              const vector<vector<int>>* prev, unsigned seed)
+              const vector<vector<int>>* prev, unsigned seed,
+              MaxLoadHistory* hist)
     {
         inst = &in;
         router = &rt;
         slot = sl;
         rng.seed(seed);
+        history = hist;
         max_waypoints = max(0, in.scenario.max_segments - 1);
         n_links = rt.max_link_id + 1;
 
@@ -529,8 +553,11 @@ struct SlotSearch {
         // Note: an infeasible route is not immediately rejected; it will
         // only survive if it doesn't worsen the objective.
         recompute_obj();
-        if (better(obj, old_obj))
+        if (better(obj, old_obj)) {
+            if (history)
+                history->record(iter_index, obj.max_load);
             return true;
+        }
 
         // Revert: undo flow contributions and restore snapshots.
         if (feasible[d]) {
@@ -602,16 +629,19 @@ Solution solve_amns(const Instance& inst)
     sol.max_link_slot = -1;
     sol.total_metric = 0.0;
 
+    using clock = chrono::steady_clock;
+    const auto t_start = clock::now();   // <-- timer start
+
     // Build the routing graph once (topology is static).
     Router router;
     router.build(inst.net);
 
     // Waypoints from the previous slot (warm start; empty for slot 0).
     vector<vector<int>> prev_w;
-    const bool has_prev = false;
-    (void)has_prev;
 
-    using clock = chrono::steady_clock;
+        // Per-slot max-load histories. One vector of entries per slot.
+    std::vector<std::vector<std::pair<long long, double>>> slot_histories(
+        inst.num_time_slots);
 
     // ---- Main loop over time slots ----
     for (int slot = 0; slot < inst.num_time_slots; ++slot) {
@@ -625,10 +655,21 @@ Solution solve_amns(const Instance& inst)
         router.compute(forbidden);
 
         // Initialize the per-slot search state (warm-started from prev slot).
-        SlotSearch st;
+                SlotSearch st;
         const unsigned seed = 2026u + static_cast<unsigned>(inst.index) * 1009u
                               + static_cast<unsigned>(slot) * 17u;
-        st.init(inst, router, slot, slot > 0 ? &prev_w : nullptr, seed);
+
+        // Fresh recorder for this slot. Iteration counter restarts at 0
+        // each slot, since each slot gets its own plot.
+        MaxLoadHistory history;
+        long long slot_iter = 0;
+
+        st.init(inst, router, slot, slot > 0 ? &prev_w : nullptr, seed,
+                &history);
+        st.iter_index = slot_iter;
+
+        // Anchor the history with the warm-start max load for this slot.
+        history.record(slot_iter, st.obj.max_load);
 
         // Size-dependent iteration / time budgets.
         const int D = static_cast<int>(inst.demands.size());
@@ -651,6 +692,9 @@ Solution solve_amns(const Instance& inst)
         for (int it = 0; it < max_iters; ++it) {
             const double elapsed = chrono::duration<double>(clock::now() - t0).count();
             if (elapsed > time_limit) break;
+
+            ++slot_iter;
+            st.iter_index = slot_iter;
 
             // Sample a move type proportional to adaptive scores.
             const double sum = score[0] + score[1] + score[2];
@@ -690,9 +734,79 @@ Solution solve_amns(const Instance& inst)
              << "  budget=" << st.budget_used << "/"
              << (isfinite(st.budget_limit) ? to_string(static_cast<int>(st.budget_limit)) : string("inf"))
              << "\n";
+
+                // Save this slot's history.
+        slot_histories[slot] = history.entries;
     }
 
+    // Store the per-slot histories on the solution.
+    sol.max_load_history = std::move(slot_histories);
+
+    // Store the recorded history on the solution.
+    
+
+    sol.solve_time_seconds =
+        chrono::duration<double>(clock::now() - t_start).count();
+
     return sol;
+}
+
+void write_solution(const Solution& sol, const string& path)
+{
+    json j;
+    j["instance_name"]      = sol.instance_name;
+    j["max_link_load"]      = sol.max_link_load;
+    j["max_link_id"]        = sol.max_link_id;
+    j["max_link_slot"]      = sol.max_link_slot;
+    j["total_metric"]       = sol.total_metric;
+    j["solve_time_seconds"] = sol.solve_time_seconds;
+
+    // Per-demand paths.
+    j["paths"] = json::array();
+    for (const auto& dp : sol.paths) {
+        json e;
+        e["d"]             = dp.demand_index;
+        e["t"]             = dp.time_slot;
+        e["w"]             = dp.waypoints;
+        e["links"]         = dp.links;
+        e["routed_demand"] = dp.routed_demand;
+        e["feasible"]      = dp.feasible;
+        e["total_metric"]  = dp.total_metric;
+        j["paths"].push_back(std::move(e));
+    }
+
+    // Per-(slot, link) loads.
+    j["link_loads"] = json::array();
+    for (const auto& ll : sol.link_loads) {
+        json e;
+        e["t"]            = ll.time_slot;
+        e["link_id"]      = ll.link_id;
+        e["capacity"]     = ll.capacity;
+        e["total_demand"] = ll.total_demand;
+        e["load"]         = ll.load;
+        j["link_loads"].push_back(std::move(e));
+    }
+
+        // Per-slot max-load history:
+    //   max_load_history[slot] = array of {iter, max_load}
+    j["max_load_history"] = json::array();
+    for (size_t s = 0; s < sol.max_load_history.size(); ++s) {
+        json slot_arr = json::array();
+        for (const auto& [it, val] : sol.max_load_history[s]) {
+            json e;
+            e["iter"]     = it;
+            e["max_load"] = val;
+            slot_arr.push_back(std::move(e));
+        }
+        j["max_load_history"].push_back(std::move(slot_arr));
+    }
+
+    ofstream out(path);
+    if (!out.is_open()) {
+        cerr << "Cannot write " << path << "\n";
+        return;
+    }
+    out << j.dump(2) << "\n";
 }
 
 // Dump only the SR paths (demand index, time slot, waypoints) to JSON.
