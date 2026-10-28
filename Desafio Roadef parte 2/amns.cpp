@@ -6,615 +6,144 @@
 // that link congestion is minimized, while respecting a per-slot "budget"
 // on how many segments may change relative to the previous slot.
 //
+// Routing follows the checker: between consecutive waypoints, traffic is
+// split by ECMP over all shortest paths (see Router in sr_core.h).
+//
 // High-level pipeline per slot:
-//   1. Compute all-pairs shortest paths under current failed links.
+//   1. Compute all-pairs shortest distances under current failed links.
 //   2. Warm-start waypoints from the previous slot.
-//   3. Iterated local search with 3 move operators (change/insert/delete),
-//      adaptively weighted by recent success.
-//   4. Only accept a move if the global objective improves.
-//   5. Record paths + link loads, carry waypoints to next slot.
+//   3. Local search restricted to the critical cut (links with
+//      load >= max_load - eps, plus unserved demands), largest volume first.
+//        insert : main attack on the bottleneck
+//        change : diversification when insert stalls
+//        delete : safe cleanup / segment-budget recovery
+//      Each demand is taken off the network, a residual-ranked shortlist of
+//      detour nodes is delta-scored exactly (new max load, avoids hot links,
+//      budget cost), and only the best few are tried with try_move.
+//   4. Accept strict improvements of (unserved, overflow, max_load,
+//      #critical links, sum_sq). Plateau moves on the peak are allowed via
+//      #critical links / sum_sq; later slots do not spend budget on sum_sq
+//      alone. Equal-objective moves that free budget are accepted.
+//   5. On stall: VNS shake (slightly worsening moves allowed) from the best
+//      solution seen; the best solution is restored at the end of the slot.
+//   6. Slot 0 only: robust phase (robust_slot0 in sr_core.h). Budgets are too
+//      small to re-route much later, so slot-0 routes are re-scored against
+//      every slot's traffic and failures and moved onto low-load nodes.
+//   7. Record paths + link loads, carry waypoints to next slot.
 
-#include "loader.h"
+#include "sr_core.h"
 
-#include <algorithm>
-#include <array>
-#include <chrono>
-#include <cmath>
+#include <filesystem>
 #include <fstream>
-#include <iostream>
-#include <limits>
-#include <queue>
-#include <random>
-#include <unordered_set>
-#include <utility>
+#include <thread>
 
 using json = nlohmann::json;
 using namespace std;
 
 namespace {
 
-// Infinity used for "unreachable" shortest paths.
-constexpr double INF = numeric_limits<double>::infinity();
+// AMNS stops a slot once this many neighborhood calls pass without progress
+// on the peak (see peak_progress). Later slots, with their small budgets,
+// usually stall within a few dozen calls.
+constexpr int kPatience = 100;
 
-// One directed edge in the routing graph.
-//   to      : head node
-//   link_id : original network link id (used for capacity, forbidden set)
-//   metric  : routing cost (e.g. latency)
-struct Arc {
-    int to;
-    int link_id;
-    double metric;
-};
+// Progress for the stopping rule: fewer unserved demands, less overflow, a
+// lower max load, or the same peak on fewer links. Tie-breaker-only gains
+// (warm-link excess, sum of squares) do not keep the search alive.
+static bool peak_progress(const Obj& n, const Obj& ref)
+{
+    if (peak_better(n, ref)) return true;
+    return same_peak(n, ref) && n.n_crit < ref.n_crit;
+}
 
-// Precomputes and stores all-pairs shortest paths for a fixed
-// "forbidden" set of links (failures for the current time slot).
-struct Router {
-    int num_nodes = 0;         // number of nodes (max_id + 1)
-    int max_link_id = -1;      // largest link id seen
-    vector<int> node_ids;      // list of valid node ids
-    vector<vector<Arc>> adj;   // adjacency list (per node)
-    vector<int> pred_node;     // predecessor node, indexed src*N + v
-    vector<int> pred_link;     // predecessor link id, indexed src*N + v
-    vector<double> dist;       // shortest distance, indexed src*N + v
+// AMNS on one slot: each iteration samples a neighborhood (insert, change,
+// delete, extend, insert2) by adaptive weight, falling back to the others if
+// it fails; after two failures in a row, VNS shake from the best solution
+// seen.
+static void amns_slot(SlotSearch& st, const SlotBudget& budget)
+{
+    using clock = chrono::steady_clock;
+    const auto t0 = clock::now();
 
-    // Flattened 2D index for (src, v).
-    int idx(int src, int v) const { return src * num_nodes + v; }
-
-    // Build the graph from the network topology.
-    void build(const Network& net)
-    {
-        // Nodes are assumed to be sparse ids; allocate arrays up to max id.
-        int max_id = -1;
-        for (const auto& n : net.nodes)
-            if (n.id > max_id) max_id = n.id;
-        num_nodes = max_id + 1;
-
-        node_ids.clear();
-        node_ids.reserve(net.nodes.size());
-        for (const auto& n : net.nodes)
-            node_ids.push_back(n.id);
-
-        adj.assign(num_nodes, {});
-        max_link_id = -1;
-        for (const auto& l : net.links) {
-            if (l.id > max_link_id) max_link_id = l.id;
-            adj[l.from].push_back({l.to, l.id, l.metric});
-            // Undirected networks get the reverse arc too (same link id).
-            if (!net.directed)
-                adj[l.to].push_back({l.from, l.id, l.metric});
-        }
+    // Neighborhoods and their initial adaptive weights. Extend only runs at
+    // slot 0, where there is no segment budget. Moves switched off with
+    // SR_DISABLE_OPS are left out.
+    vector<int> op_id;
+    vector<double> score;
+    const vector<pair<int, double>> all_ops = {
+        {OP_INSERT, 2.0}, {OP_CHANGE, 1.0}, {OP_DELETE, 0.55},
+        {OP_EXTEND, 1.0}, {OP_INSERT2, 1.0}};
+    for (const auto& [op, w] : all_ops) {
+        if (op == OP_EXTEND && st.slot != 0) continue;
+        if (op_disabled(op_label(op))) continue;
+        op_id.push_back(op);
+        score.push_back(w);
     }
+    const int n_ops = static_cast<int>(op_id.size());
+    if (n_ops == 0) return;
+    const bool shake_on = !op_disabled("shake");
+    int fail_streak = 0;
+    SlotSearch::Snapshot best;
+    st.save(best);
+    Obj progress_ref = st.obj;             // best peak reached so far
+    long long last_progress = st.iter_index;
 
-    // Run Dijkstra from every valid node, skipping forbidden links.
-    // Results are stored in the flattened pred_node/pred_link/dist arrays.
-    void compute(const unordered_set<int>& forbidden)
-    {
-        const int N = num_nodes;
-        pred_node.assign(N * N, -1);
-        pred_link.assign(N * N, -1);
-        dist.assign(N * N, INF);
+    for (int it = 0; it < budget.max_iters; ++it) {
+        if (chrono::duration<double>(clock::now() - t0).count() > budget.time_limit)
+            break;
+        if (st.iter_index - last_progress > kPatience)
+            break;
 
-        for (int s : node_ids) {
-            vector<char> visited(N, 0);
-            using P = pair<double, int>; // (distance, node)
-            priority_queue<P, vector<P>, greater<P>> pq;
-            dist[idx(s, s)] = 0.0;
-            pq.push({0.0, s});
+        double sum = 0.0;
+        for (int o = 0; o < n_ops; ++o) sum += score[o];
+        uniform_real_distribution<double> ur(0.0, sum);
+        double r = ur(st.rng);
+        int k = 0;
+        while (k + 1 < n_ops && r >= score[k]) {
+            r -= score[k];
+            ++k;
+        }
 
-            while (!pq.empty()) {
-                auto [d, u] = pq.top();
-                pq.pop();
-                if (visited[u]) continue; // stale entry
-                visited[u] = 1;
-                for (const auto& arc : adj[u]) {
-                    if (forbidden.count(arc.link_id)) continue;
-                    const double nd = d + arc.metric;
-                    const int j = idx(s, arc.to);
-                    if (nd < dist[j]) {
-                        dist[j] = nd;
-                        pred_node[j] = u;
-                        pred_link[j] = arc.link_id;
-                        pq.push({nd, arc.to});
-                    }
+        bool improved = false;
+        for (int attempt = 0; attempt < n_ops && !improved; ++attempt) {
+            // One iteration = one neighborhood call, so fallbacks to
+            // another operator show up as their own iteration.
+            ++st.iter_index;
+            improved = st.run_op(op_id[k], [&] { return st.neighborhood(op_id[k]); });
+            if (!improved)
+                k = (k + 1) % n_ops;
+        }
+
+        if (peak_progress(st.obj, progress_ref)) {
+            progress_ref = st.obj;
+            last_progress = st.iter_index;
+        }
+
+        for (double& s : score) s *= 0.995;
+        if (improved) {
+            score[k] += 1.0;
+            fail_streak = 0;
+        } else {
+            score[k] = max(0.2, score[k] * 0.97);
+            if (++fail_streak >= 2) {
+                // VNS: remember the best local optimum and always
+                // perturb from it, never from a worse basin.
+                if (better(st.obj, best.obj)) {
+                    st.save(best);
+                } else if (better(best.obj, st.obj)) {
+                    st.restore(best);
                 }
-            }
-        }
-    }
-
-    // Convert a waypoint list [w1, w2, ...] into an explicit link sequence
-    // by concatenating precomputed shortest paths s->w1, w1->w2, ..., wk->t.
-    // Also accumulates the total metric in `metric`.
-    // Returns false if any segment is unreachable.
-    bool expand(int s, int t, const vector<int>& waypoints,
-                vector<int>& links, double& metric) const
-    {
-        links.clear();
-        metric = 0.0;
-        if (s == t && waypoints.empty())
-            return true; // trivial path
-
-        // Build the full node sequence: source, waypoints (dedup consecutive),
-        // destination.
-        vector<int> seq;
-        seq.reserve(waypoints.size() + 2);
-        seq.push_back(s);
-        for (int w : waypoints) {
-            if (w != seq.back())
-                seq.push_back(w);
-        }
-        if (seq.back() != t)
-            seq.push_back(t);
-
-        // Expand each consecutive pair into links using pred arrays.
-        for (size_t i = 0; i + 1 < seq.size(); ++i) {
-            const int a = seq[i];
-            const int b = seq[i + 1];
-            if (a == b) continue;
-            if (a < 0 || b < 0 || a >= num_nodes || b >= num_nodes)
-                return false;
-            if (dist[idx(a, b)] == INF)
-                return false;
-
-            // Walk the predecessor chain backwards from b to a.
-            vector<int> piece;
-            int cur = b;
-            while (cur != a) {
-                const int j = idx(a, cur);
-                const int link = pred_link[j];
-                if (link < 0) return false;
-                piece.push_back(link);
-                cur = pred_node[j];
-            }
-            reverse(piece.begin(), piece.end());
-            links.insert(links.end(), piece.begin(), piece.end());
-            metric += dist[idx(a, b)];
-        }
-        return true;
-    }
-};
-
-// Pack an ordered node pair (u, v) into a 64-bit key for hashing.
-static uint64_t pack_seg(int u, int v)
-{
-    return (static_cast<uint64_t>(static_cast<uint32_t>(u)) << 32)
-           | static_cast<uint32_t>(v);
-}
-
-// Build the set of segment pairs (consecutive hops) for a demand route
-//   s -> w1 -> w2 -> ... -> t
-// Used to measure how many segments changed vs. another route.
-static void segment_pairs(int s, int t, const vector<int>& w,
-                          unordered_set<uint64_t>& segs)
-{
-    segs.clear();
-    if (s == t && w.empty())
-        return;
-    int prev = s;
-    for (int x : w) {
-        if (x == prev) continue; // skip duplicate
-        segs.insert(pack_seg(prev, x));
-        prev = x;
-    }
-    if (prev != t)
-        segs.insert(pack_seg(prev, t));
-}
-
-// Symmetric-difference size between two waypoint lists.
-// This is the "number of segments changed" and feeds the budget check.
-static int segment_distance(int s, int t,
-                            const vector<int>& a,
-                            const vector<int>& b)
-{
-    unordered_set<uint64_t> sa, sb;
-    segment_pairs(s, t, a, sa);
-    segment_pairs(s, t, b, sb);
-    int dist = 0;
-    // Count elements only in sa, then only in sb.
-    for (auto x : sa)
-        if (!sb.count(x)) ++dist;
-    for (auto x : sb)
-        if (!sa.count(x)) ++dist;
-    return dist;
-}
-
-// Look up the budget value for a given time slot; +inf if slot <= 0
-// (i.e. no reconfiguration budget is enforced for the first slot).
-static double budget_for_slot(const Instance& inst, int slot)
-{
-    if (slot <= 0)
-        return numeric_limits<double>::infinity();
-    for (const auto& b : inst.scenario.budget)
-        if (b.t == slot)
-            return b.value;
-    return 0.0;
-}
-
-// Cached lexicographic objective.
-//   unserved  : # demands with positive traffic that could not be routed
-//   overflow  : sum of (load - 1) over congested links
-//   max_load  : worst link utilization
-//   sum_sq    : sum of squared utilizations (smoothness tie-breaker)
-struct Obj {
-    int unserved = 0;
-    double overflow = 0.0;
-    double max_load = 0.0;
-    double sum_sq = 0.0;
-};
-
-// Lexicographic comparison: smaller is better.
-// Priority: unserved > overflow > max_load > sum_sq.
-static bool better(const Obj& a, const Obj& b)
-{
-    if (a.unserved != b.unserved) return a.unserved < b.unserved;
-    if (a.overflow != b.overflow) return a.overflow < b.overflow;
-    if (fabs(a.max_load - b.max_load) > 1e-12)
-        return a.max_load < b.max_load;
-    return a.sum_sq < b.sum_sq - 1e-12;
-}
-
-// Records the moments where the accepted solution's max link load dropped.
-// Each entry is (global_iteration, new_max_load).
-// A global iteration counter is shared across slots so the whole run shows
-// up as a single monotone-decreasing series.
-struct MaxLoadHistory {
-    std::vector<std::pair<long long, double>> entries;
-
-    // Call after an accepted move. Only records if the new max_load is
-    // strictly lower than the last recorded value (or if nothing has been
-    // recorded yet).
-    void record(long long iter, double max_load)
-    {
-        if (!std::isfinite(max_load)) return;
-        if (entries.empty() || max_load < entries.back().second - 1e-12) {
-            entries.emplace_back(iter, max_load);
-        }
-    }
-};
-
-// Per-slot search state. Owns the candidate waypoints for every demand,
-// the aggregated link flow, and the cached objective.
-struct SlotSearch {
-    const Instance* inst = nullptr;
-    const Router* router = nullptr;
-    int slot = 0;
-    int max_waypoints = 0;     // max #waypoints per demand (segments - 1)
-    int n_links = 0;
-    vector<double> capacity;   // per link
-    vector<double> flow;       // per link: aggregated traffic
-    vector<double> traffic;    // per demand: traffic in this slot
-    vector<vector<int>> waypoints;       // current candidate per demand
-    vector<vector<int>> prev_waypoints;  // previous slot's waypoints (budget ref)
-    vector<vector<int>> links;           // expanded link list per demand
-    vector<char> feasible;               // 1 if route exists
-    vector<int> budget_cost;             // #segments changed vs prev, per demand
-    int budget_used = 0;                 // sum of budget_cost
-    double budget_limit = INF;           // this slot's budget cap
-    Obj obj;                             // cached objective
-    mt19937 rng;                         // per-slot RNG
-
-    MaxLoadHistory* history = nullptr;   // recorder for max-load drops
-    long long iter_index = 0;            // global iteration (set by caller)
-
-    // Initialize for a slot. Warm-starts from `prev` if provided.
-    void init(const Instance& in, const Router& rt, int sl,
-              const vector<vector<int>>* prev, unsigned seed,
-              MaxLoadHistory* hist)
-    {
-        inst = &in;
-        router = &rt;
-        slot = sl;
-        rng.seed(seed);
-        history = hist;
-        max_waypoints = max(0, in.scenario.max_segments - 1);
-        n_links = rt.max_link_id + 1;
-
-        // Capacity per link (0 means "not a real link").
-        capacity.assign(n_links, 0.0);
-        for (const auto& l : in.net.links)
-            capacity[l.id] = l.capacity;
-        flow.assign(n_links, 0.0);
-
-        const int D = static_cast<int>(in.demands.size());
-        traffic.resize(D);
-        waypoints.assign(D, {});
-        prev_waypoints.assign(D, {});
-        links.assign(D, {});
-        feasible.assign(D, 0);
-        budget_cost.assign(D, 0);
-        budget_used = 0;
-        budget_limit = budget_for_slot(in, sl);
-
-        if (prev)
-            prev_waypoints = *prev;
-
-        // Initialize each demand: get its traffic, seed waypoints from the
-        // previous slot, and apply the path (accumulating flow + budget).
-        for (int d = 0; d < D; ++d) {
-            const Demand& dem = in.demands[d];
-            traffic[d] = (sl < static_cast<int>(dem.v.size())) ? dem.v[sl] : 0.0;
-            if (prev)
-                waypoints[d] = (*prev)[d];
-            apply_path(d, waypoints[d], /*commit_flow=*/true, /*count_budget=*/true);
-        }
-        recompute_obj();
-    }
-
-    // Try to install `w` as demand d's waypoints.
-    //   commit_flow  : update aggregate flow counters
-    //   count_budget : enforce and update budget counters
-    // Returns false if the budget would be exceeded.
-    bool apply_path(int d, const vector<int>& w, bool commit_flow, bool count_budget)
-    {
-        const Demand& dem = inst->demands[d];
-        vector<int> new_links;
-        double metric = 0.0;
-        const bool ok = router->expand(dem.s, dem.t, w, new_links, metric);
-
-        // Budget check happens BEFORE any state mutation.
-        if (count_budget) {
-            const int nc = segment_distance(dem.s, dem.t, prev_waypoints[d], w);
-            const int delta = nc - budget_cost[d];
-            if (budget_used + delta > budget_limit + 1e-9)
-                return false;
-            budget_used += delta;
-            budget_cost[d] = nc;
-        }
-
-        // Remove old demand flow from affected links.
-        if (commit_flow && feasible[d]) {
-            for (int lid : links[d])
-                flow[lid] -= traffic[d];
-        }
-
-        // Install new waypoints/links.
-        waypoints[d] = w;
-        links[d] = std::move(new_links);
-        feasible[d] = ok ? 1 : 0;
-
-        // Add new flow if routing succeeded.
-        if (commit_flow && ok) {
-            for (int lid : links[d])
-                flow[lid] += traffic[d];
-        }
-        return true;
-    }
-
-    // Recompute the cached objective from current flow + feasibility.
-    void recompute_obj()
-    {
-        obj.unserved = 0;
-        obj.overflow = 0.0;
-        obj.max_load = 0.0;
-        obj.sum_sq = 0.0;
-        for (size_t d = 0; d < feasible.size(); ++d) {
-            if (!feasible[d] && traffic[d] > 0.0)
-                ++obj.unserved;
-        }
-        for (int i = 0; i < n_links; ++i) {
-            if (capacity[i] <= 0.0) continue;
-            const double load = flow[i] / capacity[i];
-            obj.max_load = max(obj.max_load, load);
-            if (load > 1.0)
-                obj.overflow += load - 1.0;
-            obj.sum_sq += load * load;
-        }
-    }
-
-    // Return the link id with the highest utilization (or -1).
-    int hottest_link() const
-    {
-        int best = -1;
-        double best_load = -1.0;
-        for (int i = 0; i < n_links; ++i) {
-            if (capacity[i] <= 0.0) continue;
-            const double load = flow[i] / capacity[i];
-            if (load > best_load) {
-                best_load = load;
-                best = i;
-            }
-        }
-        return best;
-    }
-
-    // Pick a demand from `pool`, biased toward the hottest link.
-    // 50% of the time, restrict to demands using the hottest link
-    // (or infeasible demands); otherwise sample uniformly.
-    int pick_demand(const vector<int>& pool)
-    {
-        if (pool.empty()) return -1;
-        uniform_int_distribution<int> dist(0, static_cast<int>(pool.size()) - 1);
-        int hot = hottest_link();
-        vector<int> focused;
-        if (hot >= 0) {
-            for (int d : pool) {
-                if (!feasible[d]) {
-                    focused.push_back(d);
-                    continue;
+                if (shake_on) {
+                    ++st.iter_index;
+                    st.run_op(OP_SHAKE, [&] { st.shake(2); return true; });
                 }
-                for (int lid : links[d]) {
-                    if (lid == hot) {
-                        focused.push_back(d);
-                        break;
-                    }
-                }
+                fail_streak = 0;
             }
         }
-        if (!focused.empty() && (rng() % 2 == 0)) {
-            uniform_int_distribution<int> fd(0, static_cast<int>(focused.size()) - 1);
-            return focused[fd(rng)];
-        }
-        return pool[dist(rng)];
     }
 
-    // Uniform random choice among valid nodes not in `banned`.
-    int random_node_except(const unordered_set<int>& banned)
-    {
-        vector<int> cand;
-        cand.reserve(router->node_ids.size());
-        for (int id : router->node_ids)
-            if (!banned.count(id))
-                cand.push_back(id);
-        if (cand.empty()) return -1;
-        uniform_int_distribution<int> dist(0, static_cast<int>(cand.size()) - 1);
-        return cand[dist(rng)];
-    }
-
-    // Move: replace one existing waypoint with a random other node.
-    bool neigh_change()
-    {
-        // Only demands that currently have at least one waypoint.
-        vector<int> pool;
-        for (int d = 0; d < static_cast<int>(waypoints.size()); ++d)
-            if (!waypoints[d].empty())
-                pool.push_back(d);
-        const int d = pick_demand(pool);
-        if (d < 0) return false;
-
-        const Demand& dem = inst->demands[d];
-        uniform_int_distribution<int> pos(0, static_cast<int>(waypoints[d].size()) - 1);
-        const int i = pos(rng);
-
-        // Ban endpoints and immediate neighbors to avoid trivial edits.
-        unordered_set<int> banned;
-        banned.insert(dem.s);
-        banned.insert(dem.t);
-        banned.insert(waypoints[d][i]);
-        if (i > 0) banned.insert(waypoints[d][i - 1]);
-        if (i + 1 < static_cast<int>(waypoints[d].size()))
-            banned.insert(waypoints[d][i + 1]);
-
-        const int nw = random_node_except(banned);
-        if (nw < 0) return false;
-
-        vector<int> cand = waypoints[d];
-        cand[i] = nw;
-        return try_move(d, cand);
-    }
-
-    // Move: insert a new random waypoint.
-    bool neigh_insert()
-    {
-        // Only demands below the max waypoint count.
-        vector<int> pool;
-        for (int d = 0; d < static_cast<int>(waypoints.size()); ++d)
-            if (static_cast<int>(waypoints[d].size()) < max_waypoints)
-                pool.push_back(d);
-        const int d = pick_demand(pool);
-        if (d < 0) return false;
-
-        const Demand& dem = inst->demands[d];
-        unordered_set<int> banned;
-        banned.insert(dem.s);
-        banned.insert(dem.t);
-        for (int w : waypoints[d]) banned.insert(w);
-
-        const int nw = random_node_except(banned);
-        if (nw < 0) return false;
-
-        vector<int> cand = waypoints[d];
-        uniform_int_distribution<int> pos(0, static_cast<int>(cand.size()));
-        cand.insert(cand.begin() + pos(rng), nw);
-        return try_move(d, cand);
-    }
-
-    // Move: delete a random existing waypoint.
-    bool neigh_delete()
-    {
-        vector<int> pool;
-        for (int d = 0; d < static_cast<int>(waypoints.size()); ++d)
-            if (!waypoints[d].empty())
-                pool.push_back(d);
-        const int d = pick_demand(pool);
-        if (d < 0) return false;
-
-        vector<int> cand = waypoints[d];
-        uniform_int_distribution<int> pos(0, static_cast<int>(cand.size()) - 1);
-        cand.erase(cand.begin() + pos(rng));
-        return try_move(d, cand);
-    }
-
-    // Attempt a candidate change for demand d. Accepts only if the global
-    // objective strictly improves; otherwise reverts fully.
-    bool try_move(int d, const vector<int>& cand)
-    {
-        // Snapshot everything needed to revert.
-        const vector<int> old_w = waypoints[d];
-        const vector<int> old_links = links[d];
-        const char old_feas = feasible[d];
-        const int old_bcost = budget_cost[d];
-        const int old_bused = budget_used;
-        const Obj old_obj = obj;
-
-        // apply_path may reject due to budget.
-        if (!apply_path(d, cand, true, true)) {
-            return false;
-        }
-
-        // Note: an infeasible route is not immediately rejected; it will
-        // only survive if it doesn't worsen the objective.
-        recompute_obj();
-        if (better(obj, old_obj)) {
-            if (history)
-                history->record(iter_index, obj.max_load);
-            return true;
-        }
-
-        // Revert: undo flow contributions and restore snapshots.
-        if (feasible[d]) {
-            for (int lid : links[d])
-                flow[lid] -= traffic[d];
-        }
-        waypoints[d] = old_w;
-        links[d] = old_links;
-        feasible[d] = old_feas;
-        budget_cost[d] = old_bcost;
-        budget_used = old_bused;
-        if (old_feas) {
-            for (int lid : links[d])
-                flow[lid] += traffic[d];
-        }
-        obj = old_obj;
-        return false;
-    }
-};
-
-// Copy the search state into the output Solution for a given slot.
-static void fill_solution(Solution& sol, const Instance& inst, int slot,
-                          SlotSearch& st)
-{
-    for (size_t d = 0; d < inst.demands.size(); ++d) {
-        DemandPath dp;
-        dp.demand_index = static_cast<int>(d);
-        dp.time_slot = slot;
-        dp.waypoints = st.waypoints[d];
-        dp.links = st.links[d];
-        dp.routed_demand = st.traffic[d];
-        dp.feasible = st.feasible[d] != 0;
-        dp.total_metric = 0.0;
-        if (dp.feasible) {
-            for (int lid : dp.links) {
-                // metric is already encoded in router distances; leave 0 here
-                (void)lid;
-            }
-        }
-        sol.paths.push_back(std::move(dp));
-    }
-
-    // Record per-link loads for this slot and update global max.
-    for (const auto& l : inst.net.links) {
-        LinkLoad ll;
-        ll.time_slot = slot;
-        ll.link_id = l.id;
-        ll.capacity = l.capacity;
-        ll.total_demand = (l.id < static_cast<int>(st.flow.size())) ? st.flow[l.id] : 0.0;
-        ll.load = (l.capacity > 0.0) ? ll.total_demand / l.capacity : INF;
-        if (ll.load > sol.max_link_load) {
-            sol.max_link_load = ll.load;
-            sol.max_link_id = l.id;
-            sol.max_link_slot = slot;
-        }
-        sol.link_loads.push_back(ll);
-    }
+    // Return the best solution seen in this slot, not the last one.
+    if (better(best.obj, st.obj)) st.restore(best);
 }
 
 } // anonymous namespace
@@ -622,133 +151,29 @@ static void fill_solution(Solution& sol, const Instance& inst, int slot,
 // Entry point: run AMNS across all time slots and return the solution.
 Solution solve_amns(const Instance& inst)
 {
-    Solution sol;
-    sol.instance_name = inst.name;
-    sol.max_link_load = 0.0;
-    sol.max_link_id = -1;
-    sol.max_link_slot = -1;
-    sol.total_metric = 0.0;
+    return solve_by_slots(inst, "AMNS", amns_slot);
+}
 
-    using clock = chrono::steady_clock;
-    const auto t_start = clock::now();   // <-- timer start
-
-    // Build the routing graph once (topology is static).
-    Router router;
-    router.build(inst.net);
-
-    // Waypoints from the previous slot (warm start; empty for slot 0).
-    vector<vector<int>> prev_w;
-
-        // Per-slot max-load histories. One vector of entries per slot.
-    std::vector<std::vector<std::pair<long long, double>>> slot_histories(
-        inst.num_time_slots);
-
-    // ---- Main loop over time slots ----
-    for (int slot = 0; slot < inst.num_time_slots; ++slot) {
-        // Links forbidden at this slot (from scenario interventions).
-        unordered_set<int> forbidden;
-        for (const auto& iv : inst.scenario.interventions) {
-            if (iv.t == slot)
-                forbidden.insert(iv.links.begin(), iv.links.end());
+// Write `text` to `path` through a temporary file and a rename, retrying a
+// few times: in a OneDrive-synced folder an existing file can be briefly
+// locked, and opening it directly then fails. Reports failure on stderr.
+static void write_file(const string& path, const string& text)
+{
+    namespace fs = std::filesystem;
+    const string tmp = path + ".tmp";
+    for (int attempt = 0; attempt < 8; ++attempt) {
+        {
+            ofstream out(tmp, ios::binary | ios::trunc);
+            if (out.is_open()) out << text;
         }
-        // Recompute all-pairs shortest paths under the current failures.
-        router.compute(forbidden);
-
-        // Initialize the per-slot search state (warm-started from prev slot).
-                SlotSearch st;
-        const unsigned seed = 2026u + static_cast<unsigned>(inst.index) * 1009u
-                              + static_cast<unsigned>(slot) * 17u;
-
-        // Fresh recorder for this slot. Iteration counter restarts at 0
-        // each slot, since each slot gets its own plot.
-        MaxLoadHistory history;
-        long long slot_iter = 0;
-
-        st.init(inst, router, slot, slot > 0 ? &prev_w : nullptr, seed,
-                &history);
-        st.iter_index = slot_iter;
-
-        // Anchor the history with the warm-start max load for this slot.
-        history.record(slot_iter, st.obj.max_load);
-
-        // Size-dependent iteration / time budgets.
-        const int D = static_cast<int>(inst.demands.size());
-        const int N = static_cast<int>(inst.net.nodes.size());
-        int max_iters = 12000;
-        double time_limit = 3.0;
-        if (D > 2000 || N > 200) {
-            max_iters = 8000;
-            time_limit = 6.0;
-        } else if (D > 400 || N > 80) {
-            max_iters = 10000;
-            time_limit = 4.5;
-        }
-
-        // Adaptive operator weights (change, insert, delete).
-        array<double, 3> score = {1.0, 1.0, 1.0};
-        const auto t0 = clock::now();
-
-        // ---- Iterated local search ----
-        for (int it = 0; it < max_iters; ++it) {
-            const double elapsed = chrono::duration<double>(clock::now() - t0).count();
-            if (elapsed > time_limit) break;
-
-            ++slot_iter;
-            st.iter_index = slot_iter;
-
-            // Sample a move type proportional to adaptive scores.
-            const double sum = score[0] + score[1] + score[2];
-            uniform_real_distribution<double> ur(0.0, sum);
-            double r = ur(st.rng);
-            int k = 0;
-            if (r < score[0]) k = 0;
-            else if (r < score[0] + score[1]) k = 1;
-            else k = 2;
-
-            // Try the chosen move; if it fails, rotate through the others.
-            bool improved = false;
-            for (int attempt = 0; attempt < 3 && !improved; ++attempt) {
-                if (k == 0) improved = st.neigh_change();
-                else if (k == 1) improved = st.neigh_insert();
-                else improved = st.neigh_delete();
-                if (!improved)
-                    k = (k + 1) % 3;
-            }
-
-            // Decay all weights, then reinforce or penalize the winner.
-            for (double& s : score) s *= 0.995;
-            if (improved)
-                score[k] += 1.0;
-            else
-                score[k] = max(0.2, score[k] * 0.97);
-        }
-
-        // Record this slot's result and carry waypoints forward.
-        fill_solution(sol, inst, slot, st);
-        prev_w = st.waypoints;
-
-        cout << "  [AMNS] " << inst.name << " slot " << slot
-             << "  max_load=" << st.obj.max_load
-             << "  unserved=" << st.obj.unserved
-             << "  overflow=" << st.obj.overflow
-             << "  budget=" << st.budget_used << "/"
-             << (isfinite(st.budget_limit) ? to_string(static_cast<int>(st.budget_limit)) : string("inf"))
-             << "\n";
-
-                // Save this slot's history.
-        slot_histories[slot] = history.entries;
+        std::error_code ec;
+        fs::rename(tmp, path, ec);
+        if (!ec) return;
+        this_thread::sleep_for(chrono::milliseconds(250 * (attempt + 1)));
     }
-
-    // Store the per-slot histories on the solution.
-    sol.max_load_history = std::move(slot_histories);
-
-    // Store the recorded history on the solution.
-    
-
-    sol.solve_time_seconds =
-        chrono::duration<double>(clock::now() - t_start).count();
-
-    return sol;
+    std::error_code ec;
+    fs::remove(tmp, ec);
+    cerr << "ERROR: cannot write " << path << "\n";
 }
 
 void write_solution(const Solution& sol, const string& path)
@@ -787,26 +212,52 @@ void write_solution(const Solution& sol, const string& path)
         j["link_loads"].push_back(std::move(e));
     }
 
-        // Per-slot max-load history:
-    //   max_load_history[slot] = array of {iter, max_load}
+    // Per-slot max-load history:
+    //   max_load_history[slot] = array of {iter, max_load, op}
+    //   nbhd_switches[slot]    = array of {iter, op}  (op active from iter on)
+    // op is one of "start", "insert", "change", "delete", "shake", "extend",
+    // "robust", "kick".
+    const auto op_name = op_label;
     j["max_load_history"] = json::array();
     for (size_t s = 0; s < sol.max_load_history.size(); ++s) {
         json slot_arr = json::array();
-        for (const auto& [it, val] : sol.max_load_history[s]) {
+        const auto& ops = (s < sol.max_load_history_op.size())
+                              ? sol.max_load_history_op[s] : std::vector<int>{};
+        for (size_t i = 0; i < sol.max_load_history[s].size(); ++i) {
+            const auto& [it, val] = sol.max_load_history[s][i];
             json e;
             e["iter"]     = it;
             e["max_load"] = val;
+            e["op"]       = op_name(i < ops.size() ? ops[i] : OP_START);
             slot_arr.push_back(std::move(e));
         }
         j["max_load_history"].push_back(std::move(slot_arr));
     }
-
-    ofstream out(path);
-    if (!out.is_open()) {
-        cerr << "Cannot write " << path << "\n";
-        return;
+    j["nbhd_switches"] = json::array();
+    for (const auto& slot_sw : sol.nbhd_switches) {
+        json slot_arr = json::array();
+        for (const auto& [it, op] : slot_sw) {
+            json e;
+            e["iter"] = it;
+            e["op"]   = op_name(op);
+            slot_arr.push_back(std::move(e));
+        }
+        j["nbhd_switches"].push_back(std::move(slot_arr));
     }
-    out << j.dump(2) << "\n";
+
+    // Move statistics: op_stats.{slot0,later}.<move> = {calls, improved,
+    // seconds, peak_drop} (see OpStat in loader.h).
+    auto stats_json = [](const map<string, OpStat>& m) {
+        json o = json::object();
+        for (const auto& [name, s] : m)
+            o[name] = {{"calls", s.calls}, {"improved", s.improved},
+                       {"seconds", s.seconds}, {"peak_drop", s.peak_drop}};
+        return o;
+    };
+    j["op_stats"] = {{"slot0", stats_json(sol.op_stats_slot0)},
+                     {"later", stats_json(sol.op_stats_later)}};
+
+    write_file(path, j.dump(2) + "\n");
 }
 
 // Dump only the SR paths (demand index, time slot, waypoints) to JSON.
@@ -823,10 +274,5 @@ void write_srpaths(const Solution& sol, const string& path)
         j["srpaths"].push_back(std::move(e));
     }
 
-    ofstream out(path);
-    if (!out.is_open()) {
-        cerr << "Cannot write " << path << "\n";
-        return;
-    }
-    out << j.dump(2) << "\n";
+    write_file(path, j.dump(2) + "\n");
 }

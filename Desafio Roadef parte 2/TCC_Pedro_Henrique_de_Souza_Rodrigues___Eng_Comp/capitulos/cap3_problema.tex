@@ -1,0 +1,70 @@
+\chapter{DESCRIÇÃO DO PROBLEMA}
+\label{cap:problema}
+
+O problema tratado consiste em determinar um esquema de roteamento para uma rede que seja, simultaneamente, eficiente e resiliente à indisponibilidade de enlaces. O esquema não é estático: ele deve se adaptar a diferentes cenários ao longo do tempo, em especial durante intervenções de manutenção programadas.
+
+O problema recebe como entrada:
+
+\begin{enumerate}
+    \item \textbf{Topologia da rede}: um grafo direcionado que representa os roteadores (nós) e os enlaces de comunicação (arcos), também chamados de \textit{links}. Cada enlace possui dois atributos: uma métrica, usada pelo IGP para calcular os caminhos mínimos, e uma capacidade, que é a referência para a carga do enlace.
+    \item \textbf{Matriz de tráfego}: o volume de tráfego de cada par origem-destino (demanda) em cada período.
+    \item \textbf{Janelas de manutenção}: para cada período, o conjunto de enlaces indisponíveis por intervenções.
+    \item \textbf{Orçamento de reconfiguração}: para cada período, um limite para o número de segmentos alterados em relação ao período anterior, imposto para controlar o custo operacional e o risco de instabilidade.
+    \item \textbf{Profundidade máxima}: o número máximo de segmentos de um caminho de SR.
+\end{enumerate}
+
+\textbf{[INSERIR FIGURAS: exemplo de topologia, matriz de tráfego, intervenção e orçamento.]}
+
+O objetivo é calcular, para cada período, um esquema de roteamento baseado em \textit{Segment Routing} que minimize a carga dos enlaces mais carregados, respeitando as intervenções, o orçamento de reconfiguração e a profundidade máxima.
+
+\section{\uppercase{Modelo Matemático}}
+
+A formulação a seguir segue a especificação oficial do desafio. Seja $G = (V, A, \omega, c)$ a rede, com métrica $\omega(a)$ e capacidade $c(a)$ em cada arco $a \in A$; $T$ o conjunto de períodos; $D$ o conjunto de demandas $d = (s_d, t_d)$ com volume $\lambda(d, t)$ no período $t$; $A_t \subseteq A$ os arcos disponíveis no período $t$ (sem os enlaces em intervenção); $\mathit{maxSeg}$ a profundidade máxima; e $\beta(t)$ o orçamento do período $t \geq 1$.
+
+\paragraph{Variáveis.} $x^d_{ijt} \in \{0, 1\}$ vale 1 se o caminho de segmentos da demanda $d$ contém o segmento $(i, j)$ no período $t$.
+
+\paragraph{Carga.} Com $r_t(i, j, a)$ o coeficiente de divisão ECMP do segmento $(i, j)$ no arco $a$, calculado no grafo $G_t = (V, A_t)$, a carga do arco $a$ no período $t$ é
+\begin{equation}
+    \ell(a, t) = \frac{1}{c(a)} \sum_{d \in D} \sum_{i, j \in V} r_t(i, j, a)\, \lambda(d, t)\, x^d_{ijt}.
+\end{equation}
+
+\paragraph{Restrições.}
+\begin{itemize}
+    \item \textbf{Conservação de fluxo}: para cada demanda e período, os segmentos escolhidos formam um caminho de $s_d$ até $t_d$:
+    \begin{equation}
+        \sum_{j \in V} x^d_{ijt} - \sum_{j \in V} x^d_{jit} =
+        \begin{cases} 1 & \text{se } i = s_d,\\ -1 & \text{se } i = t_d,\\ 0 & \text{caso contrário,} \end{cases}
+        \qquad \forall d \in D,\ i \in V,\ t \in T.
+    \end{equation}
+    \item \textbf{Profundidade máxima}: $\sum_{i, j \in V} x^d_{ijt} \leq \mathit{maxSeg}$, para todo $d \in D$ e $t \in T$.
+    \item \textbf{Orçamento de reconfiguração}: o número de segmentos que entram ou saem dos caminhos entre períodos consecutivos é limitado:
+    \begin{equation}
+        \sum_{d \in D} \sum_{i, j \in V,\, i \neq j} \left| x^d_{ijt} - x^d_{ij,t-1} \right| \leq \beta(t), \qquad \forall t \geq 1.
+    \end{equation}
+    \item \textbf{Intervenções}: nos períodos em que um enlace está em intervenção, ele não existe em $G_t$, e o tráfego é encaminhado pelos caminhos mínimos que restam.
+\end{itemize}
+
+Diferentemente de formulações clássicas, a capacidade não é uma restrição rígida: cargas acima de 1 são permitidas, mas indicam congestionamento e pioram o objetivo.
+
+\paragraph{Objetivo.} Minimizar, em ordem lexicográfica decrescente, o vetor das cargas $\ell(a, t)$ de todos os arcos em todos os períodos: primeiro a maior carga (a MLU de todo o horizonte), depois a segunda maior, e assim por diante.
+
+\section{\uppercase{Instâncias}}
+
+O desafio disponibiliza conjuntos de instâncias com dificuldade crescente. A Tabela~\ref{tab:instancias} resume os conjuntos usados neste trabalho. O conjunto C, da fase de qualificação, é o maior: até 3902 nós e 24 períodos.
+
+\begin{table}[H]
+\centering
+\caption{Conjuntos de instâncias usados nos experimentos.}
+\label{tab:instancias}
+\begin{tabular}{lrrrrrr}
+\toprule
+Conjunto & Instâncias & Nós & Arcos & Demandas & Períodos & $\mathit{maxSeg}$ \\
+\midrule
+A & 20 & 20--400 & 80--2000 & 20--6000 & 2 & 6 \\
+B & 12 & 264--1263 & 864--5036 & 2546--15000 & 12 & 8 \\
+X & 12 & 264--1263 & 864--5036 & 2546--15000 & 12 & 8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Os orçamentos são pequenos em relação ao número de demandas: nos conjuntos B e X são de 10 a 78 segmentos por período para milhares de demandas, e no conjunto C variam de 0 a 30. Inserir um único \textit{waypoint} em uma rota custa 3 unidades de orçamento (remove um segmento e acrescenta dois). Consequentemente, o roteamento escolhido no primeiro período tende a valer, quase sem alterações, para todo o horizonte. Essa observação orienta o método proposto no Capítulo~\ref{cap:metodologia}.

@@ -1,0 +1,55 @@
+\chapter{INTRODUÇÃO}
+
+
+\section{\uppercase{Motivação e Contextualização}}
+
+\section{TRABALHOS RELACIONADOS}
+
+\chapter{DESCRIÇÃO DO PROBLEMA}
+
+O problema a ser tratado consiste em determinar um esquema de roteamento para uma rede e que seja, simultaneamente, eficiente e resiliente a falhas de equipamentos ou enlaces. A natureza do esquema de roteamento não é estático: ele deve ser capaz de se adaptar a diferentes cenários ao longo do tempo, especialmente durante intervenções de manutenção programadas e na ocorrência de falhas não planejadas.
+
+Formalmente, o problema recebe como entrada:
+
+1.  Topologia da Rede: Um grafo que representa os roteadores (nós) e os enlaces de comunicação (arestas) da rede, também chamados de links. Cada link possui 2 atributos: uma métrica, que equivale a distância física entre os nós, e uma capacidade, que limita o máximo de fluxo que o link consegue suportar
+    (IMAGEM)
+
+2.  Matriz de Tráfego: A demanda de tráfego entre os pares origem-destino que deve ser roteada.
+
+    (IMAGEM)
+    
+3.  Janelas de Manutenção: Períodos programados durante os quais determinados links ficam indisponíveis para manutenção.
+
+    (IMAGEM)
+    
+4.  Orçamento de Reconfiguração: Um limite para a frequência e extensão das mudanças no esquema de roteamento, imposto para controlar os custos operacionais e o risco de instabilidade na rede.
+
+    (IMAGEM)
+
+O objetivo principal é computar um esquema de roteamento baseado em Segment Routing (SR) que minimize o fluxo de demandas nos links mais carregados e garantindo que essa carga permaneça dentro de limites aceitáveis mesmo quando a rede sofre uma falha (seja um enlace ou um nó). O esquema deve ser adaptativo o suficiente para lidar com as janelas de manutenção e, ao mesmo tempo, respeitar o orçamento de reconfiguração disponível.
+
+\section{MODELO MÁTEMATICO}
+
+
+Para modelar corretamente o problema, será necessário considerar um conjunto de restrições que podem ser agrupadas nas seguintes categorias:
+
+#### 1. Restrições de Roteamento e Capacidade
+
+As restrições fundamentais de um problema de reteamento de dados:
+
+- Conservação de Fluxo: Para cada par origem-destino, o fluxo de tráfego deve ser integralmente roteado da origem ao destino. Não pode haver perda de tráfego.
+- Capacidade máxima dos links: A soma de todo o tráfego roteado através de um enlace não pode exceder sua capacidade nominal.
+
+2. Restrições de Falhas
+
+- Cenários de Falha: Durante uma janela de manutenção, certos links são explicitamente removidos da topologia. O esquema de roteamento deve ser capaz de operar corretamente (isto é, rotear todo o tráfego) mesmo com esses recursos ausentes.
+
+3. Restrições de Orçamento de Reconfiguração
+
+Esta é uma restrição que diferencia o desafio de problemas de roteamento estático tradicionais:
+
+- Limite de Mudanças: O número de vezes que o esquema de roteamento pode ser alterado (por exemplo, ao longo de um horizonte de tempo ou entre diferentes cenários) é limitado por um orçamento. Cada mudança no esquema de SR tem um custo associado.
+
+4. Restrições Específicas do Segment Routing
+
+- Profundidade Máxima de Segmentos: O número de segmentos (rótulos) que um pacote pode carregar é limitado na intância do problema A solução deve respeitar esse limite.

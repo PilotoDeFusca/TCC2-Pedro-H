@@ -1,0 +1,126 @@
+\chapter{METODOLOGIA}
+\label{cap:metodologia}
+
+Este capítulo descreve os métodos propostos. As duas meta-heurísticas, AMNS e VND, compartilham a representação da solução, a avaliação das cargas, a função objetivo, as vizinhanças e uma fase robusta aplicada ao primeiro período; elas diferem apenas na forma de escolher e encadear os movimentos.
+
+\section{\uppercase{Visão Geral}}
+
+Os períodos são resolvidos em ordem. Em cada período $t$:
+\begin{enumerate}
+    \item calculam-se as distâncias mínimas entre todos os pares de nós no grafo $G_t$, sem os enlaces em intervenção;
+    \item os \textit{waypoints} de cada demanda são inicializados com os do período anterior (no período 0, todas as rotas começam sem \textit{waypoints});
+    \item a meta-heurística (AMNS ou VND) melhora a solução, respeitando o orçamento $\beta(t)$;
+    \item no período 0, uma fase robusta reavalia as rotas considerando todos os períodos seguintes (Seção~\ref{sec:robusta});
+    \item as rotas e cargas do período são registradas e os \textit{waypoints} seguem para o próximo período.
+\end{enumerate}
+
+\section{\uppercase{Representação e Avaliação}}
+
+Uma solução associa a cada demanda e período uma lista de \textit{waypoints}. Para avaliá-la, cada segmento $(u, v)$ é convertido em frações de fluxo por arco, exatamente como faz o avaliador oficial: calcula-se o grafo de encaminhamento $FG(u, v)$ a partir das distâncias até $v$, e o fluxo que chega a cada nó é dividido igualmente entre seus arcos de saída em $FG(u, v)$, processando os nós em ordem decrescente de distância até $v$. As frações de cada segmento são guardadas em cache, pois os mesmos segmentos se repetem em muitas demandas e movimentos.
+
+As distâncias são obtidas pelo algoritmo de Dijkstra a partir de cada nó. Como as métricas são inteiras, as somas são exatas, e os empates que ativam o ECMP são detectados sem erro numérico. Nos testes, as cargas calculadas coincidiram com as do avaliador oficial em todas as casas decimais.
+
+Uma demanda $d$ contribui com $\lambda(d, t)\, r_t(i, j, a)$ ao fluxo de cada arco $a$ de cada segmento $(i, j)$. O fluxo agregado por arco é mantido de forma incremental: um movimento remove a contribuição antiga da demanda e acrescenta a nova.
+
+\section{\uppercase{Função Objetivo}}
+
+Em vez do vetor lexicográfico completo, que é caro de comparar, a busca usa uma aproximação lexicográfica com seis componentes, em ordem de prioridade:
+\begin{enumerate}
+    \item número de demandas sem rota;
+    \item excesso total de carga, $\sum_a \max(0, \ell(a) - 1)$;
+    \item carga máxima (MLU do período);
+    \item número de enlaces na faixa próxima ao máximo (carga $\geq$ MLU $- 0{,}2\%$);
+    \item no período 0, excesso quadrático dos enlaces ``quentes'', $\sum_a \max(0, \ell(a) - \tau)^2$, com $\tau$ igual à metade da MLU;
+    \item soma dos quadrados das cargas, como desempate final.
+\end{enumerate}
+O quarto componente permite progredir em platôs: quando vários enlaces empatam no máximo, aliviar um deles já é uma melhora, antes que a MLU diminua. O quinto incentiva espalhar a carga sem penalizar rotas mais longas por enlaces vazios.
+
+Enlaces cujo tráfego não pode ser evitado por nenhuma escolha de \textit{waypoints} (por exemplo, o único enlace de saída da origem de uma demanda) são ignorados na carga usada pela busca, pois fixariam o máximo e paralisariam a otimização do restante da rede. As cargas reportadas e avaliadas pelo avaliador oficial incluem esses enlaces normalmente.
+
+\section{\uppercase{Vizinhanças}}
+
+Todas as vizinhanças atuam sobre o \textbf{corte crítico}: os enlaces na faixa próxima ao máximo e as demandas que passam por eles, processadas em ordem decrescente de volume. Para cada demanda, sua contribuição é retirada da rede, e os nós candidatos a \textit{waypoint} são ordenados pela carga residual dos caminhos que criariam. Essa ordenação é feita com uma programação dinâmica sobre os grafos de caminhos mínimos (a partir da origem do segmento e até o seu destino), que dá, para todos os nós candidatos de uma vez, a maior carga nos grafos de encaminhamento resultantes. Os 16 melhores candidatos (32 no período 0) têm o objetivo calculado exatamente por avaliação incremental, e apenas os 3 melhores (5 no período 0) são de fato aplicados e testados.
+
+\begin{itemize}
+    \item \textbf{Inserção (\textit{insert})}: insere um \textit{waypoint} em um segmento da rota que cruza o corte crítico. É o principal ataque ao gargalo.
+    \item \textbf{Troca (\textit{change})}: substitui um \textit{waypoint} cujos segmentos tocam o corte crítico. Diversifica quando a inserção estagna.
+    \item \textbf{Remoção (\textit{delete})}: remove um \textit{waypoint} quando o atalho resultante não é mais carregado que o desvio atual. Simplifica rotas e recupera orçamento.
+    \item \textbf{Extensão (\textit{extend})}: apenas no período 0, onde não há orçamento. Para demandas que passam por enlaces quentes, insere mais um \textit{waypoint} se isso mantém a MLU e reduz o excesso quadrático, levando tráfego para a parte fria da rede.
+    \item \textbf{Perturbação (\textit{shake})}: aplica movimentos aleatórios entre os melhores candidatos, aceitando piora de até 2\% na MLU, para escapar de ótimos locais.
+\end{itemize}
+
+Um sexto movimento, a inserção dupla, que insere dois \textit{waypoints} de uma vez, foi implementado e avaliado, mas ficou desativado na versão final por não melhorar os resultados e triplicar o tempo de execução (Seção~\ref{sec:insercao_dupla}).
+
+Um movimento é aceito se melhora o objetivo lexicográfico. Nos períodos após o primeiro, um movimento que gasta orçamento só é aceito se melhora a MLU ou o número de enlaces no máximo; movimentos que apenas suavizam a carga sem gastar orçamento, ou que liberam orçamento sem piorar o objetivo, também são aceitos.
+
+\section{\uppercase{AMNS}}
+
+A AMNS sorteia, a cada iteração, uma vizinhança com probabilidade proporcional ao seu peso. Os pesos começam em $(2; 1; 0{,}55; 1)$ para inserção, troca, remoção e extensão, decaem por um fator $0{,}995$ a cada iteração, aumentam de 1 quando a vizinhança encontra uma melhora e são reduzidos por um fator $0{,}97$ (com mínimo de $0{,}2$) quando falham. Se a vizinhança sorteada falha, as demais são tentadas em sequência. Após duas iterações seguidas sem melhora, a busca guarda a melhor solução vista, volta a ela se a atual for pior, e aplica uma perturbação. A busca em um período termina por limite de tempo, de iterações, ou após 100 chamadas de vizinhança sem progresso na carga máxima (MLU, excesso ou número de enlaces no máximo). O Pseudocódigo~\ref{alg:amns} resume o método.
+
+\begin{algorithm}[H]
+\caption{AMNS em um período.}
+\label{alg:amns}
+\KwIn{solução inicial $S$ do período, vizinhanças $N_1, \dots, N_k$}
+\KwOut{melhor solução $S^*$}
+$S^* \leftarrow S$; pesos $p_i$ iniciais; $f \leftarrow 0$\;
+\While{tempo e paciência não esgotados}{
+    sorteie $i$ com probabilidade $p_i / \sum_j p_j$\;
+    aplique $N_i$ a $S$ (se falhar, tente as demais vizinhanças)\;
+    \eIf{houve melhora}{
+        $p_i \leftarrow p_i + 1$; $f \leftarrow 0$\;
+    }{
+        $p_i \leftarrow \max(0{,}2;\ 0{,}97\,p_i)$; $f \leftarrow f + 1$\;
+        \If{$f \geq 2$}{
+            \lIf{$S$ melhor que $S^*$}{$S^* \leftarrow S$}
+            \lElse{$S \leftarrow S^*$}
+            $S \leftarrow$ perturbação($S$); $f \leftarrow 0$\;
+        }
+    }
+    $p_j \leftarrow 0{,}995\, p_j$ para todo $j$\;
+}
+\KwRet{$S^*$}
+\end{algorithm}
+
+\section{\uppercase{VND com Perturbação}}
+
+A VND aplica as vizinhanças em ordem fixa: inserção, extensão (apenas no período 0), troca e remoção. Após qualquer melhora, volta à inserção; quando nenhuma vizinhança melhora, a solução é um ótimo local de todas. A melhor solução é guardada e a busca é perturbada a partir dela com intensidade crescente ($2 + $ número de perturbações sem sucesso). A busca termina após 8 perturbações seguidas sem nova melhor solução, ou por limite de tempo e iterações.
+
+\begin{algorithm}[H]
+\caption{VND com perturbação em um período.}
+\label{alg:vnd}
+\KwIn{solução inicial $S$, vizinhanças ordenadas $N_1, \dots, N_k$}
+\KwOut{melhor solução $S^*$}
+$S^* \leftarrow S$; $e \leftarrow 0$\;
+\While{$e < 8$ e tempo não esgotado}{
+    $i \leftarrow 1$\;
+    \While{$i \leq k$}{
+        \lIf{$N_i$ melhora $S$}{$i \leftarrow 1$}
+        \lElse{$i \leftarrow i + 1$}
+    }
+    \lIf{$S$ melhor que $S^*$}{$S^* \leftarrow S$; $e \leftarrow 0$}
+    \lElse{$S \leftarrow S^*$; $e \leftarrow e + 1$}
+    $S \leftarrow$ perturbação($S$, intensidade $2 + e$)\;
+}
+\KwRet{$S^*$}
+\end{algorithm}
+
+\section{\uppercase{Fase Robusta do Primeiro Período}}
+\label{sec:robusta}
+
+Como os orçamentos são muito pequenos, os \textit{waypoints} definidos no período 0 valem, na prática, para todos os períodos. Otimizar o período 0 isoladamente pode deixá-lo com baixa carga, mas criar picos nos períodos seguintes, quando intervenções desviam o tráfego. Por isso, depois da busca do período 0, uma fase robusta reavalia as rotas considerando todos os períodos ao mesmo tempo.
+
+\paragraph{Cargas futuras.} Mantém-se o fluxo de cada período futuro $t$ supondo que os \textit{waypoints} do período 0 não mudam. Como intervenções apenas removem enlaces, um segmento conserva sua divisão ECMP em $t$ a menos que seu grafo de encaminhamento use um enlace indisponível em $t$. Somente esses segmentos são recalculados, e as distâncias até o destino do segmento são reparadas a partir das do período 0, recalculando apenas os nós cujos caminhos mínimos passavam por um enlace indisponível, de forma semelhante aos algoritmos incrementais de caminhos mínimos. Testes com amostras de dezenas de milhares de segmentos confirmaram que essas divisões coincidem exatamente com as de um cálculo completo.
+
+\paragraph{Objetivo global.} A fase robusta compara soluções pela mesma ordem lexicográfica, mas sobre todos os pares (período, enlace): demandas sem rota, excesso, pico global, número de pares no pico e excesso quadrático acima de metade do pico.
+
+\paragraph{Movimentos.} Cada enlace recebe um perfil, sua maior carga em todos os períodos. Demandas que cruzam enlaces no pico global em algum período (com a rota daquele período) são \textit{quentes}; as que cruzam enlaces com perfil acima de metade do pico são \textit{mornas}. Para cada demanda, inserem-se ou trocam-se \textit{waypoints} por nós cujos caminhos têm o menor perfil, ``preenchendo'' os nós pouco carregados. Para demandas quentes, também se testam desvios com dois \textit{waypoints}: a partir de cada enlace no pico $u \to v$, os vizinhos que permitem chegar a $v$ ou sair de $u$ por outro enlace são usados como âncora, sozinhos ou com um segundo \textit{waypoint}. Esse movimento resolve casos em que alcançar a âncora pelo caminho mínimo passaria pelo próprio enlace congestionado. Todos os candidatos são avaliados exatamente em todos os períodos.
+
+\paragraph{Escape de ótimos locais.} Quando uma varredura completa não traz melhora, a melhor solução é guardada e algumas demandas quentes são movidas para candidatos aleatórios com pico até 2\% pior (\textit{kick}). A fase termina por tempo ou após 30 perturbações seguidas sem nova melhor solução.
+
+\section{\uppercase{Solução Trivial}}
+
+Como referência, a solução trivial não usa nenhum \textit{waypoint}: todo o tráfego segue o roteamento IGP com ECMP em cada período, desviando dos enlaces em intervenção apenas porque eles não existem no grafo daquele período. Ela representa uma rede sem otimização por \textit{Segment Routing}, não gasta orçamento e pode violar a capacidade dos enlaces.
+
+\section{\uppercase{Implementação}}
+
+Os métodos foram implementados em C++17. O núcleo compartilhado (avaliação ECMP, estado da busca, vizinhanças, fase robusta e laço sobre os períodos) fica em um único arquivo de cabeçalho; os arquivos de cada método contêm apenas a estratégia de busca de um período. Um verificador próprio checa capacidade, demandas sem rota, uso de enlaces em intervenção, profundidade e orçamento, contando os segmentos da mesma forma que o avaliador oficial. Os tempos-limite por período são de 3, 4,5 ou 6 segundos, conforme o tamanho da instância, e a fase robusta recebe o mesmo limite.

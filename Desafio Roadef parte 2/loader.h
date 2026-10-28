@@ -1,6 +1,7 @@
 #ifndef LOADER_H
 #define LOADER_H
 
+#include <map>
 #include <vector>
 #include <string>
 
@@ -78,6 +79,19 @@ struct LinkLoad {
     double total_demand;
 };
 
+// Effectiveness of one move (neighborhood) over a run.
+//   calls     : times the move ran
+//   improved  : calls that kept at least one change
+//   seconds   : wall time spent in the move
+//   peak_drop : total decrease of the peak while the move ran (slot moves:
+//               the slot's max load; robust/kick: the all-slot peak)
+struct OpStat {
+    long long calls = 0;
+    long long improved = 0;
+    double seconds = 0.0;
+    double peak_drop = 0.0;
+};
+
 struct Solution {
     std::string instance_name;
     double max_link_load = 0.0;
@@ -90,6 +104,14 @@ struct Solution {
     // max_load_history[slot] = list of (iteration_within_slot, max_load)
     // recorded whenever the accepted solution's max link load dropped.
     std::vector<std::vector<std::pair<long long, double>>> max_load_history;
+    // max_load_history_op[slot][i] = neighborhood id that caused drop i.
+    std::vector<std::vector<int>> max_load_history_op;
+    // nbhd_switches[slot] = list of (iteration, neighborhood id) on change.
+    std::vector<std::vector<std::pair<long long, int>>> nbhd_switches;
+
+    // Move statistics by move name, for slot 0 and for the later slots.
+    std::map<std::string, OpStat> op_stats_slot0;
+    std::map<std::string, OpStat> op_stats_later;
 
     std::vector<DemandPath> paths;
     std::vector<LinkLoad>   link_loads;
@@ -110,7 +132,8 @@ void     write_solution(const Solution& sol, const std::string& path);
 
 // ---------- Verifier ----------
 struct VerificationIssue {
-    std::string kind;        // "capacity", "unserved", "intervention", "segments"
+    std::string kind;        // "capacity", "capacity_unavoidable" (note only),
+                             // "unserved", "intervention", "segments", "budget"
     int time_slot;
     int demand_index;        // -1 if not applicable
     int link_id;             // -1 if not applicable
@@ -119,7 +142,8 @@ struct VerificationIssue {
 
 struct VerificationReport {
     std::string instance_name;
-    bool ok;                         // true = no issues at all
+    bool ok;                         // true = no issues except notes
+                                     // (capacity_unavoidable)
     std::vector<VerificationIssue> issues;
 };
 

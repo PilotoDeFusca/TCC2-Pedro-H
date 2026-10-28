@@ -2,48 +2,39 @@
 """
 compare_solutions.py
 
-Read the AMNS and VND solution JSON files and produce comparison plots.
-Each instance's plots go into its own subfolder under --outdir.
+Read the AMNS, VND and (if present) trivial solution JSON files and produce
+comparison figures. Each instance gets its own subfolder under --outdir.
 
 Expected layout (matching the C++ exporters):
 
-    amns_solution/setA-01-solution.json
-    amns_solution/setA-02-solution.json
-    ...
-    vnd_solution/setA-01-solution.json
-    vnd_solution/setA-02-solution.json
-    ...
+    amns_solution/<instance>-solution.json
+    vnd_solution/<instance>-solution.json
+    trivial_solution/<instance>-solution.json      (optional)
 
 Output layout:
 
-    plots/
-    ├── setA-01/
-    │   ├── max_load_per_slot.png
-    │   ├── max_load_difference.png
-    │   ├── avg_load_per_slot.png
-    │   ├── overflow_per_slot.png
-    │   ├── waypoints_per_slot.png
-    │   ├── load_distribution_amns.png
-    │   ├── load_distribution_vnd.png
-    │   ├── max_load_history_amns.png
-    │   ├── max_load_history_vnd.png
-    │   └── solve_time.png
-    ├── setA-02/
-    │   └── ...
-    ├── setB-01/
-    │   └── ...
-    ├── summary-all-instances.png
-    └── summary-solve-time.png
+    figures/
+    |-- summary-instances.png   every instance: worst-slot load, change vs
+    |                           trivial, solve time (one row per instance)
+    |-- summary-by-set.png      mean change vs trivial per instance set
+    |-- summary.csv             the numbers behind the summary figures
+    |-- setA-01/
+    |   |-- overview.png        max / mean load per slot, load distribution,
+    |   |                       waypoints, reduction by move, solve time
+    |   `-- history.png         search progress, one panel per slot
+    `-- ...
 
 Usage:
     python compare_solutions.py
-    python compare_solutions.py --root path/to/dir
-    python compare_solutions.py --outdir plots
+    python compare_solutions.py --root path/to/dir --outdir figures
+    python compare_solutions.py --no-history      (summary + overviews only)
 """
 
 import argparse
 import json
+import locale
 import sys
+import time
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Dict, List, Optional
@@ -80,6 +71,13 @@ class LinkLoad:
 class MaxLoadPoint:
     iteration: int
     max_load: float
+    op: str = "start"          # move that produced this drop
+
+
+@dataclass
+class NbhdSwitch:
+    iteration: int             # this neighborhood is active from here on
+    op: str
 
 
 @dataclass
@@ -94,6 +92,8 @@ class Solution:
     link_loads: List[LinkLoad] = field(default_factory=list)
     # max_load_history[slot] = list of MaxLoadPoint
     max_load_history: List[List["MaxLoadPoint"]] = field(default_factory=list)
+    # nbhd_switches[slot] = list of NbhdSwitch (empty for older JSON files)
+    nbhd_switches: List[List["NbhdSwitch"]] = field(default_factory=list)
 
     def num_slots(self) -> int:
         slots = {p.time_slot for p in self.paths}
@@ -188,10 +188,16 @@ def load_solution(path: Path) -> Solution:
             MaxLoadPoint(
                 iteration=int(e["iter"]),
                 max_load=float(e["max_load"]),
+                op=str(e.get("op", "start")),
             )
             for e in slot_arr
         ]
         history.append(slot_pts)
+
+    switches: List[List[NbhdSwitch]] = [
+        [NbhdSwitch(iteration=int(e["iter"]), op=str(e["op"])) for e in slot_arr]
+        for slot_arr in j.get("nbhd_switches", [])
+    ]
 
     return Solution(
         instance_name=j.get("instance_name", path.stem),
@@ -203,6 +209,7 @@ def load_solution(path: Path) -> Solution:
         paths=paths,
         link_loads=loads,
         max_load_history=history,
+        nbhd_switches=switches,
     )
 
 
@@ -235,399 +242,445 @@ def discover_instances(root: Path) -> List[str]:
 # Helpers
 # ---------------------------------------------------------------------------
 
-def _finalize(fig, ax, outdir: Path, fname: str, dpi: int,
-              legend: bool = True):
-    if legend:
-        ax.legend()
-    fig.tight_layout()
-    out = outdir / fname
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
+def _savefig(fig, out: Path, dpi: int, tries: int = 6):
+    """fig.savefig with a few retries: in a OneDrive-synced folder a file can
+    be briefly locked while it syncs (OSError: Invalid argument)."""
+    for k in range(tries):
+        try:
+            fig.savefig(out, dpi=dpi, bbox_inches="tight")
+            return
+        except OSError:
+            if k == tries - 1:
+                raise
+            time.sleep(0.5 * (k + 1))
+
+
+# ---------------------------------------------------------------------------
+# Style
+# ---------------------------------------------------------------------------
+#
+# One encoding everywhere: AMNS blue / filled circles, VND orange / hollow
+# squares (so the two stay visible when they coincide), trivial baseline gray /
+# dotted. Colors are slots 1-2 of a CVD-checked categorical palette; the gray
+# baseline is a reference, not a third hue.
+
+C_AMNS = "#2a78d6"
+C_VND = "#eb6834"
+C_TRIV = "#8a8984"
+INK = "#0b0b0b"
+INK2 = "#52514e"
+GRID = "#e4e3df"
+
+METHOD_STYLE = {
+    "Trivial": dict(color=C_TRIV, linestyle=":", marker="D", markersize=4,
+                    markerfacecolor=C_TRIV, linewidth=1.6),
+    "AMNS": dict(color=C_AMNS, linestyle="-", marker="o", markersize=5,
+                 markerfacecolor=C_AMNS, linewidth=2.0),
+    "VND": dict(color=C_VND, linestyle="-", marker="s", markersize=6,
+                markerfacecolor="white", markeredgewidth=1.5, linewidth=2.0),
+}
+
+plt.rcParams.update({
+    "font.size": 9,
+    "axes.titlesize": 10,
+    "axes.titleweight": "bold",
+    "axes.titlelocation": "left",
+    "axes.labelsize": 9,
+    "axes.labelcolor": INK2,
+    "axes.edgecolor": INK2,
+    "axes.spines.top": False,
+    "axes.spines.right": False,
+    "axes.grid": True,
+    "axes.axisbelow": True,
+    "grid.color": GRID,
+    "grid.linewidth": 0.8,
+    "xtick.color": INK2,
+    "ytick.color": INK2,
+    "legend.frameon": False,
+    "figure.facecolor": "white",
+})
+
+# Decimal comma on the axes (Portuguese); falls back to the default locale.
+for _loc in ("pt_BR.UTF-8", "pt_BR.utf8", "Portuguese_Brazil.1252", "pt-BR"):
+    try:
+        locale.setlocale(locale.LC_NUMERIC, _loc)
+        plt.rcParams["axes.formatter.use_locale"] = True
+        break
+    except locale.Error:
+        pass
+
+# Moves credited with max-load drops (same order in every figure), with the
+# names shown in the figures.
+OP_ORDER = ["insert", "change", "delete", "extend", "robust", "shake", "kick"]
+OP_NAME = {"insert": "inserção", "change": "troca", "delete": "remoção",
+           "extend": "extensão", "robust": "robusta", "shake": "perturbação",
+           "kick": "kick"}
+
+
+def br(x: float, d: int) -> str:
+    """Number with d decimals and a decimal comma."""
+    return f"{x:.{d}f}".replace(".", ",")
+
+
+def _write(fig, path: Path, dpi: int):
+    _savefig(fig, path, dpi)
     plt.close(fig)
-    print(f"  wrote {out}")
+    print(f"  wrote {path}")
+
+
+def _capacity_line(ax, values: List[float]):
+    """Dashed reference at load 1, only when the data comes near it."""
+    finite = [v for v in values if np.isfinite(v)]
+    if finite and max(finite) >= 0.8:
+        ax.axhline(1.0, color=INK2, linestyle="--", linewidth=1.0, zorder=1)
+        ax.text(1.0, 1.0, "capacidade", transform=ax.get_yaxis_transform(),
+                ha="right", va="bottom", fontsize=8, color=INK2)
+
+
+def _methods(amns: Solution, vnd: Solution, trivial: Optional[Solution]):
+    out = []
+    if trivial is not None:
+        out.append(("Trivial", trivial))
+    out += [("AMNS", amns), ("VND", vnd)]
+    return out
+
+
+def op_reduction(sol: Solution) -> Dict[str, float]:
+    """Total max-load reduction credited to each move, over all slots."""
+    red = {op: 0.0 for op in OP_ORDER}
+    for pts in sol.max_load_history:
+        for prev, cur in zip(pts, pts[1:]):
+            if cur.op in red:
+                red[cur.op] += prev.max_load - cur.max_load
+    return red
 
 
 # ---------------------------------------------------------------------------
-# Per-slot comparison plots
+# Per-instance figures
 # ---------------------------------------------------------------------------
 
-def save_max_load_history_slot(sol: Solution,
-                               slot: int,
-                               method_label: str,
-                               color: str,
-                               outdir: Path, dpi: int):
+def save_overview(name: str, amns: Solution, vnd: Solution,
+                  trivial: Optional[Solution], outdir: Path, dpi: int):
     """
-    Plot the moments where the accepted solution's max link load dropped
-    within a single slot, as a step plot vs. the iteration counter inside
-    that slot.
+    overview.png: six small panels comparing the methods on one instance.
+      max link load per slot | mean link load per slot | load distribution
+      waypoints per slot     | reduction by move       | solve time
     """
-    if slot >= len(sol.max_load_history):
+    methods = _methods(amns, vnd, trivial)
+    n_slots = max(s.num_slots() for _, s in methods)
+    slots = np.arange(n_slots)
+
+    fig, axes = plt.subplots(2, 3, figsize=(15, 8))
+    (a_max, a_mean, a_cdf), (a_wp, a_ops, a_time) = axes
+
+    def per_slot(ax, getter, title, ylabel):
+        allv = []
+        for label, sol in methods:
+            v = getter(sol)
+            v = v + [np.nan] * (n_slots - len(v))
+            allv += v
+            ax.plot(slots, v, label=label, **METHOD_STYLE[label])
+        ax.set_title(title)
+        ax.set_xlabel("período")
+        ax.set_ylabel(ylabel)
+        ax.set_xticks(slots if n_slots <= 12 else slots[::2])
+        return allv
+
+    vals = per_slot(a_max, lambda s: s.max_load_per_slot(),
+                    "Carga máxima por período", "carga máxima")
+    _capacity_line(a_max, vals)
+    a_max.set_ylim(bottom=0)
+    per_slot(a_mean, lambda s: s.avg_load_per_slot(),
+             "Carga média por período", "carga média")
+    a_mean.set_ylim(bottom=0)
+    per_slot(a_wp, lambda s: s.total_waypoints_per_slot(),
+             "Waypoints em uso por período", "total de waypoints")
+    a_wp.set_ylim(bottom=0)
+
+    # The most loaded (slot, link) pairs, ranked: the official objective
+    # minimizes these in order (highest first, then the second, ...).
+    top_n = 30
+    tops = []
+    for label, sol in methods:
+        loads = np.sort(np.asarray(sol.all_loads()))[::-1][:top_n]
+        tops += list(loads)
+        st = dict(METHOD_STYLE[label])
+        st["markersize"] = st["markersize"] - 1
+        a_cdf.plot(np.arange(1, len(loads) + 1), loads, label=label, **st)
+    _capacity_line(a_cdf, tops)
+    a_cdf.set_title(f"{top_n} enlaces mais carregados (todos os períodos)")
+    a_cdf.set_xlabel("posição (1 = enlace mais carregado)")
+    a_cdf.set_ylabel("carga do enlace")
+    a_cdf.set_ylim(bottom=0)
+    a_cdf.set_xticks([1, 5, 10, 15, 20, 25, 30])
+
+    # Share of the max-load reduction credited to each move.
+    y = np.arange(len(OP_ORDER))
+    h = 0.38
+    for k, (label, sol, color, hatch_face) in enumerate(
+            [("AMNS", amns, C_AMNS, C_AMNS), ("VND", vnd, C_VND, "white")]):
+        red = op_reduction(sol)
+        total = sum(red.values())
+        share = [100.0 * red[o] / total if total > 1e-12 else 0.0 for o in OP_ORDER]
+        a_ops.barh(y + (k - 0.5) * h, share, height=h * 0.9, color=hatch_face,
+                   edgecolor=color, linewidth=1.5, label=label)
+        for yi, s in zip(y + (k - 0.5) * h, share):
+            if s >= 1.0:
+                a_ops.text(s, yi, f" {br(s, 0)}%", va="center", fontsize=7, color=INK2)
+    a_ops.set_yticks(y)
+    a_ops.set_yticklabels([OP_NAME[o] for o in OP_ORDER])
+    a_ops.invert_yaxis()
+    a_ops.set_xlim(0, 105)
+    a_ops.set_title("Redução da carga máxima por movimento")
+    a_ops.set_xlabel("parcela da redução total (%)")
+    a_ops.grid(axis="y", visible=False)
+
+    # Solve time.
+    labels = [m for m, _ in methods]
+    times = [s.solve_time_seconds for _, s in methods]
+    yy = np.arange(len(labels))
+    a_time.barh(yy, times, height=0.55,
+                color=[METHOD_STYLE[m]["color"] if m != "VND" else "white" for m in labels],
+                edgecolor=[METHOD_STYLE[m]["color"] for m in labels], linewidth=1.5)
+    for yi, t in zip(yy, times):
+        a_time.text(t, yi, f"  {br(t, 1)} s", va="center", fontsize=8, color=INK)
+    a_time.set_yticks(yy)
+    a_time.set_yticklabels(labels)
+    a_time.invert_yaxis()
+    a_time.set_title("Tempo de execução")
+    a_time.set_xlabel("segundos")
+    a_time.set_xlim(0, max(times + [1e-9]) * 1.25)
+    a_time.grid(axis="y", visible=False)
+
+    worst = "   ".join(f"{m} {br(s.max_link_load, 3)}" for m, s in methods)
+    fig.suptitle(f"{name}   ·   carga máxima do pior período:   {worst}",
+                 x=0.01, ha="left", fontsize=12, fontweight="bold", color=INK)
+    handles, leg_labels = a_max.get_legend_handles_labels()
+    fig.legend(handles, leg_labels, loc="upper right", ncol=len(methods),
+               bbox_to_anchor=(0.99, 0.995), fontsize=9)
+    fig.tight_layout(rect=(0, 0, 1, 0.95))
+    _write(fig, outdir / "overview.png", dpi)
+
+
+def save_history(name: str, amns: Solution, vnd: Solution,
+                 outdir: Path, dpi: int):
+    """
+    history.png: one small panel per slot, best max link load against the
+    search iteration, AMNS and VND. Long flat tails use a symlog x-axis.
+    """
+    total_slots = max(len(amns.max_load_history), len(vnd.max_load_history))
+
+    # Only slots where either search lowered the max load get a panel.
+    def improved(sol, t):
+        return t < len(sol.max_load_history) and len(sol.max_load_history[t]) > 1
+    active = [t for t in range(total_slots) if improved(amns, t) or improved(vnd, t)]
+    flat = [t for t in range(total_slots) if t not in active]
+    if not active:
         return
-    pts = sol.max_load_history[slot]
-    if not pts:
-        # Nothing to draw; skip silently.
-        return
+    n_slots = len(active)
+    ncols = min(4, n_slots)
+    nrows = (n_slots + ncols - 1) // ncols
+    fig, axes = plt.subplots(nrows, ncols, figsize=(4.2 * max(ncols, 2), 2.7 * nrows + 0.8),
+                             squeeze=False)
 
-    iters = [p.iteration for p in pts]
-    vals  = [p.max_load  for p in pts]
+    for k in range(nrows * ncols):
+        ax = axes[k // ncols][k % ncols]
+        if k >= n_slots:
+            ax.set_visible(False)
+            continue
+        slot = active[k]
+        finals = []
+        long_tail = False
+        for label, sol in (("AMNS", amns), ("VND", vnd)):
+            if slot >= len(sol.max_load_history) or not sol.max_load_history[slot]:
+                continue
+            pts = sol.max_load_history[slot]
+            sw = sol.nbhd_switches[slot] if slot < len(sol.nbhd_switches) else []
+            iters = [p.iteration for p in pts]
+            vals = [p.max_load for p in pts]
+            last = max([iters[-1]] + [s.iteration for s in sw]) + 1
+            long_tail |= iters[-1] < 0.25 * last and last > 200
+            st = METHOD_STYLE[label]
+            ax.step(iters + [last], vals + [vals[-1]], where="post", label=label,
+                    color=st["color"], linewidth=st["linewidth"],
+                    linestyle="--" if label == "VND" else "-")
+            ax.plot(iters[-1], vals[-1], marker=st["marker"], color=st["color"],
+                    markerfacecolor=st["markerfacecolor"], markersize=st["markersize"],
+                    markeredgewidth=st.get("markeredgewidth", 1.0), linestyle="none")
+            finals.append(f"{label} {br(vals[-1], 3)}")
+        if long_tail:
+            ax.set_xscale("symlog", linthresh=10)
+        ax.set_title(f"período {slot}   " + "  ·  ".join(finals), fontsize=9)
+        if k % ncols == 0:
+            ax.set_ylabel("melhor carga máxima")
+        if k + ncols >= n_slots:
+            ax.set_xlabel("iteração" + (" (escala symlog)" if long_tail else ""))
 
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.step(iters, vals, where="post", color=color, linewidth=1.5,
-            label=f"{method_label} max load")
-    ax.scatter(iters, vals, s=20, color=color, zorder=3)
-
-    ax.annotate(f"start = {vals[0]:.4f}",
-                xy=(iters[0], vals[0]),
-                xytext=(5, 5), textcoords="offset points",
-                fontsize=9, color=color)
-    ax.annotate(f"final = {vals[-1]:.4f}",
-                xy=(iters[-1], vals[-1]),
-                xytext=(5, -15), textcoords="offset points",
-                fontsize=9, color=color)
-
-    ax.axhline(1.0, color="red", linestyle=":", linewidth=1.0,
-               label="capacity limit")
-
-    ax.set_title(f"{sol.instance_name}: max link load history — "
-                 f"{method_label}, slot {slot}")
-    ax.set_xlabel("iteration within slot")
-    ax.set_ylabel("max link load")
-    ax.grid(True, alpha=0.3)
-    ax.legend(loc="upper right")
-
-    out = outdir / f"max_load_history_{method_label.lower()}.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
-
-def save_max_load_per_slot(amns: Solution, vnd: Solution,
-                           outdir: Path, dpi: int):
-    """
-    Paired vertical bars per time slot: AMNS (blue) next to VND (orange).
-    The y-axis is the max link load in that slot.
-    """
-    n = max(amns.num_slots(), vnd.num_slots())
-    a = amns.max_load_per_slot()
-    v = vnd.max_load_per_slot()
-    a = a + [np.nan] * (n - len(a))
-    v = v + [np.nan] * (n - len(v))
-
-    x = np.arange(n)
-    w = 0.40
-
-    fig, ax = plt.subplots(figsize=(max(8, 0.7 * n + 2), 5))
-    ax.bar(x - w/2, a, width=w, label="AMNS", color="C0", alpha=0.9)
-    ax.bar(x + w/2, v, width=w, label="VND",  color="C1", alpha=0.9)
-
-    ax.axhline(1.0, color="red", linestyle=":", linewidth=1.0,
-               label="capacity limit")
-
-    if n <= 30:
-        for xi, val in zip(x - w/2, a):
-            if np.isfinite(val):
-                ax.text(xi, val, f"{val:.3f}", ha="center", va="bottom",
-                        fontsize=7, color="C0")
-        for xi, val in zip(x + w/2, v):
-            if np.isfinite(val):
-                ax.text(xi, val, f"{val:.3f}", ha="center", va="bottom",
-                        fontsize=7, color="C1")
-
-    ax.set_title(f"{amns.instance_name}: max link load per slot "
-                 "(AMNS vs VND)")
-    ax.set_xlabel("time slot")
-    ax.set_ylabel("max link load")
-    ax.set_xticks(x)
-    ax.grid(True, axis="y", alpha=0.3)
-    ax.legend(loc="best")
-
-    _finalize(fig, ax, outdir, "max_load_per_slot.png", dpi,
-              legend=False)
-
-
-def save_max_load_difference(amns: Solution, vnd: Solution,
-                             outdir: Path, dpi: int):
-    """
-    Difference of max load per slot: AMNS - VND.
-    Negative => AMNS is better (lower max load).
-    Positive => VND  is better.
-    """
-    n = max(amns.num_slots(), vnd.num_slots())
-    a = amns.max_load_per_slot() + [np.nan] * (n - amns.num_slots())
-    v = vnd.max_load_per_slot()  + [np.nan] * (n - vnd.num_slots())
-    diff = np.array(a, dtype=float) - np.array(v, dtype=float)
-
-    fig, ax = plt.subplots(figsize=(max(8, 0.7 * n + 2), 5))
-    colors = ["C0" if d < 0 else ("C1" if d > 0 else "gray")
-              for d in np.nan_to_num(diff)]
-    ax.bar(range(n), diff, color=colors, alpha=0.85)
-    ax.axhline(0.0, color="black", linewidth=0.8)
-    ax.set_xlabel("time slot")
-    ax.set_ylabel("AMNS max load - VND max load")
-    ax.set_xticks(range(n))
-
-    from matplotlib.patches import Patch
-    handles = [
-        Patch(color="C0", label="AMNS better (lower max load)"),
-        Patch(color="C1", label="VND better (lower max load)"),
-        Patch(color="gray", label="tie"),
-    ]
-    ax.legend(handles=handles, loc="best", fontsize=9)
-
-    ax.set_title(f"{amns.instance_name}: max load difference per slot "
-                 "(AMNS - VND)")
-    ax.grid(True, axis="y", alpha=0.3)
-
-    _finalize(fig, ax, outdir, "max_load_difference.png", dpi,
-              legend=False)
-
-
-def save_avg_load_per_slot(amns: Solution, vnd: Solution,
-                           outdir: Path, dpi: int):
-    fig, ax = plt.subplots(figsize=(8, 5))
-    t_a = list(range(amns.num_slots()))
-    t_v = list(range(vnd.num_slots()))
-    ax.plot(t_a, amns.avg_load_per_slot(), marker="o", label="AMNS")
-    ax.plot(t_v, vnd.avg_load_per_slot(),  marker="s", ls="--", label="VND")
-    ax.set_title(f"{amns.instance_name}: average link load per slot")
-    ax.set_xlabel("time slot")
-    ax.set_ylabel("average link load")
-    ax.grid(True, alpha=0.3)
-    _finalize(fig, ax, outdir, "avg_load_per_slot.png", dpi)
-
-
-def save_overflow_per_slot(amns: Solution, vnd: Solution,
-                           outdir: Path, dpi: int):
-    fig, ax = plt.subplots(figsize=(8, 5))
-    t_a = list(range(amns.num_slots()))
-    t_v = list(range(vnd.num_slots()))
-    ax.plot(t_a, amns.overflow_per_slot(), marker="o", label="AMNS")
-    ax.plot(t_v, vnd.overflow_per_slot(),  marker="s", ls="--", label="VND")
-    ax.set_title(f"{amns.instance_name}: overflow per slot "
-                 "(sum of load-1 over congested links)")
-    ax.set_xlabel("time slot")
-    ax.set_ylabel("overflow")
-    ax.grid(True, alpha=0.3)
-    _finalize(fig, ax, outdir, "overflow_per_slot.png", dpi)
-
-
-def save_waypoints_per_slot(amns: Solution, vnd: Solution,
-                            outdir: Path, dpi: int):
-    fig, ax = plt.subplots(figsize=(8, 5))
-    t_a = list(range(amns.num_slots()))
-    t_v = list(range(vnd.num_slots()))
-    ax.plot(t_a, amns.total_waypoints_per_slot(), marker="o", label="AMNS")
-    ax.plot(t_v, vnd.total_waypoints_per_slot(),  marker="s", ls="--",
-            label="VND")
-    ax.set_title(f"{amns.instance_name}: waypoints per slot "
-                 "(sum over demands)")
-    ax.set_xlabel("time slot")
-    ax.set_ylabel("# waypoints")
-    ax.grid(True, alpha=0.3)
-    _finalize(fig, ax, outdir, "waypoints_per_slot.png", dpi)
-
-
-# ---------------------------------------------------------------------------
-# One load-distribution figure per method
-# ---------------------------------------------------------------------------
-
-def save_load_distribution_one(sol: Solution,
-                               method_label: str,
-                               color: str,
-                               outdir: Path, dpi: int):
-    loads = sol.all_loads()
-    max_reported = sol.max_link_load
-    max_emp = max(loads) if loads else 0.0
-
-    hi = max(1.2, (max(loads + [0.0]) * 1.05) if loads else 1.2)
-    bins = np.linspace(0.0, hi, 40)
-
-    fig, ax = plt.subplots(figsize=(9, 5))
-    ax.hist(loads, bins=bins, alpha=0.85, color=color, label=method_label)
-    ax.axvline(1.0, color="red", linestyle=":", linewidth=1.0,
-               label="capacity limit")
-    ax.axvline(max_reported, color="black", linestyle="--", linewidth=1.0,
-               label=f"max load = {max_reported:.4f}")
-
-    ymax = ax.get_ylim()[1]
-    ax.annotate(f"max = {max_reported:.4f}\n"
-                f"(link {sol.max_link_id}, slot {sol.max_link_slot})",
-                xy=(max_reported, ymax * 0.90),
-                xytext=(5, 0), textcoords="offset points",
-                color="black", fontsize=9, va="top")
-
-    info = (f"{method_label} loads: n={len(loads)}\n"
-            f"reported max = {max_reported:.4f}\n"
-            f"empirical max = {max_emp:.4f}\n"
-            f"mean load = {np.mean(loads) if loads else 0.0:.4f}")
-    ax.text(0.99, 0.99, info, transform=ax.transAxes,
-            ha="right", va="top", fontsize=8,
-            bbox=dict(boxstyle="round", facecolor="white", alpha=0.85))
-
-    ax.set_title(f"{sol.instance_name}: link load distribution — "
-                 f"{method_label} (all slots)")
-    ax.set_xlabel("link load")
-    ax.set_ylabel("# (slot, link) samples")
-    ax.grid(True, alpha=0.3)
-    ax.legend(loc="upper right")
-
-    out = outdir / f"load_distribution_{method_label.lower()}.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
-
-
-# ---------------------------------------------------------------------------
-# Max-load history (one figure per method)
-# ---------------------------------------------------------------------------
-
-def save_max_load_history(sol: Solution,
-                          method_label: str,
-                          color: str,
-                          outdir: Path, dpi: int):
-    """
-    Plot the moments where the accepted solution's max link load dropped,
-    as a step plot vs. the global iteration counter.
-    """
-    pts = sol.max_load_history
-    if not pts:
-        print(f"  [skip] {sol.instance_name}: no max_load_history for "
-              f"{method_label}")
-        return
-
-    iters = [p.iteration for p in pts]
-    vals  = [p.max_load  for p in pts]
-
-    fig, ax = plt.subplots(figsize=(9, 5))
-    # Step plot: each new value holds until the next drop.
-    ax.step(iters, vals, where="post", color=color, linewidth=1.5,
-            label=f"{method_label} max load")
-    ax.scatter(iters, vals, s=18, color=color, zorder=3)
-
-    # Annotate the final value.
-    ax.annotate(f"final = {vals[-1]:.4f}",
-                xy=(iters[-1], vals[-1]),
-                xytext=(5, 5), textcoords="offset points",
-                fontsize=9, color=color)
-
-    ax.axhline(1.0, color="red", linestyle=":", linewidth=1.0,
-               label="capacity limit")
-
-    ax.set_title(f"{sol.instance_name}: max link load history — "
-                 f"{method_label}")
-    ax.set_xlabel("global iteration (across all slots)")
-    ax.set_ylabel("max link load")
-    ax.grid(True, alpha=0.3)
-    ax.legend(loc="upper right")
-
-    out = outdir / f"max_load_history_{method_label.lower()}.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
-
-
-# ---------------------------------------------------------------------------
-# Solve-time plots
-# ---------------------------------------------------------------------------
-
-def save_solve_time(amns: Solution, vnd: Solution,
-                    outdir: Path, dpi: int):
-    """
-    Grouped vertical bars: AMNS vs VND solve time (seconds) for this instance.
-    """
-    labels = ["AMNS", "VND"]
-    times  = [amns.solve_time_seconds, vnd.solve_time_seconds]
-
-    fig, ax = plt.subplots(figsize=(6, 5))
-    bars = ax.bar(labels, times, color=["C0", "C1"], alpha=0.9)
-    ax.set_title(f"{amns.instance_name}: solve time (seconds)")
-    ax.set_ylabel("seconds")
-    ax.grid(True, axis="y", alpha=0.3)
-
-    for b, t in zip(bars, times):
-        ax.text(b.get_x() + b.get_width() / 2, t,
-                f"{t:.3f}s", ha="center", va="bottom", fontsize=9)
-
-    out = outdir / "solve_time.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
+    height = 2.7 * nrows + 0.8
+    fig.suptitle(f"{name}   ·   evolução da busca por período", x=0.01, y=0.995, ha="left",
+                 va="top", fontsize=12, fontweight="bold", color=INK)
+    if flat:
+        fig.text(0.01, 1 - 0.42 / height,
+                 f"Sem melhora no{'s' if len(flat) > 1 else ''} período{'s' if len(flat) > 1 else ''} "
+                 + ", ".join(str(t) for t in flat) + " (não mostrado"
+                 + ("s" if len(flat) > 1 else "") + ").",
+                 ha="left", va="top", fontsize=9, color=INK2)
+    handles = [plt.Line2D([], [], color=C_AMNS, linewidth=2, marker="o", label="AMNS"),
+               plt.Line2D([], [], color=C_VND, linewidth=2, linestyle="--", marker="s",
+                          markerfacecolor="white", label="VND")]
+    fig.legend(handles=handles, loc="lower center", ncol=2, bbox_to_anchor=(0.5, 0.0))
+    fig.tight_layout(rect=(0, 0.35 / height, 1, 1 - 0.7 / height))
+    _write(fig, outdir / "history.png", dpi)
 
 
 # ---------------------------------------------------------------------------
 # Cross-instance summary
 # ---------------------------------------------------------------------------
 
-def save_instance_summary(instances: List[str],
-                          amns_max: List[float], vnd_max: List[float],
-                          amns_ov: List[float],  vnd_ov: List[float],
-                          outdir: Path, dpi: int):
-    fig, ax = plt.subplots(figsize=(max(6, 1.4 * len(instances)), 5))
-    x = np.arange(len(instances))
-    w = 0.35
-
-    ax2 = ax.twinx()
-    ax.bar(x - w/2, amns_max, width=w, label="AMNS max load",
-           color="C0", alpha=0.85)
-    ax.bar(x + w/2, vnd_max,  width=w, label="VND max load",
-           color="C1", alpha=0.85)
-    ax2.plot(x, amns_ov, marker="o", linestyle="--", color="C2",
-             label="AMNS overflow")
-    ax2.plot(x, vnd_ov,  marker="s", linestyle="--", color="C3",
-             label="VND overflow")
-
-    ax.set_xticks(x)
-    ax.set_xticklabels(instances, rotation=30, ha="right")
-    ax.set_ylabel("max link load")
-    ax2.set_ylabel("overflow (sum of load-1)")
-    ax.set_title("Per-instance summary: AMNS vs VND")
-    ax.grid(True, alpha=0.3)
-
-    h1, l1 = ax.get_legend_handles_labels()
-    h2, l2 = ax2.get_legend_handles_labels()
-    ax.legend(h1 + h2, l1 + l2, loc="upper left", fontsize=8)
-
-    out = outdir / "summary-all-instances.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
-
-
-def save_time_summary(instances: List[str],
-                      amns_t: List[float], vnd_t: List[float],
-                      outdir: Path, dpi: int):
+def save_summary(rows: List[dict], outdir: Path, dpi: int):
     """
-    Grouped bars per instance: AMNS solve time vs VND solve time (seconds).
+    summary-instances.png: one row per instance, three aligned panels
+      worst-slot max load (trivial -> AMNS / VND) | change vs trivial | time
+    summary-by-set.png: mean change vs trivial per instance set.
+    summary.csv: the numbers behind both.
     """
-    x = np.arange(len(instances))
-    w = 0.35
+    n = len(rows)
+    y = np.arange(n)
+    has_triv = [np.isfinite(r["triv"]) for r in rows]
 
-    fig, ax = plt.subplots(figsize=(max(6, 1.4 * len(instances)), 5))
-    ax.bar(x - w/2, amns_t, width=w, label="AMNS", color="C0", alpha=0.9)
-    ax.bar(x + w/2, vnd_t,  width=w, label="VND",  color="C1", alpha=0.9)
+    fig, (a_load, a_change, a_time) = plt.subplots(
+        1, 3, figsize=(15, 0.26 * n + 2.0), sharey=True,
+        gridspec_kw={"width_ratios": [1.3, 1.0, 0.9]})
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(instances, rotation=30, ha="right")
-    ax.set_ylabel("solve time (seconds)")
-    ax.set_title("Solve time per instance: AMNS vs VND")
-    ax.grid(True, axis="y", alpha=0.3)
-    ax.legend(loc="best")
+    # Panel 1: dumbbell from the trivial value to the solvers' values.
+    for yi, r in zip(y, rows):
+        lo = min(r["amns"], r["vnd"], r["triv"] if np.isfinite(r["triv"]) else np.inf)
+        hi = max(r["amns"], r["vnd"], r["triv"] if np.isfinite(r["triv"]) else -np.inf)
+        a_load.plot([lo, hi], [yi, yi], color=GRID, linewidth=3, zorder=1,
+                    solid_capstyle="round")
+    if any(has_triv):
+        a_load.scatter([r["triv"] for r in rows], y, s=26, marker="D", color=C_TRIV,
+                       zorder=2, label="Trivial")
+    a_load.scatter([r["amns"] for r in rows], y, s=36, marker="o", color=C_AMNS,
+                   zorder=3, label="AMNS")
+    a_load.scatter([r["vnd"] for r in rows], y, s=46, marker="s", facecolor="white",
+                   edgecolor=C_VND, linewidth=1.5, zorder=4, label="VND")
+    a_load.axvline(1.0, color=INK2, linestyle="--", linewidth=1.0, zorder=0)
+    a_load.text(1.0, 1.0, " capacidade", transform=a_load.get_xaxis_transform(),
+                ha="left", va="bottom", fontsize=8, color=INK2)
+    a_load.set_title("Carga máxima do pior período")
+    a_load.set_xlabel("carga máxima (menor é melhor)")
+    a_load.set_xlim(left=0)
 
-    for xi, t in zip(x - w/2, amns_t):
-        ax.text(xi, t, f"{t:.2f}", ha="center", va="bottom",
-                fontsize=7, color="C0")
-    for xi, t in zip(x + w/2, vnd_t):
-        ax.text(xi, t, f"{t:.2f}", ha="center", va="bottom",
-                fontsize=7, color="C1")
+    # Panel 2: change vs trivial (%).
+    if any(has_triv):
+        ch_a = [100 * (r["amns"] - r["triv"]) / r["triv"] if r["triv"] > 0 else np.nan
+                for r in rows]
+        ch_v = [100 * (r["vnd"] - r["triv"]) / r["triv"] if r["triv"] > 0 else np.nan
+                for r in rows]
+        for yi, a, v in zip(y, ch_a, ch_v):
+            if np.isfinite(a):
+                a_change.plot([0, min(a, v)], [yi, yi], color=GRID, linewidth=3, zorder=1,
+                              solid_capstyle="round")
+        a_change.scatter(ch_a, y, s=36, marker="o", color=C_AMNS, zorder=3)
+        a_change.scatter(ch_v, y, s=46, marker="s", facecolor="white", edgecolor=C_VND,
+                         linewidth=1.5, zorder=4)
+        for yi, a, v in zip(y, ch_a, ch_v):
+            if np.isfinite(a):
+                a_change.text(min(a, v), yi, f"{br(min(a, v), 0)}%  ", ha="right",
+                              va="center", fontsize=7, color=INK2)
+        a_change.axvline(0, color=INK2, linewidth=1.0)
+        a_change.set_xlim(-110, 10)
+    a_change.set_title("Variação em relação à trivial")
+    a_change.set_xlabel("variação da carga do pior período, em % (negativo é melhor)")
 
-    out = outdir / "summary-solve-time.png"
-    fig.tight_layout()
-    fig.savefig(out, dpi=dpi, bbox_inches="tight")
-    plt.close(fig)
-    print(f"  wrote {out}")
+    # Panel 3: solve time (log scale).
+    for key, marker, kw in (("t_triv", "D", dict(color=C_TRIV, s=22)),
+                            ("t_amns", "o", dict(color=C_AMNS, s=36)),
+                            ("t_vnd", "s", dict(facecolor="white", edgecolor=C_VND,
+                                                linewidth=1.5, s=46))):
+        xs = [r[key] for r in rows]
+        if any(np.isfinite(x) and x > 0 for x in xs):
+            a_time.scatter(xs, y, marker=marker, zorder=3, **kw)
+    a_time.set_xscale("log")
+    a_time.set_title("Tempo de execução")
+    a_time.set_xlabel("segundos (escala log)")
+
+    # Rows: instance names, set separators.
+    a_load.set_yticks(y)
+    a_load.set_yticklabels([r["name"] for r in rows], fontsize=8)
+    a_load.invert_yaxis()
+    sets = [r["name"].split("-")[0] for r in rows]
+    for k in range(1, n):
+        if sets[k] != sets[k - 1]:
+            for ax in (a_load, a_change, a_time):
+                ax.axhline(k - 0.5, color=INK2, linewidth=0.8)
+    for ax in (a_load, a_change, a_time):
+        ax.grid(axis="y", visible=False)
+        ax.set_ylim(n - 0.5, -0.5)
+
+    fig.suptitle("Todas as instâncias: solução trivial vs AMNS vs VND", x=0.01, ha="left",
+                 fontsize=12, fontweight="bold", color=INK)
+    fig.text(0.01, 1 - 0.55 / (0.26 * n + 2.0),
+             "Onde só o quadrado laranja aparece, AMNS e VND atingem o mesmo valor.",
+             ha="left", va="top", fontsize=9, color=INK2)
+    handles, labels = a_load.get_legend_handles_labels()
+    fig.legend(handles, labels, loc="upper right", ncol=3, bbox_to_anchor=(0.99, 0.995))
+    fig.tight_layout(rect=(0, 0, 1, 1 - 0.6 / (0.26 * n + 2.0)))
+    _write(fig, outdir / "summary-instances.png", dpi)
+
+    # Mean change vs trivial per set.
+    if any(has_triv):
+        groups, mean_a, mean_v = [], [], []
+        for g in sorted(set(sets)) + ["todos"]:
+            sel = [r for r, s in zip(rows, sets) if (g == "todos" or s == g)
+                   and np.isfinite(r["triv"]) and r["triv"] > 0]
+            if not sel:
+                continue   # no trivial solution for this set
+            groups.append(f"{g} ({len(sel)})")
+            mean_a.append(np.mean([100 * (r["amns"] - r["triv"]) / r["triv"] for r in sel]))
+            mean_v.append(np.mean([100 * (r["vnd"] - r["triv"]) / r["triv"] for r in sel]))
+        fig, ax = plt.subplots(figsize=(7, 3.6))
+        x = np.arange(len(groups))
+        w = 0.36
+        ax.bar(x - w / 2, mean_a, width=w * 0.92, color=C_AMNS, label="AMNS")
+        ax.bar(x + w / 2, mean_v, width=w * 0.92, color="white", edgecolor=C_VND,
+               linewidth=1.5, label="VND")
+        for xi, v in list(zip(x - w / 2, mean_a)) + list(zip(x + w / 2, mean_v)):
+            ax.text(xi, v, f"{br(v, 0)}%", ha="center", va="top", fontsize=8, color=INK,
+                    bbox=dict(facecolor="white", edgecolor="none", pad=1))
+        ax.axhline(0, color=INK2, linewidth=1.0)
+        ax.set_xticks(x)
+        ax.set_xticklabels(groups)
+        ax.set_ylabel("variação média vs trivial (%)")
+        ax.set_title("Variação média da carga do pior período vs trivial, por conjunto")
+        ax.grid(axis="x", visible=False)
+        ax.legend(loc="lower right")
+        fig.tight_layout()
+        _write(fig, outdir / "summary-by-set.png", dpi)
+
+    # Table view.
+    csv = outdir / "summary.csv"
+    lines = ["instance,trivial_max,amns_max,vnd_max,amns_vs_trivial_pct,"
+             "vnd_vs_trivial_pct,amns_overflow,vnd_overflow,trivial_s,amns_s,vnd_s"]
+    for r in rows:
+        def pct(v):
+            return f"{100 * (v - r['triv']) / r['triv']:.2f}" if r["triv"] > 0 else ""
+        lines.append(",".join([
+            r["name"], f"{r['triv']:.6f}" if np.isfinite(r["triv"]) else "",
+            f"{r['amns']:.6f}", f"{r['vnd']:.6f}", pct(r["amns"]), pct(r["vnd"]),
+            f"{r['ov_amns']:.6f}", f"{r['ov_vnd']:.6f}",
+            f"{r['t_triv']:.3f}" if np.isfinite(r["t_triv"]) else "",
+            f"{r['t_amns']:.3f}", f"{r['t_vnd']:.3f}"]))
+    for k in range(6):
+        try:
+            csv.write_text("\n".join(lines) + "\n")
+            break
+        except OSError:
+            if k == 5:
+                raise
+            time.sleep(0.5 * (k + 1))
+    print(f"  wrote {csv}")
 
 
 # ---------------------------------------------------------------------------
@@ -639,10 +692,12 @@ def main():
         description=__doc__,
         formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--root", type=Path, default=Path("."),
-                    help="folder containing amns_solution/ and vnd_solution/")
-    ap.add_argument("--outdir", type=Path, default=Path("plots"),
-                    help="where to save the generated plots "
-                         "(one subfolder per instance)")
+                    help="folder containing amns_solution/ and vnd_solution/ "
+                         "(and optionally trivial_solution/)")
+    ap.add_argument("--outdir", type=Path, default=Path("figures"),
+                    help="where to save the figures (one subfolder per instance)")
+    ap.add_argument("--no-history", action="store_true",
+                    help="skip the per-slot search history figures")
     ap.add_argument("--show", action="store_true",
                     help="also call plt.show() at the end")
     ap.add_argument("--dpi", type=int, default=150,
@@ -655,90 +710,42 @@ def main():
     if not instances:
         print("Nothing to plot.", file=sys.stderr)
         return 1
+    print(f"Found {len(instances)} instance(s) with both solutions.")
 
-    print(f"Found {len(instances)} instance(s) with both solutions:")
+    rows = []
     for name in instances:
-        print(f"  - {name}")
+        amns = load_solution(args.root / "amns_solution" / f"{name}-solution.json")
+        vnd = load_solution(args.root / "vnd_solution" / f"{name}-solution.json")
+        t_path = args.root / "trivial_solution" / f"{name}-solution.json"
+        trivial = load_solution(t_path) if t_path.is_file() else None
 
-    summary_amns_max: List[float] = []
-    summary_vnd_max:  List[float] = []
-    summary_amns_ov:  List[float] = []
-    summary_vnd_ov:   List[float] = []
-    summary_amns_time: List[float] = []
-    summary_vnd_time:  List[float] = []
-
-    for name in instances:
-        a_path = args.root / "amns_solution" / f"{name}-solution.json"
-        v_path = args.root / "vnd_solution"  / f"{name}-solution.json"
-
-        amns = load_solution(a_path)
-        vnd  = load_solution(v_path)
-
-        summary_amns_max.append(amns.max_link_load)
-        summary_vnd_max.append(vnd.max_link_load)
-        summary_amns_ov.append(sum(amns.overflow_per_slot()))
-        summary_vnd_ov.append(sum(vnd.overflow_per_slot()))
-        summary_amns_time.append(amns.solve_time_seconds)
-        summary_vnd_time.append(vnd.solve_time_seconds)
-
-        # Per-instance output folder.
         inst_dir = args.outdir / name
         inst_dir.mkdir(parents=True, exist_ok=True)
-        
+        save_overview(name, amns, vnd, trivial, inst_dir, args.dpi)
+        if not args.no_history:
+            save_history(name, amns, vnd, inst_dir, args.dpi)
 
-        # Per-slot comparison plots.
-        save_max_load_per_slot(amns, vnd, inst_dir, args.dpi)
-        save_max_load_difference(amns, vnd, inst_dir, args.dpi)
-        save_avg_load_per_slot(amns, vnd, inst_dir, args.dpi)
-        save_overflow_per_slot(amns, vnd, inst_dir, args.dpi)
-        save_waypoints_per_slot(amns, vnd, inst_dir, args.dpi)
-        save_solve_time(amns, vnd, inst_dir, args.dpi)
+        rows.append(dict(
+            name=name,
+            triv=trivial.max_link_load if trivial else np.nan,
+            amns=amns.max_link_load, vnd=vnd.max_link_load,
+            ov_amns=sum(amns.overflow_per_slot()), ov_vnd=sum(vnd.overflow_per_slot()),
+            t_triv=trivial.solve_time_seconds if trivial else np.nan,
+            t_amns=amns.solve_time_seconds, t_vnd=vnd.solve_time_seconds,
+        ))
 
-        # One load-distribution figure per method.
-        save_load_distribution_one(amns, "AMNS", "C0",
-                                   inst_dir, args.dpi)
-        save_load_distribution_one(vnd,  "VND",  "C1",
-                                   inst_dir, args.dpi)
+    save_summary(rows, args.outdir, args.dpi)
 
-        # Max-load history, one figure per method.
-                # Max-load history, one figure per method PER SLOT, each in its own
-        # Load_history_slotX/ folder under the instance directory.
-        n_slots = max(amns.num_slots(), vnd.num_slots())
-        for slot in range(n_slots):
-            slot_dir = inst_dir / f"Load_history_slot{slot}"
-            slot_dir.mkdir(parents=True, exist_ok=True)
-            save_max_load_history_slot(amns, slot, "AMNS", "C0",
-                                       slot_dir, args.dpi)
-            save_max_load_history_slot(vnd,  slot, "VND",  "C1",
-                                       slot_dir, args.dpi)
-
-    save_instance_summary(
-        instances,
-        summary_amns_max, summary_vnd_max,
-        summary_amns_ov,  summary_vnd_ov,
-        args.outdir, args.dpi,
-    )
-    save_time_summary(
-        instances,
-        summary_amns_time, summary_vnd_time,
-        args.outdir, args.dpi,
-    )
-
-    print("\nPer-instance totals")
-    print(f"{'instance':<20} {'AMNS max':>10} {'VND max':>10} "
-          f"{'AMNS ov':>10} {'VND ov':>10} "
-          f"{'AMNS s':>8} {'VND s':>8}")
-    for i, name in enumerate(instances):
-        print(f"{name:<20} {summary_amns_max[i]:>10.6f} "
-              f"{summary_vnd_max[i]:>10.6f} "
-              f"{summary_amns_ov[i]:>10.6f} "
-              f"{summary_vnd_ov[i]:>10.6f} "
-              f"{summary_amns_time[i]:>8.3f} "
-              f"{summary_vnd_time[i]:>8.3f}")
+    print(f"\n{'instance':<12} {'trivial':>9} {'AMNS':>9} {'VND':>9} "
+          f"{'AMNS/Tr':>8} {'VND/Tr':>8}")
+    for r in rows:
+        def pct(v):
+            return f"{100 * (v - r['triv']) / r['triv']:+.1f}%" if r["triv"] > 0 else "n/a"
+        print(f"{r['name']:<12} {r['triv']:>9.4f} {r['amns']:>9.4f} {r['vnd']:>9.4f} "
+              f"{pct(r['amns']):>8} {pct(r['vnd']):>8}")
 
     if args.show:
         plt.show()
-
     return 0
 
 

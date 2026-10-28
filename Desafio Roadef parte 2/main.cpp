@@ -10,12 +10,6 @@
 using namespace std;
 namespace fs = std::filesystem;
 
-// Forward declarations (defined in amns.cpp / classical_solution.cpp)
-Solution solve_amns(const Instance& inst);
-Solution solve_classical(const Instance& inst);
-void write_solution(const Solution& sol, const string& path);
-void write_srpaths(const Solution& sol, const string& path);
-
 static void print_slot_loads(const Solution& sol, const Instance& inst)
 {
     vector<double> slot_max(inst.num_time_slots, 0.0);
@@ -100,26 +94,54 @@ static void export_solution(const Solution& sol,
     cout << "  [" << label << "] wrote " << sr_path.string()  << "\n";
 }
 
+static void print_report_summary(const char* label,
+                                 const vector<VerificationReport>& reps)
+{
+    cout << "\n=====================================================\n";
+    cout << "Verification summary (" << label << ")\n";
+    cout << "=====================================================\n";
+    int failed = 0;
+    for (const auto& rep : reps) {
+        if (!rep.ok) {
+            ++failed;
+            cout << "  " << rep.instance_name << "  VIABLE? NO  ("
+                 << rep.issues.size() << " issue(s))\n";
+        } else if (!rep.issues.empty()) {
+            cout << "  " << rep.instance_name << "  VIABLE? YES  ("
+                 << rep.issues.size() << " unavoidable overload(s))\n";
+        } else {
+            cout << "  " << rep.instance_name << "  VIABLE? YES\n";
+        }
+        for (const auto& iss : rep.issues)
+            cout << "      [" << iss.kind << "] " << iss.message << "\n";
+    }
+    if (failed == 0)
+        cout << "\nNo viability errors on any instance.\n";
+    else
+        cout << "\nViability errors on " << failed << " instance(s).\n";
+}
+
 int main() {
-    // Two sets, two instances each.  NOTE: two separate strings.
     vector<Instance> instances = load_all_instances({"setA", "setB", "setC", "setX"}, 20);
 
-    // Two flat folders for the full solution JSONs.
-    const fs::path amns_sol_dir = "amns_solution";
-    const fs::path vnd_sol_dir  = "vnd_solution";
-
-    // One srpaths folder per (set, algorithm).  Created on demand below.
-    auto sr_dir_for = [](const string& set_name, const string& algo) {
-        return fs::path(set_name + "_" + algo);
+    // One entry per algorithm: full solutions go to a flat folder
+    // (<sol_dir>/), SR paths to one folder per set (<set>_<sr_suffix>/).
+    struct Algo {
+        const char* label;          // log label
+        const char* summary;        // verification summary title
+        Solution (*solve)(const Instance&);
+        fs::path sol_dir;
+        string sr_suffix;
+        vector<VerificationReport> reports;
+    };
+    vector<Algo> algos = {
+        {"AMNS", "AMNS", solve_amns, "amns_solution", "amns", {}},
+        {"VND", "Classical VND", solve_classical, "vnd_solution", "vnd", {}},
+        {"TRIVIAL", "Trivial (IGP, no waypoints)", solve_shortest_paths,
+         "trivial_solution", "trivial", {}},
     };
 
-    fs::create_directories(amns_sol_dir);
-    fs::create_directories(vnd_sol_dir);
-
     cout << "\n==================== FINAL SUMMARY ====================\n";
-    vector<VerificationReport> reports_amns;
-    vector<VerificationReport> reports_vnd;
-
     for (const auto& inst : instances) {
         cout << "\n=====================================================\n";
         cout << "Solving " << inst.name
@@ -130,91 +152,22 @@ int main() {
              << ", max_segments=" << inst.scenario.max_segments << ")\n";
         cout << "=====================================================\n";
 
-        // Derive the set name ("setA", "setB") from the instance.
-        // Prefer inst.set_name; fall back to the prefix of inst.name.
-        string set_name = inst.set_name;
-        if (set_name.empty()) {
-            const auto slash = inst.name.find('/');
-            set_name = (slash == string::npos)
-                           ? string("unknown")
-                           : inst.name.substr(0, slash);
+        for (auto& algo : algos) {
+            cout << "\n>>> Running " << algo.summary << " ...\n";
+            const Solution sol = algo.solve(inst);
+            export_solution(sol, inst, algo.sol_dir,
+                            fs::path(inst.set_name + "_" + algo.sr_suffix), algo.label);
+            print_sr_nodes(sol, inst);
+            print_slot_loads(sol, inst);
+            cout << algo.label << " instance max load = " << sol.max_link_load
+                 << "  (link " << sol.max_link_id
+                 << ", slot " << sol.max_link_slot << ")\n";
+            algo.reports.push_back(verify_solution(sol, inst));
         }
-
-        // -----------------------------------------------------------------
-        // (A) AMNS: solve ONCE, then export.
-        //     Solution -> amns_solution/
-        //     SR paths -> setX_amns/
-        // -----------------------------------------------------------------
-        cout << "\n>>> Running AMNS ...\n";
-        Solution sol_amns = solve_amns(inst);
-        export_solution(sol_amns,
-                        inst,
-                        amns_sol_dir,
-                        sr_dir_for(set_name, "amns"),
-                        "AMNS");
-
-        print_sr_nodes(sol_amns, inst);
-        print_slot_loads(sol_amns, inst);
-
-        cout << "AMNS instance max load = " << sol_amns.max_link_load
-             << "  (link " << sol_amns.max_link_id
-             << ", slot " << sol_amns.max_link_slot << ")\n";
-
-        reports_amns.push_back(verify_solution(sol_amns, inst));
-
-        // -----------------------------------------------------------------
-        // (B) Classical VND: solve ONCE, then export.
-        //     Solution -> vnd_solution/
-        //     SR paths -> setX_vnd/
-        // -----------------------------------------------------------------
-        cout << "\n>>> Running Classical VND ...\n";
-        Solution sol_vnd = solve_classical(inst);
-        export_solution(sol_vnd,
-                        inst,
-                        vnd_sol_dir,
-                        sr_dir_for(set_name, "vnd"),
-                        "VND");
-
-        print_sr_nodes(sol_vnd, inst);
-        print_slot_loads(sol_vnd, inst);
-
-        cout << "VND instance max load = " << sol_vnd.max_link_load
-             << "  (link " << sol_vnd.max_link_id
-             << ", slot " << sol_vnd.max_link_slot << ")\n";
-
-        reports_vnd.push_back(verify_solution(sol_vnd, inst));
     }
 
-    // ---------------------------------------------------------------------
-    // Verification summary for both algorithms.
-    // ---------------------------------------------------------------------
-    auto print_report_summary = [](const char* label,
-                                   const vector<VerificationReport>& reps) {
-        cout << "\n=====================================================\n";
-        cout << "Verification summary (" << label << ")\n";
-        cout << "=====================================================\n";
-        int failed = 0;
-        for (const auto& rep : reps) {
-            if (!rep.ok) {
-                ++failed;
-                cout << "  " << rep.instance_name << "  VIABLE? NO  ("
-                     << rep.issues.size() << " issue(s))\n";
-                for (const auto& iss : rep.issues)
-                    cout << "      [" << iss.kind << "] "
-                         << iss.message << "\n";
-            } else {
-                cout << "  " << rep.instance_name << "  VIABLE? YES\n";
-            }
-        }
-        if (failed == 0)
-            cout << "\nNo viability errors on any instance.\n";
-        else
-            cout << "\nViability errors on " << failed
-                 << " instance(s).\n";
-    };
-
-    print_report_summary("AMNS", reports_amns);
-    print_report_summary("Classical VND", reports_vnd);
-
+    for (const auto& algo : algos)
+        print_report_summary(algo.summary, algo.reports);
     return 0;
 }
+

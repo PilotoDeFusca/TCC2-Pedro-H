@@ -1,0 +1,20 @@
+\chapter{CONCLUSÕES E TRABALHOS FUTUROS}
+\label{cap:conclusao}
+
+\section{\uppercase{Conclusões}}
+
+Este trabalho tratou o problema de \textit{Segment Routing} adaptativo no tempo (T-ASR), proposto no desafio EURO/ROADEF 2026. Foram desenvolvidas duas meta-heurísticas de busca em vizinhança, AMNS e VND com perturbação, que compartilham a avaliação das cargas, a função objetivo, as vizinhanças e uma fase robusta para o primeiro período.
+
+A avaliação das cargas reproduz exatamente o avaliador oficial, incluindo a divisão de tráfego por ECMP, o que garante que a busca otimiza o mesmo critério usado na avaliação. A principal contribuição metodológica é a fase robusta: como os orçamentos de reconfiguração são pequenos, as rotas do primeiro período valem para todo o horizonte, e escolhê-las considerando as intervenções de todos os períodos foi decisivo. Para avaliar esses cenários de forma eficiente, apenas os segmentos afetados por cada intervenção são recalculados, com distâncias reparadas a partir das do primeiro período.
+
+Nas 56 instâncias dos conjuntos A, B, C e X, os dois métodos reduziram a utilização máxima do pior período em cerca de 46\% em média em relação ao roteamento IGP sem otimização e produziram soluções válidas segundo o avaliador oficial. Nos conjuntos A, B e X, eliminaram todas as violações de capacidade; no conjunto C, reduziram cargas de até 7,4 vezes a capacidade, mas em cinco instâncias a utilização máxima continua entre 1,15 e 1,25. AMNS e VND alcançaram resultados equivalentes, com tempos totais de 629 e 699 segundos. Um movimento adicional de inserção dupla de \textit{waypoints} foi testado e descartado: não melhorou a qualidade média e triplicou o tempo de execução.
+
+\section{\uppercase{Trabalhos Futuros}}
+
+\begin{itemize}
+    \item \textbf{Sobrecargas do conjunto C}: verificar se as cargas acima de 1 que restam em cinco instâncias do conjunto C são inevitáveis (por exemplo, por um limite inferior calculado sobre os enlaces que nenhum desvio evita) ou se podem ser eliminadas.
+    \item \textbf{Decisões não míopes nos períodos seguintes}: avaliar os movimentos dos períodos após o primeiro também nos períodos que vêm depois, estendendo a fase robusta, para evitar que mudanças locais elevem a carga mais adiante.
+    \item \textbf{Estudo de ablação das vizinhanças}: medir a contribuição de cada movimento (inserção, troca, remoção, extensão, perturbação e os movimentos da fase robusta) desativando-os um a um, para simplificar os métodos e redistribuir o tempo de busca.
+    \item \textbf{Objetivo lexicográfico completo}: comparar as soluções pelo vetor ordenado de cargas de todos os períodos, como no critério oficial, e não apenas pela aproximação usada na busca.
+    \item \textbf{Múltiplas execuções}: repetir os experimentos com sementes diferentes para medir a variabilidade dos métodos.
+\end{itemize}

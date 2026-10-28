@@ -11,100 +11,100 @@
     {
       "capacity": 877.0,
       "link_id": 1,
-      "load": 0.2100505131128849,
+      "load": 0.276527251995439,
       "t": 0,
-      "total_demand": 184.21430000000004
+      "total_demand": 242.5144
     },
     {
       "capacity": 513.0,
       "link_id": 2,
-      "load": 0.4895489278752435,
+      "load": 0.4236481481481481,
       "t": 0,
-      "total_demand": 251.1385999999999
+      "total_demand": 217.33149999999998
     },
     {
       "capacity": 383.0,
       "link_id": 3,
-      "load": 0.30263733681462135,
+      "load": 0.4530553524804178,
       "t": 0,
-      "total_demand": 115.91009999999997
+      "total_demand": 173.52020000000002
     },
     {
       "capacity": 981.0,
       "link_id": 4,
-      "load": 0.25529938837920535,
+      "load": 0.2552993883792048,
       "t": 0,
-      "total_demand": 250.44870000000043
+      "total_demand": 250.44869999999992
     },
     {
       "capacity": 391.0,
       "link_id": 5,
-      "load": 0.13940000000000002,
+      "load": 0.14645831202046042,
       "t": 0,
-      "total_demand": 54.50540000000001
+      "total_demand": 57.26520000000002
     },
     {
       "capacity": 486.0,
       "link_id": 6,
-      "load": 0.23849814814814732,
+      "load": 0.24204711934156406,
       "t": 0,
-      "total_demand": 115.9100999999996
+      "total_demand": 117.63490000000013
     },
     {
       "capacity": 435.0,
       "link_id": 7,
-      "load": 0.058684597701149394,
+      "load": 0.3854154022988506,
       "t": 0,
-      "total_demand": 25.527799999999985
+      "total_demand": 167.6557
     },
     {
       "capacity": 591.0,
       "link_id": 8,
-      "load": 0.05136615905245345,
+      "load": 0.014008967851099842,
       "t": 0,
-      "total_demand": 30.35739999999999
+      "total_demand": 8.279300000000006
     },
     {
       "capacity": 469.0,
       "link_id": 9,
-      "load": 0.33099530916844355,
+      "load": 0.3457061833688699,
       "t": 0,
-      "total_demand": 155.23680000000002
+      "total_demand": 162.13619999999997
     },
     {
       "capacity": 277.0,
       "link_id": 10,
-      "load": 0.11208447653429586,
+      "load": 0.39852238267148016,
       "t": 0,
-      "total_demand": 31.047399999999953
+      "total_demand": 110.39070000000001
     },
     {
       "capacity": 817.0,
       "link_id": 11,
-      "load": 0.09120391676866585,
+      "load": 0.32765862913096705,
       "t": 0,
-      "total_demand": 74.5136
+      "total_demand": 267.6971000000001
     },
     {
       "capacity": 667.0,
       "link_id": 12,
-      "load": 0.13654017991004544,
+      "load": 0.13654017991004497,
       "t": 0,
-      "total_demand": 91.07230000000031
+      "total_demand": 91.07229999999998
     },
     {
       "capacity": 489.0,
       "link_id": 13,
-      "load": 0.03386216768916154,
+      "load": 0.03386216768916155,
       "t": 0,
-      "total_demand": 16.55859999999999
+      "total_demand": 16.5586
     },
     {
       "capacity": 685.0,
       "link_id": 14,
-      "load": 0.25885372262773754,
+      "load": 0.4522386861313868,
       "t": 0,
-      "total_demand": 177.31480000000022
+      "total_demand": 309.78349999999995
     },
     {
       "capacity": 846.0,
@@ -116,72 +116,72 @@
     {
       "capacity": 793.0,
       "link_id": 16,
-      "load": 0.007830390920554773,
+      "load": 0.007830390920554844,
       "t": 0,
-      "total_demand": 6.2094999999999345
+      "total_demand": 6.209499999999991
     },
     {
       "capacity": 928.0,
       "link_id": 17,
-      "load": 0.1353117456896552,
+      "load": 0.13531174568965515,
       "t": 0,
-      "total_demand": 125.56930000000004
+      "total_demand": 125.56929999999998
     },
     {
       "capacity": 590.0,
       "link_id": 18,
-      "load": 0.13214118644067802,
+      "load": 0.1754086440677966,
       "t": 0,
-      "total_demand": 77.96330000000003
+      "total_demand": 103.4911
     },
     {
       "capacity": 500.0,
       "link_id": 19,
-      "load": 0.2842557999999997,
+      "load": 0.42776360000000013,
       "t": 0,
-      "total_demand": 142.12789999999987
+      "total_demand": 213.88180000000006
     },
     {
       "capacity": 799.0,
       "link_id": 20,
-      "load": 0.05958185231539435,
+      "load": 0.059581852315394215,
       "t": 0,
-      "total_demand": 47.605900000000084
+      "total_demand": 47.60589999999998
     },
     {
       "capacity": 520.0,
       "link_id": 21,
-      "load": 0.4696907692307701,
+      "load": 0.2826105769230769,
       "t": 0,
-      "total_demand": 244.23920000000044
+      "total_demand": 146.95749999999998
     },
     {
       "capacity": 494.0,
       "link_id": 22,
-      "load": 0.24580890688259172,
+      "load": 0.44273542510121455,
       "t": 0,
-      "total_demand": 121.4296000000003
+      "total_demand": 218.7113
     },
     {
       "capacity": 419.0,
       "link_id": 23,
-      "load": 0.16301718377088315,
+      "load": 0.16301718377088303,
       "t": 0,
-      "total_demand": 68.30420000000004
+      "total_demand": 68.3042
     },
     {
       "capacity": 667.0,
       "link_id": 24,
-      "load": 0.0,
+      "load": 0.3196278860569715,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 213.1918
     },
     {
       "capacity": 686.0,
       "link_id": 25,
-      "load": 0.023132215743440217,
+      "load": 0.30474067055393583,
       "t": 0,
-      "total_demand": 15.86869999999999
+      "total_demand": 209.0521
     },
     {
       "capacity": 639.0,
@@ -200,9 +200,9 @@
     {
       "capacity": 736.0,
       "link_id": 28,
-      "load": 0.13030135869565218,
+      "load": 0.13030135869565215,
       "t": 0,
-      "total_demand": 95.90180000000001
+      "total_demand": 95.9018
     },
     {
       "capacity": 559.0,
@@ -214,65 +214,65 @@
     {
       "capacity": 342.0,
       "link_id": 30,
-      "load": 0.08876432748538017,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 30.35740000000002
+      "total_demand": 0.0
     },
     {
       "capacity": 228.0,
       "link_id": 31,
-      "load": 0.4266741228070173,
+      "load": 0.43272631578947357,
       "t": 0,
-      "total_demand": 97.28169999999994
+      "total_demand": 98.66159999999998
     },
     {
       "capacity": 583.0,
       "link_id": 32,
-      "load": 0.45680514579759884,
+      "load": 0.4520713550600345,
       "t": 0,
-      "total_demand": 266.31740000000013
+      "total_demand": 263.5576000000001
     },
     {
       "capacity": 582.0,
       "link_id": 33,
-      "load": 0.3354869415807563,
+      "load": 0.335486941580756,
       "t": 0,
-      "total_demand": 195.25340000000017
+      "total_demand": 195.25339999999997
     },
     {
       "capacity": 348.0,
       "link_id": 34,
-      "load": 0.7295928160919539,
+      "load": 0.729592816091954,
       "t": 0,
-      "total_demand": 253.89829999999995
+      "total_demand": 253.8983
     },
     {
       "capacity": 928.0,
       "link_id": 35,
-      "load": 0.0401474137931034,
+      "load": 0.2029676724137931,
       "t": 0,
-      "total_demand": 37.256799999999956
+      "total_demand": 188.35399999999998
     },
     {
       "capacity": 720.0,
       "link_id": 36,
-      "load": 0.44271236111111106,
+      "load": 0.4427123611111111,
       "t": 0,
-      "total_demand": 318.75289999999995
+      "total_demand": 318.7529
     },
     {
       "capacity": 671.0,
       "link_id": 37,
-      "load": 0.08123010432190746,
+      "load": 0.08534307004470941,
       "t": 0,
-      "total_demand": 54.5053999999999
+      "total_demand": 57.265200000000014
     },
     {
       "capacity": 904.0,
       "link_id": 38,
-      "load": 0.08929546460176983,
+      "load": 0.12821913716814154,
       "t": 0,
-      "total_demand": 80.72309999999993
+      "total_demand": 115.91009999999994
     },
     {
       "capacity": 107.0,
@@ -284,9 +284,9 @@
     {
       "capacity": 765.0,
       "link_id": 40,
-      "load": 0.25252758169934614,
+      "load": 0.09469777777777788,
       "t": 0,
-      "total_demand": 193.18359999999979
+      "total_demand": 72.44380000000008
     },
     {
       "capacity": 223.0,
@@ -305,16 +305,16 @@
     {
       "capacity": 976.0,
       "link_id": 43,
-      "load": -1.1648241569837709e-16,
+      "load": 0.02969006147540984,
       "t": 0,
-      "total_demand": -1.1368683772161603e-13
+      "total_demand": 28.977500000000003
     },
     {
       "capacity": 692.0,
       "link_id": 44,
-      "load": 4.107183443700001e-17,
+      "load": 0.04386907514450867,
       "t": 0,
-      "total_demand": 2.842170943040401e-14
+      "total_demand": 30.3574
     },
     {
       "capacity": 211.0,
@@ -326,9 +326,9 @@
     {
       "capacity": 995.0,
       "link_id": 46,
-      "load": 0.024962713567839252,
+      "load": 0.024962713567839186,
       "t": 0,
-      "total_demand": 24.837900000000054
+      "total_demand": 24.83789999999999
     },
     {
       "capacity": 107.0,
@@ -340,16 +340,16 @@
     {
       "capacity": 558.0,
       "link_id": 48,
-      "load": 0.4537784946236566,
+      "load": 0.44203225806451607,
       "t": 0,
-      "total_demand": 253.20840000000038
+      "total_demand": 246.65399999999997
     },
     {
       "capacity": 202.0,
       "link_id": 49,
-      "load": 0.12637524752475246,
+      "load": 0.03415544554455446,
       "t": 0,
-      "total_demand": 25.5278
+      "total_demand": 6.8994
     },
     {
       "capacity": 139.0,
@@ -361,23 +361,23 @@
     {
       "capacity": 559.0,
       "link_id": 51,
-      "load": 0.34435348837209334,
+      "load": 0.34435348837209306,
       "t": 0,
-      "total_demand": 192.49360000000019
+      "total_demand": 192.49360000000001
     },
     {
       "capacity": 967.0,
       "link_id": 52,
-      "load": 0.3353385729058947,
+      "load": 0.3353385729058945,
       "t": 0,
-      "total_demand": 324.2724000000002
+      "total_demand": 324.2724
     },
     {
       "capacity": 686.0,
       "link_id": 53,
-      "load": 0.34999927113702556,
+      "load": 0.3540223032069971,
       "t": 0,
-      "total_demand": 240.09949999999952
+      "total_demand": 242.85930000000002
     },
     {
       "capacity": 158.0,
@@ -389,16 +389,16 @@
     {
       "capacity": 706.0,
       "link_id": 55,
-      "load": 0.3811288951841364,
+      "load": 0.3400842776203966,
       "t": 0,
-      "total_demand": 269.0770000000003
+      "total_demand": 240.0995
     },
     {
       "capacity": 406.0,
       "link_id": 56,
-      "load": 0.591378078817735,
+      "load": 0.5913780788177341,
       "t": 0,
-      "total_demand": 240.09950000000038
+      "total_demand": 240.09950000000003
     },
     {
       "capacity": 997.0,
@@ -410,9 +410,9 @@
     {
       "capacity": 435.0,
       "link_id": 58,
-      "load": 0.30293977011494194,
+      "load": 0.2569434482758621,
       "t": 0,
-      "total_demand": 131.77879999999973
+      "total_demand": 111.7704
     },
     {
       "capacity": 662.0,
@@ -438,30 +438,30 @@
     {
       "capacity": 293.0,
       "link_id": 62,
-      "load": 0.09889931740614293,
+      "load": -2.27349424837916e-18,
       "t": 0,
-      "total_demand": 28.97749999999988
+      "total_demand": -6.661338147750939e-16
     },
     {
       "capacity": 1000.0,
       "link_id": 63,
-      "load": 0.16696580000000005,
+      "load": 0.015868600000000028,
       "t": 0,
-      "total_demand": 166.96580000000006
+      "total_demand": 15.86860000000003
     },
     {
       "capacity": 925.0,
       "link_id": 64,
-      "load": 0.2707553513513517,
+      "load": 0.17901178378378382,
       "t": 0,
-      "total_demand": 250.44870000000031
+      "total_demand": 165.58590000000004
     },
     {
       "capacity": 572.0,
       "link_id": 65,
-      "load": 0.41975437062937127,
+      "load": 0.3727129370629371,
       "t": 0,
-      "total_demand": 240.09950000000038
+      "total_demand": 213.19180000000003
     },
     {
       "capacity": 864.0,
@@ -480,30 +480,30 @@
     {
       "capacity": 824.0,
       "link_id": 68,
-      "load": 0.11136189320388326,
+      "load": 0.35166905339805826,
       "t": 0,
-      "total_demand": 91.76219999999981
+      "total_demand": 289.7753
     },
     {
       "capacity": 923.0,
       "link_id": 69,
-      "load": 0.2294821235102935,
+      "load": 0.4193466955579633,
       "t": 0,
-      "total_demand": 211.81200000000092
+      "total_demand": 387.05700000000013
     },
     {
       "capacity": 950.0,
       "link_id": 70,
-      "load": 0.1590496842105255,
+      "load": 0.2984904210526315,
       "t": 0,
-      "total_demand": 151.09719999999925
+      "total_demand": 283.56589999999994
     },
     {
       "capacity": 931.0,
       "link_id": 71,
-      "load": 0.07707185821697095,
+      "load": 0.33644822771213745,
       "t": 0,
-      "total_demand": 71.75389999999996
+      "total_demand": 313.2333
     },
     {
       "capacity": 166.0,
@@ -515,16 +515,16 @@
     {
       "capacity": 454.0,
       "link_id": 73,
-      "load": 0.006078854625550688,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 2.7598000000000127
+      "total_demand": 0.0
     },
     {
       "capacity": 125.0,
       "link_id": 74,
-      "load": 0.17662480000000005,
+      "load": 0.17662480000000003,
       "t": 0,
-      "total_demand": 22.078100000000006
+      "total_demand": 22.078100000000003
     },
     {
       "capacity": 596.0,
@@ -536,30 +536,30 @@
     {
       "capacity": 659.0,
       "link_id": 76,
-      "load": 0.11202382397572071,
+      "load": 0.11202382397572079,
       "t": 0,
-      "total_demand": 73.82369999999995
+      "total_demand": 73.8237
     },
     {
       "capacity": 421.0,
       "link_id": 77,
-      "load": 0.20321306413301676,
+      "load": 0.42363372921615206,
       "t": 0,
-      "total_demand": 85.55270000000006
+      "total_demand": 178.34980000000002
     },
     {
       "capacity": 578.0,
       "link_id": 78,
-      "load": 0.3043858131487889,
+      "load": 0.30438581314878893,
       "t": 0,
-      "total_demand": 175.93499999999997
+      "total_demand": 175.935
     },
     {
       "capacity": 526.0,
       "link_id": 79,
-      "load": 0.20462129277566515,
+      "load": 0.2046212927756654,
       "t": 0,
-      "total_demand": 107.63079999999987
+      "total_demand": 107.63080000000001
     },
     {
       "capacity": 250.0,
@@ -571,100 +571,100 @@
     {
       "capacity": 877.0,
       "link_id": 1,
-      "load": 0.2462389965792463,
+      "load": 0.2242112884834664,
       "t": 1,
-      "total_demand": 215.95159999999902
+      "total_demand": 196.63330000000002
     },
     {
       "capacity": 513.0,
       "link_id": 2,
-      "load": 0.16811423001949308,
+      "load": 0.27974230019493174,
       "t": 1,
-      "total_demand": 86.24259999999995
+      "total_demand": 143.50779999999997
     },
     {
       "capacity": 383.0,
       "link_id": 3,
-      "load": 0.07565926892950389,
+      "load": 0.38189947780678857,
       "t": 1,
-      "total_demand": 28.977499999999992
+      "total_demand": 146.2675
     },
     {
       "capacity": 981.0,
       "link_id": 4,
-      "load": 0.2996074413863406,
+      "load": 0.23279357798165135,
       "t": 1,
-      "total_demand": 293.9149000000001
+      "total_demand": 228.37049999999996
     },
     {
       "capacity": 391.0,
       "link_id": 5,
-      "load": 0.10763785166240411,
+      "load": 0.1393997442455243,
       "t": 1,
-      "total_demand": 42.086400000000005
+      "total_demand": 54.5053
     },
     {
       "capacity": 486.0,
       "link_id": 6,
-      "load": 0.16609691358024822,
+      "load": 0.36910432098765433,
       "t": 1,
-      "total_demand": 80.72310000000064
+      "total_demand": 179.3847
     },
     {
       "capacity": 435.0,
       "link_id": 7,
-      "load": 0.09357816091954015,
+      "load": 0.3362471264367816,
       "t": 1,
-      "total_demand": 40.70649999999996
+      "total_demand": 146.2675
     },
     {
       "capacity": 591.0,
       "link_id": 8,
-      "load": 0.008171912013536379,
+      "load": 0.059538071065989843,
       "t": 1,
-      "total_demand": 4.829599999999999
+      "total_demand": 35.187
     },
     {
       "capacity": 469.0,
       "link_id": 9,
-      "load": 0.12357164179104535,
+      "load": 0.23831663113006396,
       "t": 1,
-      "total_demand": 57.95510000000027
+      "total_demand": 111.7705
     },
     {
       "capacity": 277.0,
       "link_id": 10,
-      "load": 0.20673321299639022,
+      "load": 0.2590393501805054,
       "t": 1,
-      "total_demand": 57.26510000000009
+      "total_demand": 71.75389999999999
     },
     {
       "capacity": 817.0,
       "link_id": 11,
-      "load": 0.021956548347613423,
+      "load": 0.2465884944920441,
       "t": 1,
-      "total_demand": 17.938500000000168
+      "total_demand": 201.46280000000002
     },
     {
       "capacity": 667.0,
       "link_id": 12,
-      "load": 0.1034394302848577,
+      "load": 0.10343943028485758,
       "t": 1,
-      "total_demand": 68.99410000000009
+      "total_demand": 68.9941
     },
     {
       "capacity": 489.0,
       "link_id": 13,
-      "load": 0.14250327198364027,
+      "load": 0.14250327198364007,
       "t": 1,
-      "total_demand": 69.68410000000009
+      "total_demand": 69.6841
     },
     {
       "capacity": 685.0,
       "link_id": 14,
-      "load": 0.3202938686131434,
+      "load": 0.36360394160583936,
       "t": 1,
-      "total_demand": 219.40130000000323
+      "total_demand": 249.06869999999998
     },
     {
       "capacity": 846.0,
@@ -676,44 +676,44 @@
     {
       "capacity": 793.0,
       "link_id": 16,
-      "load": 0.09222421185372014,
+      "load": 0.09222421185372007,
       "t": 1,
-      "total_demand": 73.13380000000006
+      "total_demand": 73.13380000000001
     },
     {
       "capacity": 928.0,
       "link_id": 17,
-      "load": 0.2735973060344814,
+      "load": 0.2735973060344828,
       "t": 1,
-      "total_demand": 253.89829999999873
+      "total_demand": 253.8983
     },
     {
       "capacity": 590.0,
       "link_id": 18,
-      "load": 0.2537579661016949,
+      "load": 0.3227520338983051,
       "t": 1,
-      "total_demand": 149.7172
+      "total_demand": 190.4237
     },
     {
       "capacity": 500.0,
       "link_id": 19,
-      "load": 0.26769719999999997,
+      "load": 0.303574,
       "t": 1,
-      "total_demand": 133.84859999999998
+      "total_demand": 151.787
     },
     {
       "capacity": 799.0,
       "link_id": 20,
-      "load": 0.06562640801001272,
+      "load": 0.06562640801001252,
       "t": 1,
-      "total_demand": 52.43550000000016
+      "total_demand": 52.4355
     },
     {
       "capacity": 520.0,
       "link_id": 21,
-      "load": 0.13798826923076934,
+      "load": 0.0477651923076923,
       "t": 1,
-      "total_demand": 71.75390000000006
+      "total_demand": 24.837899999999998
     },
     {
       "capacity": 494.0,
@@ -725,23 +725,23 @@
     {
       "capacity": 419.0,
       "link_id": 23,
-      "load": 0.1794835322195704,
+      "load": 0.2700484486873508,
       "t": 1,
-      "total_demand": 75.2036
+      "total_demand": 113.15029999999999
     },
     {
       "capacity": 667.0,
       "link_id": 24,
-      "load": 0.01861904047976011,
+      "load": 0.03620374812593703,
       "t": 1,
-      "total_demand": 12.418899999999994
+      "total_demand": 24.1479
     },
     {
       "capacity": 686.0,
       "link_id": 25,
-      "load": 0.14985612244897933,
+      "load": 0.25445349854227406,
       "t": 1,
-      "total_demand": 102.80129999999983
+      "total_demand": 174.5551
     },
     {
       "capacity": 639.0,
@@ -760,23 +760,23 @@
     {
       "capacity": 736.0,
       "link_id": 28,
-      "load": 0.03655937499999999,
+      "load": 0.036559375000000005,
       "t": 1,
-      "total_demand": 26.90769999999999
+      "total_demand": 26.907700000000006
     },
     {
       "capacity": 559.0,
       "link_id": 29,
-      "load": 0.38878604651162646,
+      "load": 0.311028801431127,
       "t": 1,
-      "total_demand": 217.33139999999918
+      "total_demand": 173.86509999999998
     },
     {
       "capacity": 342.0,
       "link_id": 30,
-      "load": 0.30664064327485374,
+      "load": 0.3268143274853801,
       "t": 1,
-      "total_demand": 104.87109999999998
+      "total_demand": 111.7705
     },
     {
       "capacity": 228.0,
@@ -788,51 +788,51 @@
     {
       "capacity": 583.0,
       "link_id": 32,
-      "load": 0.10887564322470022,
+      "load": 0.08757392795883362,
       "t": 1,
-      "total_demand": 63.47450000000023
+      "total_demand": 51.0556
     },
     {
       "capacity": 582.0,
       "link_id": 33,
-      "load": 0.1967872852233679,
+      "load": 0.3094065292096219,
       "t": 1,
-      "total_demand": 114.53020000000012
+      "total_demand": 180.07459999999995
     },
     {
       "capacity": 348.0,
       "link_id": 34,
-      "load": 0.0911991379310345,
+      "load": 0.09119913793103449,
       "t": 1,
-      "total_demand": 31.737300000000005
+      "total_demand": 31.7373
     },
     {
       "capacity": 928.0,
       "link_id": 35,
-      "load": 0.13679870689655171,
+      "load": 0.16653760775862067,
       "t": 1,
-      "total_demand": 126.94919999999999
+      "total_demand": 154.5469
     },
     {
       "capacity": 720.0,
       "link_id": 36,
-      "load": 0.40821513888888905,
+      "load": 0.3804258333333333,
       "t": 1,
-      "total_demand": 293.9149000000001
+      "total_demand": 273.90659999999997
     },
     {
       "capacity": 671.0,
       "link_id": 37,
-      "load": 0.11413338301043222,
+      "load": 0.08122995529061103,
       "t": 1,
-      "total_demand": 76.58350000000002
+      "total_demand": 54.5053
     },
     {
       "capacity": 904.0,
       "link_id": 38,
-      "load": 0.16256360619469037,
+      "load": 0.18927577433628318,
       "t": 1,
-      "total_demand": 146.9575000000001
+      "total_demand": 171.1053
     },
     {
       "capacity": 107.0,
@@ -844,9 +844,9 @@
     {
       "capacity": 765.0,
       "link_id": 40,
-      "load": 0.29040666666666387,
+      "load": 0.267859477124183,
       "t": 1,
-      "total_demand": 222.16109999999787
+      "total_demand": 204.9125
     },
     {
       "capacity": 223.0,
@@ -858,23 +858,23 @@
     {
       "capacity": 209.0,
       "link_id": 42,
-      "load": 0.21787607655502395,
+      "load": 0.14525071770334927,
       "t": 1,
-      "total_demand": 45.536100000000005
+      "total_demand": 30.3574
     },
     {
       "capacity": 976.0,
       "link_id": 43,
-      "load": 0.0,
+      "load": 0.09048411885245902,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 88.3125
     },
     {
       "capacity": 692.0,
       "link_id": 44,
-      "load": 0.16151806358381476,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 111.77049999999981
+      "total_demand": 0.0
     },
     {
       "capacity": 211.0,
@@ -900,16 +900,16 @@
     {
       "capacity": 558.0,
       "link_id": 48,
-      "load": 0.2621281362007165,
+      "load": 0.2918032258064516,
       "t": 1,
-      "total_demand": 146.2674999999998
+      "total_demand": 162.8262
     },
     {
       "capacity": 202.0,
       "link_id": 49,
-      "load": 0.2015173267326731,
+      "load": 0.2664128712871287,
       "t": 1,
-      "total_demand": 40.70649999999997
+      "total_demand": 53.8154
     },
     {
       "capacity": 139.0,
@@ -928,16 +928,16 @@
     {
       "capacity": 967.0,
       "link_id": 52,
-      "load": 0.3224957600827302,
+      "load": 0.2839675284384694,
       "t": 1,
-      "total_demand": 311.8534000000001
+      "total_demand": 274.5965999999999
     },
     {
       "capacity": 686.0,
       "link_id": 53,
-      "load": 0.12873542274052485,
+      "load": 0.1317524781341108,
       "t": 1,
-      "total_demand": 88.31250000000006
+      "total_demand": 90.38220000000001
     },
     {
       "capacity": 158.0,
@@ -949,44 +949,44 @@
     {
       "capacity": 706.0,
       "link_id": 55,
-      "load": 0.07622577903682726,
+      "load": 0.2149957507082153,
       "t": 1,
-      "total_demand": 53.81540000000004
+      "total_demand": 151.787
     },
     {
       "capacity": 406.0,
       "link_id": 56,
-      "load": 0.37555911330049246,
+      "load": 0.37385960591133005,
       "t": 1,
-      "total_demand": 152.47699999999995
+      "total_demand": 151.787
     },
     {
       "capacity": 997.0,
       "link_id": 57,
-      "load": 0.05259327983951857,
+      "load": 0.05259327983951855,
       "t": 1,
-      "total_demand": 52.43550000000002
+      "total_demand": 52.4355
     },
     {
       "capacity": 435.0,
       "link_id": 58,
-      "load": 0.24108298850574697,
+      "load": 0.35052183908045975,
       "t": 1,
-      "total_demand": 104.87109999999993
+      "total_demand": 152.477
     },
     {
       "capacity": 662.0,
       "link_id": 59,
-      "load": 0.09067190332326275,
+      "load": 0.07191223564954682,
       "t": 1,
-      "total_demand": 60.02479999999994
+      "total_demand": 47.6059
     },
     {
       "capacity": 229.0,
       "link_id": 60,
-      "load": 0.1054493449781659,
+      "load": 0.2952585152838428,
       "t": 1,
-      "total_demand": 24.14789999999999
+      "total_demand": 67.6142
     },
     {
       "capacity": 142.0,
@@ -998,30 +998,30 @@
     {
       "capacity": 293.0,
       "link_id": 62,
-      "load": 0.18367030716723542,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 53.81539999999998
+      "total_demand": 0.0
     },
     {
       "capacity": 1000.0,
       "link_id": 63,
-      "load": 0.2104321000000051,
+      "load": 0.152477,
       "t": 1,
-      "total_demand": 210.43210000000508
+      "total_demand": 152.477
     },
     {
       "capacity": 925.0,
       "link_id": 64,
-      "load": 0.31774583783783783,
+      "load": 0.25434583783783776,
       "t": 1,
-      "total_demand": 293.9149
+      "total_demand": 235.26989999999992
     },
     {
       "capacity": 572.0,
       "link_id": 65,
-      "load": -9.937660640001401e-17,
+      "load": 0.2050522727272727,
       "t": 1,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 117.28989999999999
     },
     {
       "capacity": 864.0,
@@ -1040,30 +1040,30 @@
     {
       "capacity": 824.0,
       "link_id": 68,
-      "load": 0.10047682038834951,
+      "load": 0.23193410194174757,
       "t": 1,
-      "total_demand": 82.7929
+      "total_demand": 191.1137
     },
     {
       "capacity": 923.0,
       "link_id": 69,
-      "load": 0.16220725893824484,
+      "load": 0.1143672806067172,
       "t": 1,
-      "total_demand": 149.7173
+      "total_demand": 105.56099999999998
     },
     {
       "capacity": 950.0,
       "link_id": 70,
-      "load": 0.1648595789473683,
+      "load": 0.36821073684210526,
       "t": 1,
-      "total_demand": 156.6165999999999
+      "total_demand": 349.8002
     },
     {
       "capacity": 931.0,
       "link_id": 71,
-      "load": 0.0726254564983888,
+      "load": 0.13042932330827067,
       "t": 1,
-      "total_demand": 67.61429999999997
+      "total_demand": 121.4297
     },
     {
       "capacity": 166.0,
@@ -1075,23 +1075,23 @@
     {
       "capacity": 454.0,
       "link_id": 73,
-      "load": -3.1301442103969174e-17,
+      "load": 0.059268061674008804,
       "t": 1,
-      "total_demand": -1.4210854715202004e-14
+      "total_demand": 26.9077
     },
     {
       "capacity": 125.0,
       "link_id": 74,
-      "load": 0.0,
+      "load": 0.2759768,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 34.4971
     },
     {
       "capacity": 596.0,
       "link_id": 75,
-      "load": 0.0764028523489933,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 45.536100000000005
+      "total_demand": 0.0
     },
     {
       "capacity": 659.0,
@@ -1103,23 +1103,23 @@
     {
       "capacity": 421.0,
       "link_id": 77,
-      "load": 0.23598931116389646,
+      "load": 0.34742874109263666,
       "t": 1,
-      "total_demand": 99.35150000000041
+      "total_demand": 146.26750000000004
     },
     {
       "capacity": 578.0,
       "link_id": 78,
-      "load": 0.11459221453287195,
+      "load": 0.07281384083044982,
       "t": 1,
-      "total_demand": 66.23429999999999
+      "total_demand": 42.0864
     },
     {
       "capacity": 526.0,
       "link_id": 79,
-      "load": 0.14428422053231915,
+      "load": 0.17707604562737642,
       "t": 1,
-      "total_demand": 75.89349999999988
+      "total_demand": 93.142
     }
   ],
   "max_link_id": 29,
@@ -1129,92 +1129,3040 @@
     [
       {
         "iter": 0,
-        "max_load": 1.0000006861063466
+        "max_load": 1.0000006861063466,
+        "op": "start"
       },
       {
-        "iter": 3010,
-        "max_load": 0.929383899821109
+        "iter": 1,
+        "max_load": 0.929383899821109,
+        "op": "insert"
       }
     ],
     [
       {
         "iter": 0,
-        "max_load": 0.5342536817102138
+        "max_load": 0.47145972222222216,
+        "op": "start"
+      },
+      {
+        "iter": 1,
+        "max_load": 0.4514934679334917,
+        "op": "insert"
+      },
+      {
+        "iter": 2,
+        "max_load": 0.44013472906403944,
+        "op": "insert"
+      },
+      {
+        "iter": 4,
+        "max_load": 0.43198443649373874,
+        "op": "change"
       },
       {
         "iter": 5,
-        "max_load": 0.5081093596059113
+        "max_load": 0.4170270234986945,
+        "op": "insert"
+      },
+      {
+        "iter": 6,
+        "max_load": 0.41396470588235296,
+        "op": "insert"
+      },
+      {
+        "iter": 7,
+        "max_load": 0.4123786206896552,
+        "op": "insert"
       },
       {
         "iter": 8,
-        "max_load": 0.4825858378378378
+        "max_load": 0.41134251781472697,
+        "op": "insert"
       },
       {
-        "iter": 12,
-        "max_load": 0.47145972222222227
-      },
-      {
-        "iter": 20,
-        "max_load": 0.45431717791411036
-      },
-      {
-        "iter": 32,
-        "max_load": 0.45006917562724014
-      },
-      {
-        "iter": 3996,
-        "max_load": 0.4319844364937379
-      },
-      {
-        "iter": 15105,
-        "max_load": 0.40821513888888905
+        "iter": 9,
+        "max_load": 0.38189947780678857,
+        "op": "insert"
       }
     ]
   ],
+  "nbhd_switches": [
+    [
+      {
+        "iter": 1,
+        "op": "insert"
+      },
+      {
+        "iter": 3,
+        "op": "extend"
+      },
+      {
+        "iter": 4,
+        "op": "insert"
+      },
+      {
+        "iter": 5,
+        "op": "extend"
+      },
+      {
+        "iter": 6,
+        "op": "insert"
+      },
+      {
+        "iter": 7,
+        "op": "extend"
+      },
+      {
+        "iter": 8,
+        "op": "change"
+      },
+      {
+        "iter": 9,
+        "op": "delete"
+      },
+      {
+        "iter": 10,
+        "op": "shake"
+      },
+      {
+        "iter": 11,
+        "op": "insert"
+      },
+      {
+        "iter": 12,
+        "op": "extend"
+      },
+      {
+        "iter": 13,
+        "op": "insert"
+      },
+      {
+        "iter": 14,
+        "op": "extend"
+      },
+      {
+        "iter": 15,
+        "op": "change"
+      },
+      {
+        "iter": 16,
+        "op": "delete"
+      },
+      {
+        "iter": 17,
+        "op": "insert"
+      },
+      {
+        "iter": 18,
+        "op": "extend"
+      },
+      {
+        "iter": 19,
+        "op": "change"
+      },
+      {
+        "iter": 20,
+        "op": "delete"
+      },
+      {
+        "iter": 21,
+        "op": "insert"
+      },
+      {
+        "iter": 22,
+        "op": "extend"
+      },
+      {
+        "iter": 23,
+        "op": "change"
+      },
+      {
+        "iter": 24,
+        "op": "delete"
+      },
+      {
+        "iter": 25,
+        "op": "shake"
+      },
+      {
+        "iter": 26,
+        "op": "insert"
+      },
+      {
+        "iter": 27,
+        "op": "extend"
+      },
+      {
+        "iter": 28,
+        "op": "change"
+      },
+      {
+        "iter": 29,
+        "op": "delete"
+      },
+      {
+        "iter": 30,
+        "op": "shake"
+      },
+      {
+        "iter": 31,
+        "op": "insert"
+      },
+      {
+        "iter": 32,
+        "op": "extend"
+      },
+      {
+        "iter": 33,
+        "op": "insert"
+      },
+      {
+        "iter": 34,
+        "op": "extend"
+      },
+      {
+        "iter": 35,
+        "op": "insert"
+      },
+      {
+        "iter": 36,
+        "op": "extend"
+      },
+      {
+        "iter": 37,
+        "op": "change"
+      },
+      {
+        "iter": 38,
+        "op": "delete"
+      },
+      {
+        "iter": 39,
+        "op": "insert"
+      },
+      {
+        "iter": 40,
+        "op": "extend"
+      },
+      {
+        "iter": 41,
+        "op": "insert"
+      },
+      {
+        "iter": 42,
+        "op": "extend"
+      },
+      {
+        "iter": 43,
+        "op": "change"
+      },
+      {
+        "iter": 44,
+        "op": "delete"
+      },
+      {
+        "iter": 45,
+        "op": "insert"
+      },
+      {
+        "iter": 46,
+        "op": "extend"
+      },
+      {
+        "iter": 47,
+        "op": "change"
+      },
+      {
+        "iter": 48,
+        "op": "delete"
+      },
+      {
+        "iter": 49,
+        "op": "insert"
+      },
+      {
+        "iter": 50,
+        "op": "extend"
+      },
+      {
+        "iter": 51,
+        "op": "change"
+      },
+      {
+        "iter": 52,
+        "op": "delete"
+      },
+      {
+        "iter": 53,
+        "op": "shake"
+      },
+      {
+        "iter": 54,
+        "op": "insert"
+      },
+      {
+        "iter": 55,
+        "op": "extend"
+      },
+      {
+        "iter": 56,
+        "op": "insert"
+      },
+      {
+        "iter": 57,
+        "op": "extend"
+      },
+      {
+        "iter": 58,
+        "op": "insert"
+      },
+      {
+        "iter": 59,
+        "op": "extend"
+      },
+      {
+        "iter": 60,
+        "op": "change"
+      },
+      {
+        "iter": 61,
+        "op": "delete"
+      },
+      {
+        "iter": 62,
+        "op": "insert"
+      },
+      {
+        "iter": 63,
+        "op": "extend"
+      },
+      {
+        "iter": 64,
+        "op": "insert"
+      },
+      {
+        "iter": 65,
+        "op": "extend"
+      },
+      {
+        "iter": 66,
+        "op": "change"
+      },
+      {
+        "iter": 67,
+        "op": "delete"
+      },
+      {
+        "iter": 68,
+        "op": "insert"
+      },
+      {
+        "iter": 69,
+        "op": "extend"
+      },
+      {
+        "iter": 70,
+        "op": "change"
+      },
+      {
+        "iter": 71,
+        "op": "delete"
+      },
+      {
+        "iter": 72,
+        "op": "shake"
+      },
+      {
+        "iter": 73,
+        "op": "insert"
+      },
+      {
+        "iter": 74,
+        "op": "extend"
+      },
+      {
+        "iter": 75,
+        "op": "insert"
+      },
+      {
+        "iter": 76,
+        "op": "extend"
+      },
+      {
+        "iter": 77,
+        "op": "insert"
+      },
+      {
+        "iter": 78,
+        "op": "extend"
+      },
+      {
+        "iter": 79,
+        "op": "change"
+      },
+      {
+        "iter": 80,
+        "op": "delete"
+      },
+      {
+        "iter": 81,
+        "op": "insert"
+      },
+      {
+        "iter": 82,
+        "op": "extend"
+      },
+      {
+        "iter": 83,
+        "op": "insert"
+      },
+      {
+        "iter": 84,
+        "op": "extend"
+      },
+      {
+        "iter": 85,
+        "op": "change"
+      },
+      {
+        "iter": 86,
+        "op": "delete"
+      },
+      {
+        "iter": 87,
+        "op": "insert"
+      },
+      {
+        "iter": 88,
+        "op": "extend"
+      },
+      {
+        "iter": 89,
+        "op": "change"
+      },
+      {
+        "iter": 90,
+        "op": "delete"
+      },
+      {
+        "iter": 91,
+        "op": "insert"
+      },
+      {
+        "iter": 92,
+        "op": "extend"
+      },
+      {
+        "iter": 93,
+        "op": "change"
+      },
+      {
+        "iter": 94,
+        "op": "delete"
+      },
+      {
+        "iter": 95,
+        "op": "shake"
+      },
+      {
+        "iter": 96,
+        "op": "insert"
+      },
+      {
+        "iter": 97,
+        "op": "extend"
+      },
+      {
+        "iter": 98,
+        "op": "insert"
+      },
+      {
+        "iter": 99,
+        "op": "extend"
+      },
+      {
+        "iter": 100,
+        "op": "insert"
+      },
+      {
+        "iter": 101,
+        "op": "extend"
+      },
+      {
+        "iter": 102,
+        "op": "change"
+      },
+      {
+        "iter": 103,
+        "op": "delete"
+      },
+      {
+        "iter": 104,
+        "op": "insert"
+      },
+      {
+        "iter": 105,
+        "op": "extend"
+      },
+      {
+        "iter": 106,
+        "op": "insert"
+      },
+      {
+        "iter": 107,
+        "op": "extend"
+      },
+      {
+        "iter": 108,
+        "op": "change"
+      },
+      {
+        "iter": 109,
+        "op": "delete"
+      },
+      {
+        "iter": 110,
+        "op": "insert"
+      },
+      {
+        "iter": 111,
+        "op": "extend"
+      },
+      {
+        "iter": 112,
+        "op": "insert"
+      },
+      {
+        "iter": 113,
+        "op": "extend"
+      },
+      {
+        "iter": 114,
+        "op": "change"
+      },
+      {
+        "iter": 115,
+        "op": "delete"
+      },
+      {
+        "iter": 116,
+        "op": "insert"
+      },
+      {
+        "iter": 117,
+        "op": "extend"
+      },
+      {
+        "iter": 118,
+        "op": "insert"
+      },
+      {
+        "iter": 119,
+        "op": "extend"
+      },
+      {
+        "iter": 120,
+        "op": "insert"
+      },
+      {
+        "iter": 121,
+        "op": "extend"
+      },
+      {
+        "iter": 122,
+        "op": "change"
+      },
+      {
+        "iter": 123,
+        "op": "delete"
+      },
+      {
+        "iter": 124,
+        "op": "insert"
+      },
+      {
+        "iter": 125,
+        "op": "extend"
+      },
+      {
+        "iter": 126,
+        "op": "change"
+      },
+      {
+        "iter": 127,
+        "op": "delete"
+      },
+      {
+        "iter": 128,
+        "op": "shake"
+      },
+      {
+        "iter": 129,
+        "op": "insert"
+      },
+      {
+        "iter": 130,
+        "op": "extend"
+      },
+      {
+        "iter": 131,
+        "op": "insert"
+      },
+      {
+        "iter": 132,
+        "op": "extend"
+      },
+      {
+        "iter": 133,
+        "op": "insert"
+      },
+      {
+        "iter": 134,
+        "op": "extend"
+      },
+      {
+        "iter": 135,
+        "op": "change"
+      },
+      {
+        "iter": 136,
+        "op": "delete"
+      },
+      {
+        "iter": 137,
+        "op": "insert"
+      },
+      {
+        "iter": 138,
+        "op": "extend"
+      },
+      {
+        "iter": 139,
+        "op": "insert"
+      },
+      {
+        "iter": 140,
+        "op": "extend"
+      },
+      {
+        "iter": 141,
+        "op": "insert"
+      },
+      {
+        "iter": 142,
+        "op": "extend"
+      },
+      {
+        "iter": 143,
+        "op": "insert"
+      },
+      {
+        "iter": 144,
+        "op": "extend"
+      },
+      {
+        "iter": 145,
+        "op": "change"
+      },
+      {
+        "iter": 146,
+        "op": "delete"
+      },
+      {
+        "iter": 147,
+        "op": "insert"
+      },
+      {
+        "iter": 148,
+        "op": "extend"
+      },
+      {
+        "iter": 149,
+        "op": "insert"
+      },
+      {
+        "iter": 150,
+        "op": "extend"
+      },
+      {
+        "iter": 151,
+        "op": "change"
+      },
+      {
+        "iter": 152,
+        "op": "delete"
+      },
+      {
+        "iter": 153,
+        "op": "insert"
+      },
+      {
+        "iter": 154,
+        "op": "extend"
+      },
+      {
+        "iter": 155,
+        "op": "change"
+      },
+      {
+        "iter": 156,
+        "op": "delete"
+      },
+      {
+        "iter": 157,
+        "op": "shake"
+      },
+      {
+        "iter": 158,
+        "op": "insert"
+      },
+      {
+        "iter": 159,
+        "op": "extend"
+      },
+      {
+        "iter": 160,
+        "op": "insert"
+      },
+      {
+        "iter": 161,
+        "op": "extend"
+      },
+      {
+        "iter": 162,
+        "op": "insert"
+      },
+      {
+        "iter": 163,
+        "op": "extend"
+      },
+      {
+        "iter": 164,
+        "op": "insert"
+      },
+      {
+        "iter": 165,
+        "op": "extend"
+      },
+      {
+        "iter": 166,
+        "op": "change"
+      },
+      {
+        "iter": 167,
+        "op": "delete"
+      },
+      {
+        "iter": 168,
+        "op": "insert"
+      },
+      {
+        "iter": 169,
+        "op": "extend"
+      },
+      {
+        "iter": 170,
+        "op": "change"
+      },
+      {
+        "iter": 171,
+        "op": "delete"
+      },
+      {
+        "iter": 172,
+        "op": "insert"
+      },
+      {
+        "iter": 173,
+        "op": "extend"
+      },
+      {
+        "iter": 174,
+        "op": "change"
+      },
+      {
+        "iter": 175,
+        "op": "delete"
+      },
+      {
+        "iter": 176,
+        "op": "shake"
+      },
+      {
+        "iter": 177,
+        "op": "insert"
+      },
+      {
+        "iter": 178,
+        "op": "extend"
+      },
+      {
+        "iter": 179,
+        "op": "insert"
+      },
+      {
+        "iter": 180,
+        "op": "extend"
+      },
+      {
+        "iter": 181,
+        "op": "insert"
+      },
+      {
+        "iter": 182,
+        "op": "extend"
+      },
+      {
+        "iter": 183,
+        "op": "change"
+      },
+      {
+        "iter": 184,
+        "op": "delete"
+      },
+      {
+        "iter": 185,
+        "op": "insert"
+      },
+      {
+        "iter": 186,
+        "op": "extend"
+      },
+      {
+        "iter": 187,
+        "op": "change"
+      },
+      {
+        "iter": 188,
+        "op": "delete"
+      },
+      {
+        "iter": 189,
+        "op": "insert"
+      },
+      {
+        "iter": 190,
+        "op": "extend"
+      },
+      {
+        "iter": 191,
+        "op": "insert"
+      },
+      {
+        "iter": 192,
+        "op": "extend"
+      },
+      {
+        "iter": 193,
+        "op": "change"
+      },
+      {
+        "iter": 194,
+        "op": "delete"
+      },
+      {
+        "iter": 195,
+        "op": "shake"
+      },
+      {
+        "iter": 196,
+        "op": "insert"
+      },
+      {
+        "iter": 197,
+        "op": "extend"
+      },
+      {
+        "iter": 198,
+        "op": "change"
+      },
+      {
+        "iter": 199,
+        "op": "delete"
+      },
+      {
+        "iter": 200,
+        "op": "shake"
+      },
+      {
+        "iter": 201,
+        "op": "insert"
+      },
+      {
+        "iter": 202,
+        "op": "extend"
+      },
+      {
+        "iter": 203,
+        "op": "insert"
+      },
+      {
+        "iter": 204,
+        "op": "extend"
+      },
+      {
+        "iter": 205,
+        "op": "insert"
+      },
+      {
+        "iter": 206,
+        "op": "extend"
+      },
+      {
+        "iter": 207,
+        "op": "insert"
+      },
+      {
+        "iter": 208,
+        "op": "extend"
+      },
+      {
+        "iter": 209,
+        "op": "change"
+      },
+      {
+        "iter": 210,
+        "op": "delete"
+      },
+      {
+        "iter": 211,
+        "op": "insert"
+      },
+      {
+        "iter": 212,
+        "op": "extend"
+      },
+      {
+        "iter": 213,
+        "op": "change"
+      },
+      {
+        "iter": 214,
+        "op": "delete"
+      },
+      {
+        "iter": 215,
+        "op": "insert"
+      },
+      {
+        "iter": 216,
+        "op": "extend"
+      },
+      {
+        "iter": 217,
+        "op": "change"
+      },
+      {
+        "iter": 218,
+        "op": "delete"
+      },
+      {
+        "iter": 219,
+        "op": "insert"
+      },
+      {
+        "iter": 220,
+        "op": "extend"
+      },
+      {
+        "iter": 221,
+        "op": "change"
+      },
+      {
+        "iter": 222,
+        "op": "delete"
+      },
+      {
+        "iter": 223,
+        "op": "shake"
+      },
+      {
+        "iter": 224,
+        "op": "insert"
+      },
+      {
+        "iter": 225,
+        "op": "extend"
+      },
+      {
+        "iter": 226,
+        "op": "insert"
+      },
+      {
+        "iter": 227,
+        "op": "extend"
+      },
+      {
+        "iter": 228,
+        "op": "insert"
+      },
+      {
+        "iter": 229,
+        "op": "extend"
+      },
+      {
+        "iter": 230,
+        "op": "insert"
+      },
+      {
+        "iter": 231,
+        "op": "extend"
+      },
+      {
+        "iter": 232,
+        "op": "change"
+      },
+      {
+        "iter": 233,
+        "op": "delete"
+      },
+      {
+        "iter": 234,
+        "op": "insert"
+      },
+      {
+        "iter": 235,
+        "op": "extend"
+      },
+      {
+        "iter": 236,
+        "op": "insert"
+      },
+      {
+        "iter": 237,
+        "op": "extend"
+      },
+      {
+        "iter": 238,
+        "op": "insert"
+      },
+      {
+        "iter": 239,
+        "op": "extend"
+      },
+      {
+        "iter": 240,
+        "op": "change"
+      },
+      {
+        "iter": 241,
+        "op": "delete"
+      },
+      {
+        "iter": 242,
+        "op": "insert"
+      },
+      {
+        "iter": 243,
+        "op": "extend"
+      },
+      {
+        "iter": 244,
+        "op": "insert"
+      },
+      {
+        "iter": 245,
+        "op": "extend"
+      },
+      {
+        "iter": 246,
+        "op": "change"
+      },
+      {
+        "iter": 247,
+        "op": "delete"
+      },
+      {
+        "iter": 248,
+        "op": "insert"
+      },
+      {
+        "iter": 249,
+        "op": "extend"
+      },
+      {
+        "iter": 250,
+        "op": "change"
+      },
+      {
+        "iter": 251,
+        "op": "delete"
+      },
+      {
+        "iter": 252,
+        "op": "insert"
+      },
+      {
+        "iter": 253,
+        "op": "extend"
+      },
+      {
+        "iter": 254,
+        "op": "change"
+      },
+      {
+        "iter": 255,
+        "op": "delete"
+      },
+      {
+        "iter": 256,
+        "op": "insert"
+      },
+      {
+        "iter": 257,
+        "op": "extend"
+      },
+      {
+        "iter": 258,
+        "op": "change"
+      },
+      {
+        "iter": 259,
+        "op": "delete"
+      },
+      {
+        "iter": 260,
+        "op": "shake"
+      },
+      {
+        "iter": 261,
+        "op": "insert"
+      },
+      {
+        "iter": 262,
+        "op": "extend"
+      },
+      {
+        "iter": 263,
+        "op": "insert"
+      },
+      {
+        "iter": 264,
+        "op": "extend"
+      },
+      {
+        "iter": 265,
+        "op": "insert"
+      },
+      {
+        "iter": 266,
+        "op": "extend"
+      },
+      {
+        "iter": 267,
+        "op": "insert"
+      },
+      {
+        "iter": 268,
+        "op": "extend"
+      },
+      {
+        "iter": 269,
+        "op": "change"
+      },
+      {
+        "iter": 270,
+        "op": "delete"
+      },
+      {
+        "iter": 271,
+        "op": "insert"
+      },
+      {
+        "iter": 272,
+        "op": "extend"
+      },
+      {
+        "iter": 273,
+        "op": "insert"
+      },
+      {
+        "iter": 274,
+        "op": "extend"
+      },
+      {
+        "iter": 275,
+        "op": "insert"
+      },
+      {
+        "iter": 276,
+        "op": "extend"
+      },
+      {
+        "iter": 277,
+        "op": "insert"
+      },
+      {
+        "iter": 278,
+        "op": "extend"
+      },
+      {
+        "iter": 279,
+        "op": "change"
+      },
+      {
+        "iter": 280,
+        "op": "delete"
+      },
+      {
+        "iter": 281,
+        "op": "insert"
+      },
+      {
+        "iter": 282,
+        "op": "extend"
+      },
+      {
+        "iter": 283,
+        "op": "insert"
+      },
+      {
+        "iter": 284,
+        "op": "extend"
+      },
+      {
+        "iter": 285,
+        "op": "change"
+      },
+      {
+        "iter": 286,
+        "op": "delete"
+      },
+      {
+        "iter": 287,
+        "op": "insert"
+      },
+      {
+        "iter": 288,
+        "op": "extend"
+      },
+      {
+        "iter": 289,
+        "op": "insert"
+      },
+      {
+        "iter": 290,
+        "op": "extend"
+      },
+      {
+        "iter": 291,
+        "op": "change"
+      },
+      {
+        "iter": 292,
+        "op": "delete"
+      },
+      {
+        "iter": 293,
+        "op": "insert"
+      },
+      {
+        "iter": 294,
+        "op": "extend"
+      },
+      {
+        "iter": 295,
+        "op": "change"
+      },
+      {
+        "iter": 296,
+        "op": "delete"
+      },
+      {
+        "iter": 297,
+        "op": "insert"
+      },
+      {
+        "iter": 298,
+        "op": "extend"
+      },
+      {
+        "iter": 299,
+        "op": "change"
+      },
+      {
+        "iter": 300,
+        "op": "delete"
+      },
+      {
+        "iter": 301,
+        "op": "insert"
+      },
+      {
+        "iter": 302,
+        "op": "extend"
+      },
+      {
+        "iter": 303,
+        "op": "change"
+      },
+      {
+        "iter": 304,
+        "op": "delete"
+      },
+      {
+        "iter": 305,
+        "op": "shake"
+      },
+      {
+        "iter": 306,
+        "op": "insert"
+      },
+      {
+        "iter": 307,
+        "op": "extend"
+      },
+      {
+        "iter": 308,
+        "op": "insert"
+      },
+      {
+        "iter": 309,
+        "op": "extend"
+      },
+      {
+        "iter": 310,
+        "op": "insert"
+      },
+      {
+        "iter": 311,
+        "op": "extend"
+      },
+      {
+        "iter": 312,
+        "op": "change"
+      },
+      {
+        "iter": 313,
+        "op": "delete"
+      },
+      {
+        "iter": 314,
+        "op": "insert"
+      },
+      {
+        "iter": 315,
+        "op": "extend"
+      },
+      {
+        "iter": 316,
+        "op": "change"
+      },
+      {
+        "iter": 317,
+        "op": "delete"
+      },
+      {
+        "iter": 318,
+        "op": "insert"
+      },
+      {
+        "iter": 319,
+        "op": "extend"
+      },
+      {
+        "iter": 320,
+        "op": "change"
+      },
+      {
+        "iter": 321,
+        "op": "delete"
+      },
+      {
+        "iter": 322,
+        "op": "insert"
+      },
+      {
+        "iter": 323,
+        "op": "extend"
+      },
+      {
+        "iter": 324,
+        "op": "change"
+      },
+      {
+        "iter": 325,
+        "op": "delete"
+      },
+      {
+        "iter": 326,
+        "op": "shake"
+      },
+      {
+        "iter": 327,
+        "op": "insert"
+      },
+      {
+        "iter": 328,
+        "op": "extend"
+      },
+      {
+        "iter": 329,
+        "op": "insert"
+      },
+      {
+        "iter": 330,
+        "op": "extend"
+      },
+      {
+        "iter": 331,
+        "op": "insert"
+      },
+      {
+        "iter": 332,
+        "op": "extend"
+      },
+      {
+        "iter": 333,
+        "op": "change"
+      },
+      {
+        "iter": 334,
+        "op": "delete"
+      },
+      {
+        "iter": 335,
+        "op": "insert"
+      },
+      {
+        "iter": 336,
+        "op": "extend"
+      },
+      {
+        "iter": 337,
+        "op": "insert"
+      },
+      {
+        "iter": 338,
+        "op": "extend"
+      },
+      {
+        "iter": 339,
+        "op": "change"
+      },
+      {
+        "iter": 340,
+        "op": "delete"
+      },
+      {
+        "iter": 341,
+        "op": "insert"
+      },
+      {
+        "iter": 342,
+        "op": "extend"
+      },
+      {
+        "iter": 343,
+        "op": "insert"
+      },
+      {
+        "iter": 344,
+        "op": "extend"
+      },
+      {
+        "iter": 345,
+        "op": "insert"
+      },
+      {
+        "iter": 346,
+        "op": "extend"
+      },
+      {
+        "iter": 347,
+        "op": "change"
+      },
+      {
+        "iter": 348,
+        "op": "delete"
+      },
+      {
+        "iter": 349,
+        "op": "shake"
+      },
+      {
+        "iter": 350,
+        "op": "insert"
+      },
+      {
+        "iter": 351,
+        "op": "extend"
+      },
+      {
+        "iter": 352,
+        "op": "insert"
+      },
+      {
+        "iter": 353,
+        "op": "extend"
+      },
+      {
+        "iter": 354,
+        "op": "insert"
+      },
+      {
+        "iter": 355,
+        "op": "extend"
+      },
+      {
+        "iter": 356,
+        "op": "change"
+      },
+      {
+        "iter": 357,
+        "op": "delete"
+      },
+      {
+        "iter": 358,
+        "op": "insert"
+      },
+      {
+        "iter": 359,
+        "op": "extend"
+      },
+      {
+        "iter": 360,
+        "op": "insert"
+      },
+      {
+        "iter": 361,
+        "op": "extend"
+      },
+      {
+        "iter": 362,
+        "op": "insert"
+      },
+      {
+        "iter": 363,
+        "op": "extend"
+      },
+      {
+        "iter": 364,
+        "op": "change"
+      },
+      {
+        "iter": 365,
+        "op": "delete"
+      },
+      {
+        "iter": 366,
+        "op": "insert"
+      },
+      {
+        "iter": 367,
+        "op": "extend"
+      },
+      {
+        "iter": 368,
+        "op": "change"
+      },
+      {
+        "iter": 369,
+        "op": "delete"
+      },
+      {
+        "iter": 370,
+        "op": "shake"
+      },
+      {
+        "iter": 371,
+        "op": "insert"
+      },
+      {
+        "iter": 372,
+        "op": "extend"
+      },
+      {
+        "iter": 373,
+        "op": "insert"
+      },
+      {
+        "iter": 374,
+        "op": "extend"
+      },
+      {
+        "iter": 375,
+        "op": "insert"
+      },
+      {
+        "iter": 376,
+        "op": "extend"
+      },
+      {
+        "iter": 377,
+        "op": "insert"
+      },
+      {
+        "iter": 378,
+        "op": "extend"
+      },
+      {
+        "iter": 379,
+        "op": "change"
+      },
+      {
+        "iter": 380,
+        "op": "delete"
+      },
+      {
+        "iter": 381,
+        "op": "insert"
+      },
+      {
+        "iter": 382,
+        "op": "extend"
+      },
+      {
+        "iter": 383,
+        "op": "insert"
+      },
+      {
+        "iter": 384,
+        "op": "extend"
+      },
+      {
+        "iter": 385,
+        "op": "change"
+      },
+      {
+        "iter": 386,
+        "op": "delete"
+      },
+      {
+        "iter": 387,
+        "op": "insert"
+      },
+      {
+        "iter": 388,
+        "op": "extend"
+      },
+      {
+        "iter": 389,
+        "op": "insert"
+      },
+      {
+        "iter": 390,
+        "op": "extend"
+      },
+      {
+        "iter": 391,
+        "op": "insert"
+      },
+      {
+        "iter": 392,
+        "op": "extend"
+      },
+      {
+        "iter": 393,
+        "op": "change"
+      },
+      {
+        "iter": 394,
+        "op": "delete"
+      },
+      {
+        "iter": 395,
+        "op": "insert"
+      },
+      {
+        "iter": 396,
+        "op": "extend"
+      },
+      {
+        "iter": 397,
+        "op": "change"
+      },
+      {
+        "iter": 398,
+        "op": "delete"
+      },
+      {
+        "iter": 399,
+        "op": "insert"
+      },
+      {
+        "iter": 400,
+        "op": "extend"
+      },
+      {
+        "iter": 401,
+        "op": "change"
+      },
+      {
+        "iter": 402,
+        "op": "delete"
+      },
+      {
+        "iter": 403,
+        "op": "insert"
+      },
+      {
+        "iter": 404,
+        "op": "extend"
+      },
+      {
+        "iter": 405,
+        "op": "insert"
+      },
+      {
+        "iter": 406,
+        "op": "extend"
+      },
+      {
+        "iter": 407,
+        "op": "change"
+      },
+      {
+        "iter": 408,
+        "op": "delete"
+      },
+      {
+        "iter": 409,
+        "op": "shake"
+      },
+      {
+        "iter": 410,
+        "op": "insert"
+      },
+      {
+        "iter": 411,
+        "op": "extend"
+      },
+      {
+        "iter": 412,
+        "op": "insert"
+      },
+      {
+        "iter": 413,
+        "op": "extend"
+      },
+      {
+        "iter": 414,
+        "op": "insert"
+      },
+      {
+        "iter": 415,
+        "op": "extend"
+      },
+      {
+        "iter": 416,
+        "op": "change"
+      },
+      {
+        "iter": 417,
+        "op": "delete"
+      },
+      {
+        "iter": 418,
+        "op": "insert"
+      },
+      {
+        "iter": 419,
+        "op": "extend"
+      },
+      {
+        "iter": 420,
+        "op": "change"
+      },
+      {
+        "iter": 421,
+        "op": "delete"
+      },
+      {
+        "iter": 422,
+        "op": "insert"
+      },
+      {
+        "iter": 423,
+        "op": "extend"
+      },
+      {
+        "iter": 424,
+        "op": "change"
+      },
+      {
+        "iter": 425,
+        "op": "delete"
+      },
+      {
+        "iter": 426,
+        "op": "insert"
+      },
+      {
+        "iter": 427,
+        "op": "extend"
+      },
+      {
+        "iter": 428,
+        "op": "change"
+      },
+      {
+        "iter": 429,
+        "op": "delete"
+      },
+      {
+        "iter": 430,
+        "op": "shake"
+      },
+      {
+        "iter": 431,
+        "op": "insert"
+      },
+      {
+        "iter": 432,
+        "op": "extend"
+      },
+      {
+        "iter": 433,
+        "op": "insert"
+      },
+      {
+        "iter": 434,
+        "op": "extend"
+      },
+      {
+        "iter": 435,
+        "op": "insert"
+      },
+      {
+        "iter": 436,
+        "op": "extend"
+      },
+      {
+        "iter": 437,
+        "op": "insert"
+      },
+      {
+        "iter": 438,
+        "op": "extend"
+      },
+      {
+        "iter": 439,
+        "op": "change"
+      },
+      {
+        "iter": 440,
+        "op": "delete"
+      },
+      {
+        "iter": 441,
+        "op": "insert"
+      },
+      {
+        "iter": 442,
+        "op": "extend"
+      },
+      {
+        "iter": 443,
+        "op": "insert"
+      },
+      {
+        "iter": 444,
+        "op": "extend"
+      },
+      {
+        "iter": 445,
+        "op": "change"
+      },
+      {
+        "iter": 446,
+        "op": "delete"
+      },
+      {
+        "iter": 447,
+        "op": "insert"
+      },
+      {
+        "iter": 448,
+        "op": "extend"
+      },
+      {
+        "iter": 449,
+        "op": "change"
+      },
+      {
+        "iter": 450,
+        "op": "delete"
+      },
+      {
+        "iter": 451,
+        "op": "shake"
+      },
+      {
+        "iter": 452,
+        "op": "insert"
+      },
+      {
+        "iter": 453,
+        "op": "extend"
+      },
+      {
+        "iter": 454,
+        "op": "insert"
+      },
+      {
+        "iter": 455,
+        "op": "extend"
+      },
+      {
+        "iter": 456,
+        "op": "change"
+      },
+      {
+        "iter": 457,
+        "op": "delete"
+      },
+      {
+        "iter": 458,
+        "op": "insert"
+      },
+      {
+        "iter": 459,
+        "op": "extend"
+      },
+      {
+        "iter": 460,
+        "op": "change"
+      },
+      {
+        "iter": 461,
+        "op": "delete"
+      },
+      {
+        "iter": 462,
+        "op": "insert"
+      },
+      {
+        "iter": 463,
+        "op": "extend"
+      },
+      {
+        "iter": 464,
+        "op": "change"
+      },
+      {
+        "iter": 465,
+        "op": "delete"
+      },
+      {
+        "iter": 466,
+        "op": "shake"
+      },
+      {
+        "iter": 467,
+        "op": "insert"
+      },
+      {
+        "iter": 468,
+        "op": "extend"
+      },
+      {
+        "iter": 469,
+        "op": "change"
+      },
+      {
+        "iter": 470,
+        "op": "delete"
+      },
+      {
+        "iter": 471,
+        "op": "shake"
+      },
+      {
+        "iter": 472,
+        "op": "insert"
+      },
+      {
+        "iter": 473,
+        "op": "extend"
+      },
+      {
+        "iter": 474,
+        "op": "insert"
+      },
+      {
+        "iter": 475,
+        "op": "extend"
+      },
+      {
+        "iter": 476,
+        "op": "insert"
+      },
+      {
+        "iter": 477,
+        "op": "extend"
+      },
+      {
+        "iter": 478,
+        "op": "insert"
+      },
+      {
+        "iter": 479,
+        "op": "extend"
+      },
+      {
+        "iter": 480,
+        "op": "insert"
+      },
+      {
+        "iter": 481,
+        "op": "extend"
+      },
+      {
+        "iter": 482,
+        "op": "change"
+      },
+      {
+        "iter": 483,
+        "op": "delete"
+      },
+      {
+        "iter": 484,
+        "op": "insert"
+      },
+      {
+        "iter": 485,
+        "op": "extend"
+      },
+      {
+        "iter": 486,
+        "op": "insert"
+      },
+      {
+        "iter": 487,
+        "op": "extend"
+      },
+      {
+        "iter": 488,
+        "op": "insert"
+      },
+      {
+        "iter": 489,
+        "op": "extend"
+      },
+      {
+        "iter": 490,
+        "op": "insert"
+      },
+      {
+        "iter": 491,
+        "op": "extend"
+      },
+      {
+        "iter": 492,
+        "op": "insert"
+      },
+      {
+        "iter": 493,
+        "op": "extend"
+      },
+      {
+        "iter": 494,
+        "op": "change"
+      },
+      {
+        "iter": 495,
+        "op": "delete"
+      },
+      {
+        "iter": 496,
+        "op": "insert"
+      },
+      {
+        "iter": 497,
+        "op": "extend"
+      },
+      {
+        "iter": 498,
+        "op": "insert"
+      },
+      {
+        "iter": 499,
+        "op": "extend"
+      },
+      {
+        "iter": 500,
+        "op": "change"
+      },
+      {
+        "iter": 501,
+        "op": "delete"
+      },
+      {
+        "iter": 502,
+        "op": "insert"
+      },
+      {
+        "iter": 503,
+        "op": "extend"
+      },
+      {
+        "iter": 504,
+        "op": "insert"
+      },
+      {
+        "iter": 505,
+        "op": "extend"
+      },
+      {
+        "iter": 506,
+        "op": "change"
+      },
+      {
+        "iter": 507,
+        "op": "delete"
+      },
+      {
+        "iter": 508,
+        "op": "insert"
+      },
+      {
+        "iter": 509,
+        "op": "extend"
+      },
+      {
+        "iter": 510,
+        "op": "insert"
+      },
+      {
+        "iter": 511,
+        "op": "extend"
+      },
+      {
+        "iter": 512,
+        "op": "insert"
+      },
+      {
+        "iter": 513,
+        "op": "extend"
+      },
+      {
+        "iter": 514,
+        "op": "change"
+      },
+      {
+        "iter": 515,
+        "op": "delete"
+      },
+      {
+        "iter": 516,
+        "op": "insert"
+      },
+      {
+        "iter": 517,
+        "op": "extend"
+      },
+      {
+        "iter": 518,
+        "op": "change"
+      },
+      {
+        "iter": 519,
+        "op": "delete"
+      },
+      {
+        "iter": 520,
+        "op": "insert"
+      },
+      {
+        "iter": 521,
+        "op": "extend"
+      },
+      {
+        "iter": 522,
+        "op": "change"
+      },
+      {
+        "iter": 523,
+        "op": "delete"
+      },
+      {
+        "iter": 524,
+        "op": "shake"
+      },
+      {
+        "iter": 525,
+        "op": "insert"
+      },
+      {
+        "iter": 526,
+        "op": "extend"
+      },
+      {
+        "iter": 527,
+        "op": "insert"
+      },
+      {
+        "iter": 528,
+        "op": "extend"
+      },
+      {
+        "iter": 529,
+        "op": "insert"
+      },
+      {
+        "iter": 530,
+        "op": "extend"
+      },
+      {
+        "iter": 531,
+        "op": "insert"
+      },
+      {
+        "iter": 532,
+        "op": "extend"
+      },
+      {
+        "iter": 533,
+        "op": "insert"
+      },
+      {
+        "iter": 534,
+        "op": "extend"
+      },
+      {
+        "iter": 535,
+        "op": "change"
+      },
+      {
+        "iter": 536,
+        "op": "delete"
+      },
+      {
+        "iter": 537,
+        "op": "insert"
+      },
+      {
+        "iter": 538,
+        "op": "extend"
+      },
+      {
+        "iter": 539,
+        "op": "insert"
+      },
+      {
+        "iter": 540,
+        "op": "extend"
+      },
+      {
+        "iter": 541,
+        "op": "change"
+      },
+      {
+        "iter": 542,
+        "op": "delete"
+      },
+      {
+        "iter": 543,
+        "op": "insert"
+      },
+      {
+        "iter": 544,
+        "op": "extend"
+      },
+      {
+        "iter": 545,
+        "op": "insert"
+      },
+      {
+        "iter": 546,
+        "op": "extend"
+      },
+      {
+        "iter": 547,
+        "op": "change"
+      },
+      {
+        "iter": 548,
+        "op": "delete"
+      },
+      {
+        "iter": 549,
+        "op": "insert"
+      },
+      {
+        "iter": 550,
+        "op": "extend"
+      },
+      {
+        "iter": 551,
+        "op": "change"
+      },
+      {
+        "iter": 552,
+        "op": "delete"
+      },
+      {
+        "iter": 553,
+        "op": "insert"
+      },
+      {
+        "iter": 554,
+        "op": "extend"
+      },
+      {
+        "iter": 555,
+        "op": "change"
+      },
+      {
+        "iter": 556,
+        "op": "delete"
+      },
+      {
+        "iter": 557,
+        "op": "shake"
+      },
+      {
+        "iter": 558,
+        "op": "insert"
+      },
+      {
+        "iter": 559,
+        "op": "extend"
+      },
+      {
+        "iter": 560,
+        "op": "insert"
+      },
+      {
+        "iter": 561,
+        "op": "extend"
+      },
+      {
+        "iter": 562,
+        "op": "insert"
+      },
+      {
+        "iter": 563,
+        "op": "extend"
+      },
+      {
+        "iter": 564,
+        "op": "insert"
+      },
+      {
+        "iter": 565,
+        "op": "extend"
+      },
+      {
+        "iter": 566,
+        "op": "change"
+      },
+      {
+        "iter": 567,
+        "op": "delete"
+      },
+      {
+        "iter": 568,
+        "op": "insert"
+      },
+      {
+        "iter": 569,
+        "op": "extend"
+      },
+      {
+        "iter": 570,
+        "op": "insert"
+      },
+      {
+        "iter": 571,
+        "op": "extend"
+      },
+      {
+        "iter": 572,
+        "op": "insert"
+      },
+      {
+        "iter": 573,
+        "op": "extend"
+      },
+      {
+        "iter": 574,
+        "op": "insert"
+      },
+      {
+        "iter": 575,
+        "op": "extend"
+      },
+      {
+        "iter": 576,
+        "op": "change"
+      },
+      {
+        "iter": 577,
+        "op": "delete"
+      },
+      {
+        "iter": 578,
+        "op": "insert"
+      },
+      {
+        "iter": 579,
+        "op": "extend"
+      },
+      {
+        "iter": 580,
+        "op": "change"
+      },
+      {
+        "iter": 581,
+        "op": "delete"
+      },
+      {
+        "iter": 582,
+        "op": "insert"
+      },
+      {
+        "iter": 583,
+        "op": "extend"
+      },
+      {
+        "iter": 584,
+        "op": "insert"
+      },
+      {
+        "iter": 585,
+        "op": "extend"
+      },
+      {
+        "iter": 586,
+        "op": "change"
+      },
+      {
+        "iter": 587,
+        "op": "delete"
+      },
+      {
+        "iter": 588,
+        "op": "insert"
+      },
+      {
+        "iter": 589,
+        "op": "extend"
+      },
+      {
+        "iter": 590,
+        "op": "change"
+      },
+      {
+        "iter": 591,
+        "op": "delete"
+      },
+      {
+        "iter": 592,
+        "op": "insert"
+      },
+      {
+        "iter": 593,
+        "op": "extend"
+      },
+      {
+        "iter": 594,
+        "op": "change"
+      },
+      {
+        "iter": 595,
+        "op": "delete"
+      },
+      {
+        "iter": 596,
+        "op": "shake"
+      },
+      {
+        "iter": 597,
+        "op": "insert"
+      },
+      {
+        "iter": 598,
+        "op": "extend"
+      },
+      {
+        "iter": 599,
+        "op": "insert"
+      },
+      {
+        "iter": 600,
+        "op": "extend"
+      },
+      {
+        "iter": 601,
+        "op": "insert"
+      },
+      {
+        "iter": 602,
+        "op": "extend"
+      },
+      {
+        "iter": 603,
+        "op": "change"
+      },
+      {
+        "iter": 604,
+        "op": "delete"
+      },
+      {
+        "iter": 605,
+        "op": "insert"
+      },
+      {
+        "iter": 606,
+        "op": "extend"
+      },
+      {
+        "iter": 607,
+        "op": "change"
+      },
+      {
+        "iter": 608,
+        "op": "delete"
+      },
+      {
+        "iter": 609,
+        "op": "robust"
+      },
+      {
+        "iter": 615,
+        "op": "kick"
+      },
+      {
+        "iter": 616,
+        "op": "robust"
+      },
+      {
+        "iter": 623,
+        "op": "kick"
+      },
+      {
+        "iter": 624,
+        "op": "robust"
+      },
+      {
+        "iter": 631,
+        "op": "kick"
+      },
+      {
+        "iter": 632,
+        "op": "robust"
+      },
+      {
+        "iter": 637,
+        "op": "kick"
+      },
+      {
+        "iter": 638,
+        "op": "robust"
+      },
+      {
+        "iter": 643,
+        "op": "kick"
+      },
+      {
+        "iter": 644,
+        "op": "robust"
+      },
+      {
+        "iter": 648,
+        "op": "kick"
+      },
+      {
+        "iter": 649,
+        "op": "robust"
+      },
+      {
+        "iter": 657,
+        "op": "kick"
+      },
+      {
+        "iter": 658,
+        "op": "robust"
+      },
+      {
+        "iter": 663,
+        "op": "kick"
+      },
+      {
+        "iter": 664,
+        "op": "robust"
+      },
+      {
+        "iter": 669,
+        "op": "kick"
+      },
+      {
+        "iter": 670,
+        "op": "robust"
+      },
+      {
+        "iter": 674,
+        "op": "kick"
+      },
+      {
+        "iter": 675,
+        "op": "robust"
+      },
+      {
+        "iter": 679,
+        "op": "kick"
+      },
+      {
+        "iter": 680,
+        "op": "robust"
+      },
+      {
+        "iter": 693,
+        "op": "kick"
+      },
+      {
+        "iter": 694,
+        "op": "robust"
+      },
+      {
+        "iter": 698,
+        "op": "kick"
+      },
+      {
+        "iter": 699,
+        "op": "robust"
+      },
+      {
+        "iter": 703,
+        "op": "kick"
+      },
+      {
+        "iter": 704,
+        "op": "robust"
+      },
+      {
+        "iter": 709,
+        "op": "kick"
+      },
+      {
+        "iter": 710,
+        "op": "robust"
+      },
+      {
+        "iter": 715,
+        "op": "kick"
+      },
+      {
+        "iter": 716,
+        "op": "robust"
+      },
+      {
+        "iter": 720,
+        "op": "kick"
+      },
+      {
+        "iter": 721,
+        "op": "robust"
+      },
+      {
+        "iter": 725,
+        "op": "kick"
+      },
+      {
+        "iter": 726,
+        "op": "robust"
+      },
+      {
+        "iter": 732,
+        "op": "kick"
+      },
+      {
+        "iter": 733,
+        "op": "robust"
+      },
+      {
+        "iter": 739,
+        "op": "kick"
+      },
+      {
+        "iter": 740,
+        "op": "robust"
+      },
+      {
+        "iter": 746,
+        "op": "kick"
+      },
+      {
+        "iter": 747,
+        "op": "robust"
+      },
+      {
+        "iter": 752,
+        "op": "kick"
+      },
+      {
+        "iter": 753,
+        "op": "robust"
+      },
+      {
+        "iter": 762,
+        "op": "kick"
+      },
+      {
+        "iter": 763,
+        "op": "robust"
+      },
+      {
+        "iter": 766,
+        "op": "kick"
+      },
+      {
+        "iter": 767,
+        "op": "robust"
+      },
+      {
+        "iter": 773,
+        "op": "kick"
+      },
+      {
+        "iter": 774,
+        "op": "robust"
+      },
+      {
+        "iter": 779,
+        "op": "kick"
+      },
+      {
+        "iter": 780,
+        "op": "robust"
+      },
+      {
+        "iter": 787,
+        "op": "kick"
+      },
+      {
+        "iter": 788,
+        "op": "robust"
+      },
+      {
+        "iter": 792,
+        "op": "kick"
+      },
+      {
+        "iter": 793,
+        "op": "robust"
+      },
+      {
+        "iter": 802,
+        "op": "kick"
+      },
+      {
+        "iter": 803,
+        "op": "robust"
+      },
+      {
+        "iter": 810,
+        "op": "kick"
+      },
+      {
+        "iter": 811,
+        "op": "robust"
+      }
+    ],
+    [
+      {
+        "iter": 1,
+        "op": "insert"
+      },
+      {
+        "iter": 4,
+        "op": "change"
+      },
+      {
+        "iter": 5,
+        "op": "insert"
+      },
+      {
+        "iter": 11,
+        "op": "change"
+      },
+      {
+        "iter": 12,
+        "op": "delete"
+      },
+      {
+        "iter": 13,
+        "op": "shake"
+      },
+      {
+        "iter": 14,
+        "op": "insert"
+      },
+      {
+        "iter": 15,
+        "op": "change"
+      },
+      {
+        "iter": 16,
+        "op": "delete"
+      },
+      {
+        "iter": 17,
+        "op": "shake"
+      },
+      {
+        "iter": 18,
+        "op": "insert"
+      },
+      {
+        "iter": 19,
+        "op": "change"
+      },
+      {
+        "iter": 20,
+        "op": "delete"
+      },
+      {
+        "iter": 21,
+        "op": "shake"
+      },
+      {
+        "iter": 22,
+        "op": "insert"
+      },
+      {
+        "iter": 23,
+        "op": "change"
+      },
+      {
+        "iter": 24,
+        "op": "delete"
+      },
+      {
+        "iter": 25,
+        "op": "shake"
+      },
+      {
+        "iter": 26,
+        "op": "insert"
+      },
+      {
+        "iter": 27,
+        "op": "change"
+      },
+      {
+        "iter": 28,
+        "op": "delete"
+      },
+      {
+        "iter": 29,
+        "op": "insert"
+      },
+      {
+        "iter": 30,
+        "op": "change"
+      },
+      {
+        "iter": 31,
+        "op": "delete"
+      },
+      {
+        "iter": 32,
+        "op": "shake"
+      },
+      {
+        "iter": 33,
+        "op": "insert"
+      },
+      {
+        "iter": 34,
+        "op": "change"
+      },
+      {
+        "iter": 35,
+        "op": "delete"
+      },
+      {
+        "iter": 36,
+        "op": "insert"
+      },
+      {
+        "iter": 37,
+        "op": "change"
+      },
+      {
+        "iter": 38,
+        "op": "delete"
+      },
+      {
+        "iter": 39,
+        "op": "shake"
+      },
+      {
+        "iter": 40,
+        "op": "insert"
+      },
+      {
+        "iter": 41,
+        "op": "change"
+      },
+      {
+        "iter": 42,
+        "op": "delete"
+      },
+      {
+        "iter": 43,
+        "op": "shake"
+      },
+      {
+        "iter": 44,
+        "op": "insert"
+      },
+      {
+        "iter": 45,
+        "op": "change"
+      },
+      {
+        "iter": 46,
+        "op": "delete"
+      },
+      {
+        "iter": 47,
+        "op": "insert"
+      },
+      {
+        "iter": 48,
+        "op": "change"
+      },
+      {
+        "iter": 49,
+        "op": "delete"
+      },
+      {
+        "iter": 50,
+        "op": "shake"
+      },
+      {
+        "iter": 51,
+        "op": "insert"
+      },
+      {
+        "iter": 52,
+        "op": "change"
+      },
+      {
+        "iter": 53,
+        "op": "delete"
+      }
+    ]
+  ],
+  "op_stats": {
+    "later": {
+      "change": {
+        "calls": 13,
+        "improved": 1,
+        "peak_drop": 0.008150292570300699,
+        "seconds": 0.00036281999999999997
+      },
+      "delete": {
+        "calls": 12,
+        "improved": 3,
+        "peak_drop": 0.0,
+        "seconds": 0.00010487800000000001
+      },
+      "insert": {
+        "calls": 20,
+        "improved": 7,
+        "peak_drop": 0.08140995184513289,
+        "seconds": 0.000625451
+      },
+      "shake": {
+        "calls": 8,
+        "improved": 8,
+        "peak_drop": 0.0,
+        "seconds": 7.9255e-05
+      }
+    },
+    "slot0": {
+      "change": {
+        "calls": 96,
+        "improved": 0,
+        "peak_drop": 0.0,
+        "seconds": 0.0008833509999999999
+      },
+      "delete": {
+        "calls": 96,
+        "improved": 70,
+        "peak_drop": 0.0,
+        "seconds": 0.0005975989999999999
+      },
+      "extend": {
+        "calls": 195,
+        "improved": 99,
+        "peak_drop": 0.0,
+        "seconds": 0.021472784999999994
+      },
+      "insert": {
+        "calls": 196,
+        "improved": 1,
+        "peak_drop": 0.0706167862852376,
+        "seconds": 0.004096032999999998
+      },
+      "kick": {
+        "calls": 30,
+        "improved": 30,
+        "peak_drop": -0.024012717515044635,
+        "seconds": 0.005532889000000001
+      },
+      "robust": {
+        "calls": 181,
+        "improved": 119,
+        "peak_drop": 0.30505206330797074,
+        "seconds": 0.10283862499999989
+      },
+      "shake": {
+        "calls": 25,
+        "improved": 25,
+        "peak_drop": 0.0,
+        "seconds": 0.00031252
+      }
+    }
+  },
   "paths": [
     {
       "d": 0,
       "feasible": true,
       "links": [
-        14,
         11,
+        14,
         17
       ],
       "routed_demand": 0.6899,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        1,
-        5
-      ]
+      "w": []
     },
     {
       "d": 1,
       "feasible": true,
       "links": [
-        48,
-        1
+        3,
+        7,
+        77
       ],
       "routed_demand": 167.6557,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        3,
+        1
+      ]
     },
     {
       "d": 2,
       "feasible": true,
       "links": [
-        74,
-        8,
-        62,
-        55
+        2,
+        43,
+        74
       ],
       "routed_demand": 22.0781,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        4,
-        17
+        4
       ]
     },
     {
@@ -1234,9 +4182,9 @@
       "feasible": true,
       "links": [
         1,
+        13,
         35,
-        46,
-        13
+        46
       ],
       "routed_demand": 16.5586,
       "t": 0,
@@ -1247,25 +4195,25 @@
       "d": 5,
       "feasible": true,
       "links": [
-        16,
         10,
-        77,
-        35
+        16,
+        35,
+        77
       ],
       "routed_demand": 4.8296,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        0
+        1
       ]
     },
     {
       "d": 6,
       "feasible": true,
       "links": [
-        78,
         22,
-        29
+        29,
+        78
       ],
       "routed_demand": 121.4296,
       "t": 0,
@@ -1287,9 +4235,9 @@
       "d": 8,
       "feasible": true,
       "links": [
-        76,
         11,
-        52
+        52,
+        76
       ],
       "routed_demand": 73.8237,
       "t": 0,
@@ -1301,23 +4249,25 @@
       "feasible": true,
       "links": [
         53,
-        65,
+        55,
         56,
-        55
+        69,
+        71
       ],
       "routed_demand": 240.0995,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        19
+        10,
+        13
       ]
     },
     {
       "d": 10,
       "feasible": true,
       "links": [
-        18,
         15,
+        18,
         29
       ],
       "routed_demand": 77.9633,
@@ -1329,30 +4279,34 @@
       "d": 11,
       "feasible": true,
       "links": [
-        30,
-        70,
-        17
+        17,
+        40,
+        44
       ],
       "routed_demand": 30.3574,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        10
-      ]
+      "w": []
     },
     {
       "d": 12,
       "feasible": true,
       "links": [
-        28,
+        6,
+        11,
         14,
-        2,
-        6
+        25,
+        28,
+        58
       ],
       "routed_demand": 95.9018,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        1,
+        5,
+        3
+      ]
     },
     {
       "d": 13,
@@ -1369,16 +4323,19 @@
       "d": 14,
       "feasible": true,
       "links": [
-        38,
-        14,
-        77,
-        35
+        6,
+        25,
+        40,
+        58,
+        63,
+        64
       ],
       "routed_demand": 15.8686,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        0
+        12,
+        15
       ]
     },
     {
@@ -1386,8 +4343,8 @@
       "feasible": true,
       "links": [
         8,
-        46,
-        20
+        20,
+        46
       ],
       "routed_demand": 8.2793,
       "t": 0,
@@ -1398,30 +4355,33 @@
       "d": 16,
       "feasible": true,
       "links": [
-        51,
-        64,
-        52,
+        4,
         36,
-        4
+        51,
+        52,
+        68,
+        70
       ],
       "routed_demand": 192.4936,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        10
+      ]
     },
     {
       "d": 17,
       "feasible": true,
       "links": [
-        25,
-        58,
+        2,
+        10,
         33
       ],
       "routed_demand": 14.4888,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        12
+        1
       ]
     },
     {
@@ -1442,16 +4402,19 @@
       "d": 19,
       "feasible": true,
       "links": [
+        1,
+        10,
         12,
-        69,
-        38,
-        14,
-        77
+        19,
+        70
       ],
       "routed_demand": 64.8545,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        5,
+        9
+      ]
     },
     {
       "d": 20,
@@ -1490,25 +4453,27 @@
       "d": 23,
       "feasible": true,
       "links": [
-        58,
-        3,
-        19
+        14,
+        19,
+        24,
+        38,
+        65
       ],
       "routed_demand": 115.9101,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        1
+        7
       ]
     },
     {
       "d": 24,
       "feasible": true,
       "links": [
-        64,
-        52,
+        4,
         36,
-        4
+        52,
+        64
       ],
       "routed_demand": 57.9551,
       "t": 0,
@@ -1519,16 +4484,16 @@
       "d": 25,
       "feasible": true,
       "links": [
-        32,
-        73,
-        70,
-        17
+        5,
+        17,
+        37,
+        53
       ],
       "routed_demand": 2.7598,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        10
+        2
       ]
     },
     {
@@ -1547,37 +4512,48 @@
       "d": 27,
       "feasible": true,
       "links": [
-        62,
-        55,
-        6
+        9,
+        19,
+        43,
+        49
       ],
       "routed_demand": 6.8994,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        3
+        9
       ]
     },
     {
       "d": 28,
       "feasible": true,
       "links": [
-        21,
-        31
+        11,
+        14,
+        22,
+        24,
+        25,
+        31,
+        65,
+        68
       ],
       "routed_demand": 97.2817,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        1,
+        12,
+        19
+      ]
     },
     {
       "d": 29,
       "feasible": true,
       "links": [
-        12,
-        70,
         10,
-        19
+        12,
+        19,
+        70
       ],
       "routed_demand": 26.2178,
       "t": 0,
@@ -1590,14 +4566,17 @@
       "d": 30,
       "feasible": true,
       "links": [
-        40,
-        63,
-        9
+        1,
+        9,
+        35,
+        48
       ],
       "routed_demand": 155.2368,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        0
+      ]
     },
     {
       "d": 31,
@@ -1615,47 +4594,39 @@
       "d": 32,
       "feasible": true,
       "links": [
-        68,
-        70,
-        17
+        17,
+        64
       ],
       "routed_demand": 91.7622,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        10
-      ]
+      "w": []
     },
     {
       "d": 33,
       "feasible": true,
       "links": [
         16,
-        25,
-        58,
-        6
+        31,
+        71
       ],
       "routed_demand": 1.3799,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        12
-      ]
+      "w": []
     },
     {
       "d": 34,
       "feasible": true,
       "links": [
-        49,
-        7,
+        2,
+        18,
         33
       ],
       "routed_demand": 25.5278,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        15
-      ]
+      "w": []
     },
     {
       "d": 35,
@@ -1688,8 +4659,8 @@
       "d": 37,
       "feasible": true,
       "links": [
-        14,
         11,
+        14,
         52
       ],
       "routed_demand": 0.0,
@@ -1702,8 +4673,8 @@
       "feasible": true,
       "links": [
         23,
-        79,
-        36
+        36,
+        79
       ],
       "routed_demand": 68.3042,
       "t": 0,
@@ -1716,60 +4687,62 @@
       "d": 39,
       "feasible": true,
       "links": [
+        1,
+        3,
         6,
-        40,
-        63
+        35,
+        48,
+        77
       ],
       "routed_demand": 11.729,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        0
+      ]
     },
     {
       "d": 0,
       "feasible": true,
       "links": [
-        23,
-        21,
-        70,
+        11,
+        14,
         17
       ],
       "routed_demand": 46.916,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        11,
-        10,
-        5
-      ]
+      "w": []
     },
     {
       "d": 1,
       "feasible": true,
       "links": [
-        48,
-        1
+        3,
+        7,
+        77
       ],
       "routed_demand": 146.2675,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        3,
+        1
+      ]
     },
     {
       "d": 2,
       "feasible": true,
       "links": [
-        37,
-        53,
-        25,
-        58
+        2,
+        43,
+        74
       ],
       "routed_demand": 34.4971,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        18,
-        5
+        4
       ]
     },
     {
@@ -1789,9 +4762,9 @@
       "feasible": true,
       "links": [
         1,
+        13,
         35,
-        46,
-        13
+        46
       ],
       "routed_demand": 69.6841,
       "t": 1,
@@ -1802,31 +4775,32 @@
       "d": 5,
       "feasible": true,
       "links": [
-        16,
+        8,
         10,
-        77,
-        35
+        16,
+        42
       ],
       "routed_demand": 30.3574,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        0
+        1,
+        4
       ]
     },
     {
       "d": 6,
       "feasible": true,
       "links": [
-        78,
-        60
+        29,
+        38,
+        53,
+        65
       ],
       "routed_demand": 24.1479,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        11
-      ]
+      "w": []
     },
     {
       "d": 7,
@@ -1843,9 +4817,9 @@
       "d": 8,
       "feasible": true,
       "links": [
-        76,
         11,
-        52
+        52,
+        76
       ],
       "routed_demand": 17.9385,
       "t": 1,
@@ -1856,23 +4830,27 @@
       "d": 9,
       "feasible": true,
       "links": [
+        2,
+        14,
+        38,
         53,
-        25,
-        58
+        69,
+        71
       ],
       "routed_demand": 53.8154,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        5
+        10,
+        1
       ]
     },
     {
       "d": 10,
       "feasible": true,
       "links": [
-        18,
         15,
+        18,
         29
       ],
       "routed_demand": 149.7172,
@@ -1884,54 +4862,70 @@
       "d": 11,
       "feasible": true,
       "links": [
-        40,
-        44,
-        17
+        17,
+        30,
+        70
       ],
       "routed_demand": 111.7705,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        13
+        10
       ]
     },
     {
       "d": 12,
       "feasible": true,
       "links": [
-        28,
+        6,
+        11,
         14,
-        2,
-        6
+        28,
+        55,
+        56,
+        65
       ],
       "routed_demand": 26.9077,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        1,
+        5,
+        13,
+        3
+      ]
     },
     {
       "d": 13,
       "feasible": true,
       "links": [
-        29
+        23,
+        60
       ],
       "routed_demand": 67.6142,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        11
+      ]
     },
     {
       "d": 14,
       "feasible": true,
       "links": [
-        56,
-        63
+        6,
+        25,
+        40,
+        58,
+        63,
+        64
       ],
       "routed_demand": 152.477,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        13
+        12,
+        15
       ]
     },
     {
@@ -1939,8 +4933,8 @@
       "feasible": true,
       "links": [
         8,
-        46,
-        20
+        20,
+        46
       ],
       "routed_demand": 4.8296,
       "t": 1,
@@ -1951,30 +4945,33 @@
       "d": 16,
       "feasible": true,
       "links": [
-        51,
-        64,
-        52,
+        4,
         36,
-        4
+        51,
+        52,
+        68,
+        70
       ],
       "routed_demand": 169.0356,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        10
+      ]
     },
     {
       "d": 17,
       "feasible": true,
       "links": [
-        25,
-        58,
+        2,
+        10,
         33
       ],
       "routed_demand": 14.4888,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        12
+        1
       ]
     },
     {
@@ -1995,33 +4992,33 @@
       "d": 19,
       "feasible": true,
       "links": [
+        1,
         12,
-        69,
-        38,
         14,
-        77
+        19,
+        38,
+        65,
+        70
       ],
       "routed_demand": 42.0864,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        5,
+        7,
+        9
+      ]
     },
     {
       "d": 20,
       "feasible": true,
       "links": [
-        30,
-        69,
-        38,
-        14,
-        19
+        48
       ],
       "routed_demand": 104.8711,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        10
-      ]
+      "w": []
     },
     {
       "d": 21,
@@ -2049,44 +5046,49 @@
       "d": 23,
       "feasible": true,
       "links": [
-        58,
-        3,
-        19
+        14,
+        19,
+        24,
+        38,
+        65
       ],
       "routed_demand": 2.0698,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        1
+        7
       ]
     },
     {
       "d": 24,
       "feasible": true,
       "links": [
-        64,
-        52,
-        36,
-        4
+        33,
+        55,
+        56
       ],
       "routed_demand": 124.8793,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        3
+      ]
     },
     {
       "d": 25,
       "feasible": true,
       "links": [
-        32,
-        59,
-        24,
-        17
+        5,
+        17,
+        37,
+        53
       ],
       "routed_demand": 12.4189,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        2
+      ]
     },
     {
       "d": 26,
@@ -2104,37 +5106,50 @@
       "d": 27,
       "feasible": true,
       "links": [
-        62,
-        55,
-        6
+        9,
+        19,
+        43,
+        49
       ],
       "routed_demand": 53.8154,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        3
+        9
       ]
     },
     {
       "d": 28,
       "feasible": true,
       "links": [
+        11,
+        14,
         21,
-        31
+        24,
+        25,
+        31,
+        38,
+        65,
+        68,
+        69
       ],
       "routed_demand": 22.0781,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        1,
+        12,
+        19
+      ]
     },
     {
       "d": 29,
       "feasible": true,
       "links": [
-        12,
-        70,
         10,
-        19
+        12,
+        19,
+        70
       ],
       "routed_demand": 26.9077,
       "t": 1,
@@ -2147,14 +5162,17 @@
       "d": 30,
       "feasible": true,
       "links": [
-        40,
-        63,
-        9
+        1,
+        9,
+        35,
+        48
       ],
       "routed_demand": 57.9551,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        0
+      ]
     },
     {
       "d": 31,
@@ -2172,58 +5190,55 @@
       "d": 32,
       "feasible": true,
       "links": [
-        68,
-        70,
-        17
+        17,
+        64
       ],
       "routed_demand": 82.7929,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        10
-      ]
+      "w": []
     },
     {
       "d": 33,
       "feasible": true,
       "links": [
         16,
-        71,
-        31
+        31,
+        71
       ],
       "routed_demand": 42.7764,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        5
-      ]
+      "w": []
     },
     {
       "d": 34,
       "feasible": true,
       "links": [
-        49,
-        7,
+        2,
+        18,
         33
       ],
       "routed_demand": 40.7065,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        15
-      ]
+      "w": []
     },
     {
       "d": 35,
       "feasible": true,
       "links": [
-        2,
-        33
+        4,
+        11,
+        36,
+        52
       ],
       "routed_demand": 59.3349,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        18
+      ]
     },
     {
       "d": 36,
@@ -2237,17 +5252,31 @@
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        18
+        2
       ]
     },
     {
       "d": 37,
       "feasible": true,
       "links": [
-        23,
-        79
+        11,
+        14,
+        52
       ],
       "routed_demand": 28.2876,
+      "t": 1,
+      "total_metric": 0.0,
+      "w": []
+    },
+    {
+      "d": 38,
+      "feasible": true,
+      "links": [
+        23,
+        36,
+        79
+      ],
+      "routed_demand": 45.5361,
       "t": 1,
       "total_metric": 0.0,
       "w": [
@@ -2255,36 +5284,27 @@
       ]
     },
     {
-      "d": 38,
-      "feasible": true,
-      "links": [
-        14,
-        42,
-        75
-      ],
-      "routed_demand": 45.5361,
-      "t": 1,
-      "total_metric": 0.0,
-      "w": [
-        4
-      ]
-    },
-    {
       "d": 39,
       "feasible": true,
       "links": [
-        3,
-        77,
-        35
+        1,
+        14,
+        19,
+        35,
+        38,
+        69,
+        73
       ],
       "routed_demand": 26.9077,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        1
+        10,
+        9,
+        0
       ]
     }
   ],
-  "solve_time_seconds": 0.060733243,
+  "solve_time_seconds": 0.137621366,
   "total_metric": 0.0
 }

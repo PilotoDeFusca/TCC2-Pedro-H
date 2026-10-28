@@ -1,0 +1,200 @@
+%% This is file `example.tex',
+%% generated with the docstrip utility.
+%% The original source files were:
+%% coppe.dtx  (with options: `example')
+%% This is a sample monograph which illustrates the use of `coppe' document
+%% class and `coppe-unsrt' BibTeX style.
+%% \CheckSum{1311}
+%% \CharacterTable
+%%  {Upper-case    \A\B\C\D\E\F\G\H\I\J\K\L\M\N\O\P\Q\R\S\T\U\V\W\X\Y\Z
+%%   Lower-case    \a\b\c\d\e\f\g\h\i\j\k\l\m\n\o\p\q\r\s\t\u\v\w\x\y\z
+%%   Digits        \0\1\2\3\4\5\6\7\8\9
+%%   Exclamation   \!     Double quote  \"     Hash (number) \#
+%%   Dollar        \$     Percent       \%     Ampersand     \&
+%%   Acute accent  \'     Left paren    \(     Right paren   \)
+%%   Asterisk      \*     Plus          \+     Comma         \,
+%%   Minus         \-     Point         \.     Solidus       \/
+%%   Colon         \:     Semicolon     \;     Less than     \<
+%%   Equals        \=     Greater than  \>     Question mark \?
+%%   Commercial at \@     Left bracket  \[     Backslash     \\
+%%   Right bracket \]     Circumflex    \^     Underscore    \_
+%%   Grave accent  \`     Left brace    \{     Vertical bar  \|
+%%   Right brace   \}     Tilde         \~}
+%
+
+%Escolher uma das 3 possibilidades no primeiro argumento
+% msc - dissertacao de mestrado
+% dscexam - qualificacao
+% dsc - tese de doutorado
+% tcc - trabalho de conclusão de curso
+%
+\documentclass[tcc,divps,pdftex]{tcc_modelo}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath,amsthm,amsfonts,amssymb,enumerate}
+\usepackage{setspace}
+\usepackage[lined,boxed,portugues]{}
+\usepackage{booktabs}
+\usepackage[portuguese,algoruled,longend,linesnumbered]{algorithm2e}
+\usepackage{natbib}
+\usepackage{subfigure}
+\usepackage{subeqnarray}
+\usepackage{enumerate}
+\usepackage{multicol}
+%\usepackage{slashbox}
+
+\usepackage{cases}
+\usepackage{float}
+\usepackage{soul}
+
+\usepackage{pdfpages}
+
+\usepackage{float}
+
+\usepackage{listings}
+
+\usepackage{xcolor,colortbl}         % Pacote de cores
+\usepackage{bm}
+
+
+\renewcommand{\lstlistingname}{Algoritmo}
+\renewcommand{\algorithmcfname}{Pseudocódigo}
+
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\I}{\mathbb{I}}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\U}{\mathcal{U}}
+\newcommand{\V}{{\cal V}}
+
+\newcommand{\mat}[1]{\mbox{\boldmath{$#1$}}}
+
+
+\newtheorem{teo}{Teorema}[chapter]
+
+%\input{hifenizacao}
+
+
+
+\sloppy
+\hyphenpenalty=10000
+
+%\makelosymbols
+%\makeloabbreviations
+%\makenomenclature
+% \makeglossary
+%\usepackage{titlesec}
+%\titleformat{\section}{\bfseries\normalsize}{\uppercase{\sectiontitle}\thesection.\quad}{1em}{}
+
+\begin{document}
+
+\course{ENGCOMP} %engenharia Computacional
+\institute{FACENG_ICE} %Faculdade de Engenharia e Instituto de Ciências Exatas
+
+\title{Heurísticas de Busca em Vizinhança para Roteamento por Segmentos Adaptativo no Tempo}%Possível título
+%\foreigntitle{To be defined...}
+
+\author{}{Pedro Henrique de Souza Rodrigues}
+
+\advisor{Prof.}{Nome}{Orientador}{D.Sc.}{Universidade}
+\coadvisor{}{}{}{}{}
+\coadvisorII{}{}{}{}{}
+
+\examinerI{Prof.}{Membro da Banca 1}{D.Sc.}{Universidade }
+\examinerII{Prof.}{Membro da Banca 2}{D.Sc.}{Universidade }
+\examinerIII{}{}{}{}
+\examinerIV{}{}{}{}
+
+
+
+%definir data da defesa
+\date{20}{07}{2024}
+
+%Palavras chaves do resumo em portugues
+\keyword{Segment Routing}
+\keyword{Engenharia de Tráfego}
+\keyword{Meta-heurísticas}
+\keyword{Busca em Vizinhança Variável}
+\keyword{Desafio EURO/ROADEF 2026}
+
+%Palavras chaves do abstract em ingles
+\keywordEN{Segment Routing}
+\keywordEN{Traffic Engineering}
+\keywordEN{Metaheuristics}
+\keywordEN{Variable Neighborhood Search}
+\keywordEN{EURO/ROADEF 2026 Challenge}
+
+
+\inserecapa
+
+\maketitle
+
+\frontmatter
+
+\dedication{A quem você dedica o trabalho...}
+
+ \begin{agradecimentos}
+
+Agradeço ...
+ \end{agradecimentos}
+ 
+ \epigrafe{``Frase que te inspirou''  \flushright{(Autor)}}
+
+\begin{abstract}
+Este trabalho trata o problema de \textit{Segment Routing} adaptativo no tempo (T-ASR), proposto no desafio EURO/ROADEF 2026: escolher, para cada demanda de uma rede IP e em cada período, uma lista de nós intermediários que minimize a carga dos enlaces mais carregados, considerando intervenções de manutenção e um orçamento que limita as reconfigurações entre períodos. São propostas duas meta-heurísticas de busca em vizinhança, uma busca adaptativa em múltiplas vizinhanças (AMNS) e uma descida em vizinhança variável com perturbação (VND), que compartilham uma avaliação de cargas idêntica à do avaliador oficial, incluindo a divisão de tráfego por múltiplos caminhos de mesmo custo, e uma fase robusta que planeja o primeiro período considerando as intervenções de todo o horizonte. Nas 56 instâncias públicas dos conjuntos A, B, C e X, os métodos reduziram a utilização máxima do pior período em cerca de 46\% em média em relação ao roteamento sem otimização, com soluções válidas segundo o avaliador oficial, e eliminaram todas as violações de capacidade nos conjuntos A, B e X.
+\end{abstract}
+
+\begin{foreignabstract}
+This work addresses the T-Adaptive Segment Routing problem (T-ASR) of the EURO/ROADEF 2026 challenge: for each demand of an IP network and each time period, choose a list of intermediate nodes that minimizes the load of the most loaded links, under maintenance interventions and a budget that limits reconfigurations between periods. Two neighborhood search metaheuristics are proposed, an Adaptive Multi-Neighborhood Search (AMNS) and a Variable Neighborhood Descent with shaking (VND). They share a load evaluation identical to the official checker, including Equal-Cost Multi-Path traffic splitting, and a robust phase that plans the first period against the interventions of the whole horizon. On the 56 public instances of sets A, B, C and X, the methods reduced the worst-period maximum link utilization by about 46\% on average compared with non-optimized routing, with all solutions accepted by the official checker, and removed every capacity violation in sets A, B and X.
+\end{foreignabstract}
+
+
+
+% \clearpage
+
+
+\listoffigures  %Com titulo : lista de ilustracoes
+\listoftables
+
+%----Glossário ------------
+\input{abreviacoes} %arquivo abreviacoes.tex não é automatizado :/
+
+\tableofcontents
+
+
+\mainmatter
+
+%------------------------------------------------------------------------------
+
+%deixei uma introdução para tomar como exemplo, algumas formataçoes não foram automaticas e são feitas manualmente no .tex
+% capitulos/introducao.tex: rascunho original, incorporado ao capitulo 3
+% \input{capitulos/introducao.tex}
+
+\input{capitulos/cap1_introducao.tex}
+\input{capitulos/cap2_fundamentacao.tex}
+\input{capitulos/cap3_problema.tex}
+\input{capitulos/cap4_metodologia.tex}
+\input{capitulos/cap5_resultados.tex}
+\input{capitulos/cap6_conclusao.tex}
+
+
+%------------------------------------------------------------------------------
+
+% Bibliografia desativada por enquanto (ainda sem citacoes no texto).
+%\renewcommand{\bibname}{REFERÊNCIAS}
+%\label{bib:begin}
+%\renewcommand\bibname{\centerline{REFERÊNCIAS}\global\def\bibname{REFERÊNCIAS}}
+%
+%\bibliographystyle{bibformat}
+%\bibliography{referencias}
+%\label{bib:end}
+
+%\appendix
+%\input{./capitulos/appendix.tex}
+
+
+\end{document}

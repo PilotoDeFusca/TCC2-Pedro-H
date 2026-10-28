@@ -39,30 +39,30 @@
     {
       "capacity": 564.0,
       "link_id": 5,
-      "load": 0.21259184397162986,
+      "load": 0.30685425531914895,
       "t": 0,
-      "total_demand": 119.90179999999924
+      "total_demand": 173.0658
     },
     {
       "capacity": 232.0,
       "link_id": 6,
-      "load": 0.034129310344827614,
+      "load": 0.034129310344827586,
       "t": 0,
-      "total_demand": 7.918000000000006
+      "total_demand": 7.918
     },
     {
       "capacity": 180.0,
       "link_id": 7,
-      "load": 0.3644811111111112,
+      "load": 0.3644811111111111,
       "t": 0,
-      "total_demand": 65.60660000000001
+      "total_demand": 65.6066
     },
     {
       "capacity": 224.0,
       "link_id": 8,
-      "load": 0.4595290178571429,
+      "load": 0.45952901785714284,
       "t": 0,
-      "total_demand": 102.93450000000001
+      "total_demand": 102.9345
     },
     {
       "capacity": 170.0,
@@ -95,9 +95,9 @@
     {
       "capacity": 978.0,
       "link_id": 13,
-      "load": 0.09484069529652354,
+      "load": 0.09484069529652352,
       "t": 0,
-      "total_demand": 92.75420000000003
+      "total_demand": 92.7542
     },
     {
       "capacity": 222.0,
@@ -165,9 +165,9 @@
     {
       "capacity": 763.0,
       "link_id": 23,
-      "load": 0.01037745740498035,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 7.918000000000006
+      "total_demand": 0.0
     },
     {
       "capacity": 763.0,
@@ -179,9 +179,9 @@
     {
       "capacity": 891.0,
       "link_id": 25,
-      "load": 0.4646470258136924,
+      "load": 0.4646470258136925,
       "t": 0,
-      "total_demand": 414.00049999999993
+      "total_demand": 414.0005
     },
     {
       "capacity": 870.0,
@@ -193,30 +193,30 @@
     {
       "capacity": 205.0,
       "link_id": 27,
-      "load": 0.9435434146341446,
+      "load": 0.9435434146341464,
       "t": 0,
-      "total_demand": 193.42639999999963
+      "total_demand": 193.4264
     },
     {
       "capacity": 884.0,
       "link_id": 28,
-      "load": 0.46832635746606543,
+      "load": 0.4683263574660633,
       "t": 0,
-      "total_demand": 414.00050000000186
+      "total_demand": 414.0005
     },
     {
       "capacity": 520.0,
       "link_id": 29,
-      "load": 0.03915519230769232,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 20.36070000000001
+      "total_demand": 0.0
     },
     {
       "capacity": 502.0,
       "link_id": 30,
-      "load": 0.8247021912350593,
+      "load": 0.8247021912350597,
       "t": 0,
-      "total_demand": 414.00049999999976
+      "total_demand": 414.0005
     },
     {
       "capacity": 879.0,
@@ -228,9 +228,9 @@
     {
       "capacity": 560.0,
       "link_id": 32,
-      "load": 0.0,
+      "load": 0.17977178571428573,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 100.6722
     },
     {
       "capacity": 633.0,
@@ -242,23 +242,23 @@
     {
       "capacity": 639.0,
       "link_id": 34,
-      "load": 0.02301236306729239,
+      "load": 0.023012363067292645,
       "t": 0,
-      "total_demand": 14.704899999999839
+      "total_demand": 14.7049
     },
     {
       "capacity": 855.0,
       "link_id": 35,
-      "load": 0.20506210526315738,
+      "load": 0.20506210526315793,
       "t": 0,
-      "total_demand": 175.32809999999955
+      "total_demand": 175.32810000000003
     },
     {
       "capacity": 594.0,
       "link_id": 36,
-      "load": 0.43798686868686876,
+      "load": 0.4379868686868687,
       "t": 0,
-      "total_demand": 260.16420000000005
+      "total_demand": 260.1642
     },
     {
       "capacity": 371.0,
@@ -277,9 +277,9 @@
     {
       "capacity": 817.0,
       "link_id": 39,
-      "load": 0.0803018359853121,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 65.60659999999999
+      "total_demand": 0.0
     },
     {
       "capacity": 460.0,
@@ -291,16 +291,16 @@
     {
       "capacity": 913.0,
       "link_id": 41,
-      "load": 0.28495531215772174,
+      "load": 0.2849553121577218,
       "t": 0,
-      "total_demand": 260.16419999999994
+      "total_demand": 260.1642
     },
     {
       "capacity": 563.0,
       "link_id": 42,
-      "load": 0.16474991119005333,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 92.75420000000003
+      "total_demand": 0.0
     },
     {
       "capacity": 962.0,
@@ -326,9 +326,9 @@
     {
       "capacity": 567.0,
       "link_id": 46,
-      "load": 0.03590952380952352,
+      "load": 0.035909523809523815,
       "t": 0,
-      "total_demand": 20.360699999999838
+      "total_demand": 20.3607
     },
     {
       "capacity": 535.0,
@@ -368,9 +368,9 @@
     {
       "capacity": 392.0,
       "link_id": 52,
-      "load": 0.5136339285714285,
+      "load": 0.5136339285714286,
       "t": 0,
-      "total_demand": 201.34449999999998
+      "total_demand": 201.3445
     },
     {
       "capacity": 586.0,
@@ -403,9 +403,9 @@
     {
       "capacity": 593.0,
       "link_id": 57,
-      "load": 0.339535413153457,
+      "load": 0.33953541315345703,
       "t": 0,
-      "total_demand": 201.34449999999998
+      "total_demand": 201.3445
     },
     {
       "capacity": 781.0,
@@ -424,16 +424,16 @@
     {
       "capacity": 792.0,
       "link_id": 60,
-      "load": 0.16567335858585852,
+      "load": 0.1656733585858586,
       "t": 0,
-      "total_demand": 131.21329999999995
+      "total_demand": 131.2133
     },
     {
       "capacity": 700.0,
       "link_id": 61,
-      "load": -8.120488408686859e-17,
+      "load": 0.0,
       "t": 0,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 0.0
     },
     {
       "capacity": 303.0,
@@ -480,16 +480,16 @@
     {
       "capacity": 918.0,
       "link_id": 68,
-      "load": 0.13061198257080614,
+      "load": 0.25506296296296294,
       "t": 0,
-      "total_demand": 119.90180000000004
+      "total_demand": 234.1478
     },
     {
       "capacity": 810.0,
       "link_id": 69,
-      "load": 0.23879802469135686,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 193.42639999999906
+      "total_demand": 0.0
     },
     {
       "capacity": 795.0,
@@ -508,23 +508,23 @@
     {
       "capacity": 800.0,
       "link_id": 72,
-      "load": 0.10745912499999989,
-      "t": 0,
-      "total_demand": 85.96729999999991
-    },
-    {
-      "capacity": 838.0,
-      "link_id": 73,
       "load": 0.0,
       "t": 0,
       "total_demand": 0.0
     },
     {
+      "capacity": 838.0,
+      "link_id": 73,
+      "load": 0.23081909307875895,
+      "t": 0,
+      "total_demand": 193.4264
+    },
+    {
       "capacity": 657.0,
       "link_id": 74,
-      "load": 0.39598812785388066,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 260.1641999999996
+      "total_demand": 0.0
     },
     {
       "capacity": 885.0,
@@ -557,37 +557,37 @@
     {
       "capacity": 446.0,
       "link_id": 79,
-      "load": 0.017753363228699567,
+      "load": 0.017753363228699554,
       "t": 0,
-      "total_demand": 7.918000000000006
+      "total_demand": 7.918
     },
     {
       "capacity": 389.0,
       "link_id": 80,
-      "load": 0.6019223650385608,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 234.14780000000013
+      "total_demand": 0.0
     },
     {
       "capacity": 644.0,
       "link_id": 81,
-      "load": 0.27224860248447164,
+      "load": 0.2722486024844721,
       "t": 0,
-      "total_demand": 175.32809999999975
+      "total_demand": 175.3281
     },
     {
       "capacity": 683.0,
       "link_id": 82,
-      "load": 0.2832011713030747,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 193.42640000000003
+      "total_demand": 0.0
     },
     {
       "capacity": 668.0,
       "link_id": 83,
-      "load": 0.38946736526946096,
+      "load": 0.3894673652694611,
       "t": 0,
-      "total_demand": 260.16419999999994
+      "total_demand": 260.1642
     },
     {
       "capacity": 336.0,
@@ -599,9 +599,9 @@
     {
       "capacity": 960.0,
       "link_id": 85,
-      "load": 0.10486687500000004,
+      "load": 0.2439039583333333,
       "t": 0,
-      "total_demand": 100.67220000000003
+      "total_demand": 234.1478
     },
     {
       "capacity": 130.0,
@@ -613,16 +613,16 @@
     {
       "capacity": 942.0,
       "link_id": 87,
-      "load": 0.24856454352441595,
+      "load": 0.24856454352441612,
       "t": 0,
-      "total_demand": 234.14779999999982
+      "total_demand": 234.1478
     },
     {
       "capacity": 986.0,
       "link_id": 88,
-      "load": 0.29942180527383383,
+      "load": 0.29942180527383366,
       "t": 0,
-      "total_demand": 295.22990000000016
+      "total_demand": 295.2299
     },
     {
       "capacity": 185.0,
@@ -641,16 +641,16 @@
     {
       "capacity": 983.0,
       "link_id": 91,
-      "load": 0.10241322482197358,
+      "load": 0.12312604272634792,
       "t": 0,
-      "total_demand": 100.67220000000003
+      "total_demand": 121.0329
     },
     {
       "capacity": 871.0,
       "link_id": 92,
-      "load": 0.29869598163031,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 260.16420000000005
+      "total_demand": 0.0
     },
     {
       "capacity": 163.0,
@@ -662,9 +662,9 @@
     {
       "capacity": 344.0,
       "link_id": 94,
-      "load": 0.0,
+      "load": 0.3485517441860465,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 119.9018
     },
     {
       "capacity": 990.0,
@@ -676,16 +676,16 @@
     {
       "capacity": 823.0,
       "link_id": 96,
-      "load": 0.24464702308626973,
+      "load": 0.24464702308626976,
       "t": 0,
-      "total_demand": 201.34449999999998
+      "total_demand": 201.3445
     },
     {
       "capacity": 988.0,
       "link_id": 97,
-      "load": 0.19577570850202416,
+      "load": 0.1957757085020243,
       "t": 0,
-      "total_demand": 193.4263999999999
+      "total_demand": 193.4264
     },
     {
       "capacity": 911.0,
@@ -718,16 +718,16 @@
     {
       "capacity": 658.0,
       "link_id": 102,
-      "load": 0.0068762917933131015,
+      "load": 0.006876291793313058,
       "t": 0,
-      "total_demand": 4.524600000000021
+      "total_demand": 4.524599999999992
     },
     {
       "capacity": 463.0,
       "link_id": 103,
-      "load": 0.01710151187904969,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 7.918000000000006
+      "total_demand": 0.0
     },
     {
       "capacity": 519.0,
@@ -746,9 +746,9 @@
     {
       "capacity": 857.0,
       "link_id": 106,
-      "load": 0.10031190198366377,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 85.96729999999985
+      "total_demand": 0.0
     },
     {
       "capacity": 192.0,
@@ -760,9 +760,9 @@
     {
       "capacity": 854.0,
       "link_id": 108,
-      "load": 0.23841545667447303,
+      "load": 0.23841545667447306,
       "t": 0,
-      "total_demand": 203.60679999999996
+      "total_demand": 203.6068
     },
     {
       "capacity": 301.0,
@@ -802,37 +802,37 @@
     {
       "capacity": 407.0,
       "link_id": 114,
-      "load": 0.25291031941031944,
+      "load": 0.2529103194103194,
       "t": 0,
-      "total_demand": 102.93450000000001
+      "total_demand": 102.9345
     },
     {
       "capacity": 697.0,
       "link_id": 115,
-      "load": 0.277512769010043,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 193.42639999999997
+      "total_demand": 0.0
     },
     {
       "capacity": 638.0,
       "link_id": 116,
-      "load": 0.03191332288401255,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 20.36070000000001
+      "total_demand": 0.0
     },
     {
       "capacity": 648.0,
       "link_id": 117,
-      "load": 0.022692746913580173,
+      "load": 0.022692746913580246,
       "t": 0,
-      "total_demand": 14.704899999999952
+      "total_demand": 14.7049
     },
     {
       "capacity": 824.0,
       "link_id": 118,
-      "load": 0.21003131067961198,
+      "load": 0.3157332524271845,
       "t": 0,
-      "total_demand": 173.06580000000028
+      "total_demand": 260.1642
     },
     {
       "capacity": 899.0,
@@ -872,9 +872,9 @@
     {
       "capacity": 649.0,
       "link_id": 124,
-      "load": 0.20217765793528497,
+      "load": 0.20217765793528505,
       "t": 0,
-      "total_demand": 131.21329999999995
+      "total_demand": 131.2133
     },
     {
       "capacity": 418.0,
@@ -886,9 +886,9 @@
     {
       "capacity": 480.0,
       "link_id": 126,
-      "load": 0.41946770833333297,
+      "load": 0.41946770833333336,
       "t": 0,
-      "total_demand": 201.3444999999998
+      "total_demand": 201.3445
     },
     {
       "capacity": 308.0,
@@ -900,9 +900,9 @@
     {
       "capacity": 937.0,
       "link_id": 128,
-      "load": 0.12796350053361785,
+      "load": 0.1074409818569904,
       "t": 0,
-      "total_demand": 119.90179999999992
+      "total_demand": 100.6722
     },
     {
       "capacity": 506.0,
@@ -914,44 +914,44 @@
     {
       "capacity": 576.0,
       "link_id": 130,
-      "load": 0.0,
+      "load": 0.4065065972222222,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 234.1478
     },
     {
       "capacity": 949.0,
       "link_id": 131,
-      "load": 0.18475036880927495,
+      "load": 0.3110957850368809,
       "t": 0,
-      "total_demand": 175.32810000000194
+      "total_demand": 295.2299
     },
     {
       "capacity": 886.0,
       "link_id": 132,
-      "load": 0.09702855530474058,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 85.96730000000015
+      "total_demand": 0.0
     },
     {
       "capacity": 599.0,
       "link_id": 133,
-      "load": 0.0,
+      "load": 0.3229155258764608,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 193.4264
     },
     {
       "capacity": 397.0,
       "link_id": 134,
-      "load": 0.0,
+      "load": 0.5897929471032746,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 234.1478
     },
     {
       "capacity": 218.0,
       "link_id": 135,
-      "load": 1.3037481390093582e-16,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 2.842170943040401e-14
+      "total_demand": 0.0
     },
     {
       "capacity": 171.0,
@@ -970,9 +970,9 @@
     {
       "capacity": 757.0,
       "link_id": 138,
-      "load": -7.509038158627215e-17,
+      "load": 0.0,
       "t": 0,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 0.0
     },
     {
       "capacity": 222.0,
@@ -991,9 +991,9 @@
     {
       "capacity": 461.0,
       "link_id": 141,
-      "load": -1.2330459622734928e-16,
+      "load": 0.18648004338394794,
       "t": 0,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 85.9673
     },
     {
       "capacity": 346.0,
@@ -1012,9 +1012,9 @@
     {
       "capacity": 595.0,
       "link_id": 144,
-      "load": -9.553515774925717e-17,
+      "load": 0.14448285714285714,
       "t": 0,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 85.9673
     },
     {
       "capacity": 452.0,
@@ -1026,9 +1026,9 @@
     {
       "capacity": 375.0,
       "link_id": 146,
-      "load": 0.27449199999999996,
+      "load": 0.274492,
       "t": 0,
-      "total_demand": 102.93449999999999
+      "total_demand": 102.9345
     },
     {
       "capacity": 732.0,
@@ -1040,9 +1040,9 @@
     {
       "capacity": 536.0,
       "link_id": 148,
-      "load": 0.223697388059702,
+      "load": 0.43684291044776125,
       "t": 0,
-      "total_demand": 119.90180000000026
+      "total_demand": 234.14780000000002
     },
     {
       "capacity": 416.0,
@@ -1061,9 +1061,9 @@
     {
       "capacity": 893.0,
       "link_id": 151,
-      "load": 0.7296099664053749,
+      "load": 0.46740638297872344,
       "t": 0,
-      "total_demand": 651.5416999999998
+      "total_demand": 417.39390000000003
     },
     {
       "capacity": 196.0,
@@ -1075,9 +1075,9 @@
     {
       "capacity": 750.0,
       "link_id": 153,
-      "load": 0.0,
+      "load": 0.02714760000000001,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 20.36070000000001
     },
     {
       "capacity": 437.0,
@@ -1089,9 +1089,9 @@
     {
       "capacity": 554.0,
       "link_id": 155,
-      "load": 0.0,
+      "load": 0.34914512635379064,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 193.4264
     },
     {
       "capacity": 559.0,
@@ -1110,9 +1110,9 @@
     {
       "capacity": 914.0,
       "link_id": 158,
-      "load": 0.0,
+      "load": 0.28464354485776805,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 260.1642
     },
     {
       "capacity": 817.0,
@@ -1138,9 +1138,9 @@
     {
       "capacity": 885.0,
       "link_id": 162,
-      "load": -6.422985182012205e-17,
+      "load": 0.21856090395480227,
       "t": 0,
-      "total_demand": -5.684341886080802e-14
+      "total_demand": 193.4264
     },
     {
       "capacity": 460.0,
@@ -1166,9 +1166,9 @@
     {
       "capacity": 862.0,
       "link_id": 166,
-      "load": 0.1076034802784223,
+      "load": 0.20077238979118334,
       "t": 0,
-      "total_demand": 92.75420000000003
+      "total_demand": 173.06580000000002
     },
     {
       "capacity": 417.0,
@@ -1180,9 +1180,9 @@
     {
       "capacity": 431.0,
       "link_id": 168,
-      "load": 0.0,
+      "load": 0.448785150812065,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 193.4264
     },
     {
       "capacity": 374.0,
@@ -1229,9 +1229,9 @@
     {
       "capacity": 414.0,
       "link_id": 175,
-      "load": 0.0,
+      "load": 0.28961787439613523,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 119.9018
     },
     {
       "capacity": 101.0,
@@ -1243,9 +1243,9 @@
     {
       "capacity": 548.0,
       "link_id": 177,
-      "load": 0.0,
+      "load": 0.16925948905109495,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 92.75420000000003
     },
     {
       "capacity": 210.0,
@@ -1313,16 +1313,16 @@
     {
       "capacity": 973.0,
       "link_id": 187,
-      "load": 0.134854367934224,
+      "load": 0.33364820143884893,
       "t": 0,
-      "total_demand": 131.21329999999995
+      "total_demand": 324.6397
     },
     {
       "capacity": 789.0,
       "link_id": 188,
-      "load": 0.12759467680608355,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 100.67219999999992
+      "total_demand": 0.0
     },
     {
       "capacity": 298.0,
@@ -1334,9 +1334,9 @@
     {
       "capacity": 818.0,
       "link_id": 190,
-      "load": 0.0802036674816623,
+      "load": 0.23646259168704156,
       "t": 0,
-      "total_demand": 65.60659999999976
+      "total_demand": 193.4264
     },
     {
       "capacity": 502.0,
@@ -1348,16 +1348,16 @@
     {
       "capacity": 689.0,
       "link_id": 192,
-      "load": 0.09522002902757556,
+      "load": 0.12477111756168359,
       "t": 0,
-      "total_demand": 65.60659999999956
+      "total_demand": 85.9673
     },
     {
       "capacity": 542.0,
       "link_id": 193,
-      "load": 0.0,
+      "load": 0.1857420664206642,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 100.6722
     },
     {
       "capacity": 441.0,
@@ -1369,9 +1369,9 @@
     {
       "capacity": 924.0,
       "link_id": 195,
-      "load": 0.09303820346320342,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 85.96729999999997
+      "total_demand": 0.0
     },
     {
       "capacity": 917.0,
@@ -1383,9 +1383,9 @@
     {
       "capacity": 829.0,
       "link_id": 197,
-      "load": 0.07913944511459592,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 65.60660000000001
+      "total_demand": 0.0
     },
     {
       "capacity": 111.0,
@@ -1418,9 +1418,9 @@
     {
       "capacity": 676.0,
       "link_id": 202,
-      "load": 0.0,
+      "load": 0.25601449704142015,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 173.06580000000002
     },
     {
       "capacity": 195.0,
@@ -1439,37 +1439,37 @@
     {
       "capacity": 944.0,
       "link_id": 205,
-      "load": 0.12701461864406796,
-      "t": 0,
-      "total_demand": 119.90180000000015
-    },
-    {
-      "capacity": 874.0,
-      "link_id": 206,
-      "load": 0.009059496567505728,
-      "t": 0,
-      "total_demand": 7.918000000000006
-    },
-    {
-      "capacity": 989.0,
-      "link_id": 207,
-      "load": 0.17499069767441863,
-      "t": 0,
-      "total_demand": 173.06580000000002
-    },
-    {
-      "capacity": 418.0,
-      "link_id": 208,
       "load": 0.0,
       "t": 0,
       "total_demand": 0.0
     },
     {
+      "capacity": 874.0,
+      "link_id": 206,
+      "load": 0.26790366132723115,
+      "t": 0,
+      "total_demand": 234.14780000000002
+    },
+    {
+      "capacity": 989.0,
+      "link_id": 207,
+      "load": 0.26305783619817996,
+      "t": 0,
+      "total_demand": 260.1642
+    },
+    {
+      "capacity": 418.0,
+      "link_id": 208,
+      "load": 0.15695358851674646,
+      "t": 0,
+      "total_demand": 65.60660000000001
+    },
+    {
       "capacity": 784.0,
       "link_id": 209,
-      "load": 0.22074719387755135,
+      "load": 0.3318420918367347,
       "t": 0,
-      "total_demand": 173.06580000000025
+      "total_demand": 260.1642
     },
     {
       "capacity": 150.0,
@@ -1502,9 +1502,9 @@
     {
       "capacity": 586.0,
       "link_id": 214,
-      "load": 0.0,
+      "load": 0.20461058020477815,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 119.9018
     },
     {
       "capacity": 929.0,
@@ -1523,9 +1523,9 @@
     {
       "capacity": 651.0,
       "link_id": 217,
-      "load": 0.0,
+      "load": 0.35967403993855607,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 234.1478
     },
     {
       "capacity": 921.0,
@@ -1565,9 +1565,9 @@
     {
       "capacity": 909.0,
       "link_id": 223,
-      "load": 0.10203982398239823,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 92.7542
+      "total_demand": 0.0
     },
     {
       "capacity": 881.0,
@@ -1579,9 +1579,9 @@
     {
       "capacity": 928.0,
       "link_id": 225,
-      "load": 0.20843362068965246,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 193.42639999999747
+      "total_demand": 0.0
     },
     {
       "capacity": 129.0,
@@ -1593,16 +1593,16 @@
     {
       "capacity": 539.0,
       "link_id": 227,
-      "load": 0.037774953617810775,
+      "load": 0.18677588126159556,
       "t": 0,
-      "total_demand": 20.36070000000001
+      "total_demand": 100.6722
     },
     {
       "capacity": 791.0,
       "link_id": 228,
-      "load": 0.5233887484197224,
+      "load": 0.5233887484197218,
       "t": 0,
-      "total_demand": 414.0005000000004
+      "total_demand": 414.0005
     },
     {
       "capacity": 466.0,
@@ -1614,9 +1614,9 @@
     {
       "capacity": 684.0,
       "link_id": 230,
-      "load": 0.1356055555555556,
+      "load": 0.13560555555555556,
       "t": 0,
-      "total_demand": 92.75420000000003
+      "total_demand": 92.7542
     },
     {
       "capacity": 116.0,
@@ -1628,9 +1628,9 @@
     {
       "capacity": 878.0,
       "link_id": 232,
-      "load": 0.13656241457858795,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 119.90180000000021
+      "total_demand": 0.0
     },
     {
       "capacity": 804.0,
@@ -1642,9 +1642,9 @@
     {
       "capacity": 866.0,
       "link_id": 234,
-      "load": 0.4780606235565806,
+      "load": 0.47806062355658197,
       "t": 0,
-      "total_demand": 414.0004999999988
+      "total_demand": 414.0005
     },
     {
       "capacity": 278.0,
@@ -1656,9 +1656,9 @@
     {
       "capacity": 907.0,
       "link_id": 236,
-      "load": 0.4152950385887559,
+      "load": 0.4152950385887541,
       "t": 0,
-      "total_demand": 376.6726000000016
+      "total_demand": 376.6726
     },
     {
       "capacity": 317.0,
@@ -1684,9 +1684,9 @@
     {
       "capacity": 622.0,
       "link_id": 240,
-      "load": 0.0,
+      "load": 0.1618524115755627,
       "t": 0,
-      "total_demand": 0.0
+      "total_demand": 100.6722
     },
     {
       "capacity": 180.0,
@@ -1712,9 +1712,9 @@
     {
       "capacity": 787.0,
       "link_id": 244,
-      "load": 0.1667259212198222,
+      "load": 0.1667259212198221,
       "t": 0,
-      "total_demand": 131.21330000000006
+      "total_demand": 131.2133
     },
     {
       "capacity": 120.0,
@@ -1733,9 +1733,9 @@
     {
       "capacity": 751.0,
       "link_id": 247,
-      "load": 0.13405086551264978,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 100.67219999999999
+      "total_demand": 0.0
     },
     {
       "capacity": 727.0,
@@ -1747,9 +1747,9 @@
     {
       "capacity": 671.0,
       "link_id": 249,
-      "load": 0.2579222056631893,
+      "load": 0.0,
       "t": 0,
-      "total_demand": 173.06580000000002
+      "total_demand": 0.0
     },
     {
       "capacity": 520.0,
@@ -1775,9 +1775,9 @@
     {
       "capacity": 842.0,
       "link_id": 3,
-      "load": 0.0,
+      "load": 0.02955498812351544,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 24.8853
     },
     {
       "capacity": 567.0,
@@ -1789,23 +1789,23 @@
     {
       "capacity": 564.0,
       "link_id": 5,
-      "load": 0.15844113475177302,
+      "load": 0.15844113475177304,
       "t": 1,
-      "total_demand": 89.36079999999998
+      "total_demand": 89.3608
     },
     {
       "capacity": 232.0,
       "link_id": 6,
-      "load": 0.02925387931034484,
+      "load": 0.02925387931034483,
       "t": 1,
-      "total_demand": 6.786900000000003
+      "total_demand": 6.7869
     },
     {
       "capacity": 180.0,
       "link_id": 7,
-      "load": 0.050273333333333246,
+      "load": 0.05027333333333334,
       "t": 1,
-      "total_demand": 9.049199999999985
+      "total_demand": 9.0492
     },
     {
       "capacity": 224.0,
@@ -1831,9 +1831,9 @@
     {
       "capacity": 447.0,
       "link_id": 11,
-      "load": 0.030366442953020146,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 0.0
     },
     {
       "capacity": 969.0,
@@ -1845,9 +1845,9 @@
     {
       "capacity": 978.0,
       "link_id": 13,
-      "load": 0.13416492842535815,
+      "load": 0.13416492842535788,
       "t": 1,
-      "total_demand": 131.2133000000003
+      "total_demand": 131.2133
     },
     {
       "capacity": 222.0,
@@ -1866,9 +1866,9 @@
     {
       "capacity": 483.0,
       "link_id": 16,
-      "load": 0.014051552795031062,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 6.786900000000003
+      "total_demand": 0.0
     },
     {
       "capacity": 652.0,
@@ -1880,9 +1880,9 @@
     {
       "capacity": 856.0,
       "link_id": 18,
-      "load": 0.0,
+      "load": 0.029071612149532713,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 24.8853
     },
     {
       "capacity": 204.0,
@@ -1929,9 +1929,9 @@
     {
       "capacity": 891.0,
       "link_id": 25,
-      "load": 0.0,
+      "load": 0.029199102132435466,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 26.0164
     },
     {
       "capacity": 870.0,
@@ -1943,30 +1943,30 @@
     {
       "capacity": 205.0,
       "link_id": 27,
-      "load": 0.12139170731707331,
+      "load": 0.12139170731707317,
       "t": 1,
-      "total_demand": 24.88530000000003
+      "total_demand": 24.8853
     },
     {
       "capacity": 884.0,
       "link_id": 28,
+      "load": 0.029430316742081453,
+      "t": 1,
+      "total_demand": 26.016400000000004
+    },
+    {
+      "capacity": 520.0,
+      "link_id": 29,
       "load": 0.0,
       "t": 1,
       "total_demand": 0.0
     },
     {
-      "capacity": 520.0,
-      "link_id": 29,
-      "load": 0.026103461538461523,
-      "t": 1,
-      "total_demand": 13.573799999999991
-    },
-    {
       "capacity": 502.0,
       "link_id": 30,
-      "load": 0.04957231075697211,
+      "load": 0.05182549800796814,
       "t": 1,
-      "total_demand": 24.8853
+      "total_demand": 26.016400000000004
     },
     {
       "capacity": 879.0,
@@ -1978,37 +1978,37 @@
     {
       "capacity": 560.0,
       "link_id": 32,
-      "load": 0.0,
+      "load": 0.2464289285714286,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 138.0002
     },
     {
       "capacity": 633.0,
       "link_id": 33,
-      "load": 0.0,
+      "load": 0.20728799368088469,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 131.2133
     },
     {
       "capacity": 639.0,
       "link_id": 34,
-      "load": 0.0,
+      "load": 0.021242253521126762,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 13.5738
     },
     {
       "capacity": 855.0,
       "link_id": 35,
-      "load": 0.11774526315789484,
+      "load": 0.11774526315789474,
       "t": 1,
-      "total_demand": 100.67220000000009
+      "total_demand": 100.6722
     },
     {
       "capacity": 594.0,
       "link_id": 36,
-      "load": 0.2704092592592593,
+      "load": 0.27040925925925924,
       "t": 1,
-      "total_demand": 160.62310000000002
+      "total_demand": 160.6231
     },
     {
       "capacity": 371.0,
@@ -2027,9 +2027,9 @@
     {
       "capacity": 817.0,
       "link_id": 39,
-      "load": 0.011076132190942454,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 9.049199999999985
+      "total_demand": 0.0
     },
     {
       "capacity": 460.0,
@@ -2076,9 +2076,9 @@
     {
       "capacity": 567.0,
       "link_id": 46,
-      "load": 0.02393968253968255,
+      "load": 0.02393968253968254,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 13.5738
     },
     {
       "capacity": 535.0,
@@ -2132,9 +2132,9 @@
     {
       "capacity": 666.0,
       "link_id": 54,
-      "load": 0.0,
+      "load": 0.03736531531531532,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 24.8853
     },
     {
       "capacity": 288.0,
@@ -2153,9 +2153,9 @@
     {
       "capacity": 593.0,
       "link_id": 57,
-      "load": 0.04196509274873529,
+      "load": 0.04196509274873524,
       "t": 1,
-      "total_demand": 24.88530000000003
+      "total_demand": 24.8853
     },
     {
       "capacity": 781.0,
@@ -2181,9 +2181,9 @@
     {
       "capacity": 700.0,
       "link_id": 61,
-      "load": 0.1470492857142857,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 102.93449999999999
+      "total_demand": 0.0
     },
     {
       "capacity": 303.0,
@@ -2230,16 +2230,16 @@
     {
       "capacity": 918.0,
       "link_id": 68,
-      "load": 0.15155915032679693,
+      "load": 0.11212908496732026,
       "t": 1,
-      "total_demand": 139.13129999999958
+      "total_demand": 102.9345
     },
     {
       "capacity": 810.0,
       "link_id": 69,
-      "load": 0.030722592592592628,
+      "load": 0.030722592592592593,
       "t": 1,
-      "total_demand": 24.88530000000003
+      "total_demand": 24.8853
     },
     {
       "capacity": 795.0,
@@ -2258,23 +2258,23 @@
     {
       "capacity": 800.0,
       "link_id": 72,
-      "load": 0.056557500000000045,
-      "t": 1,
-      "total_demand": 45.24600000000004
-    },
-    {
-      "capacity": 838.0,
-      "link_id": 73,
       "load": 0.0,
       "t": 1,
       "total_demand": 0.0
     },
     {
+      "capacity": 838.0,
+      "link_id": 73,
+      "load": 0.1228335322195704,
+      "t": 1,
+      "total_demand": 102.9345
+    },
+    {
       "capacity": 657.0,
       "link_id": 74,
-      "load": 0.24447960426179607,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 160.62310000000002
+      "total_demand": 0.0
     },
     {
       "capacity": 885.0,
@@ -2314,9 +2314,9 @@
     {
       "capacity": 389.0,
       "link_id": 80,
-      "load": 0.2646131105398455,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 102.9344999999999
+      "total_demand": 0.0
     },
     {
       "capacity": 644.0,
@@ -2349,9 +2349,9 @@
     {
       "capacity": 960.0,
       "link_id": 85,
-      "load": 0.15788947916666665,
+      "load": 0.1072234375,
       "t": 1,
-      "total_demand": 151.57389999999998
+      "total_demand": 102.9345
     },
     {
       "capacity": 130.0,
@@ -2363,9 +2363,9 @@
     {
       "capacity": 942.0,
       "link_id": 87,
-      "load": 0.10927229299363056,
+      "load": 0.10927229299363057,
       "t": 1,
-      "total_demand": 102.93449999999999
+      "total_demand": 102.9345
     },
     {
       "capacity": 986.0,
@@ -2391,16 +2391,16 @@
     {
       "capacity": 983.0,
       "link_id": 91,
-      "load": 0.04602848423194327,
+      "load": 0.07364557477110886,
       "t": 1,
-      "total_demand": 45.24600000000024
+      "total_demand": 72.3936
     },
     {
       "capacity": 871.0,
       "link_id": 92,
-      "load": 0.1844122847301952,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 160.62310000000002
+      "total_demand": 0.0
     },
     {
       "capacity": 163.0,
@@ -2412,9 +2412,9 @@
     {
       "capacity": 344.0,
       "link_id": 94,
-      "load": 0.07234098837209303,
+      "load": 0.40445145348837214,
       "t": 1,
-      "total_demand": 24.8853
+      "total_demand": 139.1313
     },
     {
       "capacity": 990.0,
@@ -2468,9 +2468,9 @@
     {
       "capacity": 658.0,
       "link_id": 102,
-      "load": 0.008595288753799427,
+      "load": 0.008595288753799392,
       "t": 1,
-      "total_demand": 5.6557000000000235
+      "total_demand": 5.6557
     },
     {
       "capacity": 463.0,
@@ -2496,9 +2496,9 @@
     {
       "capacity": 857.0,
       "link_id": 106,
-      "load": 0.05279579929988329,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 45.24599999999998
+      "total_demand": 0.0
     },
     {
       "capacity": 192.0,
@@ -2510,9 +2510,9 @@
     {
       "capacity": 854.0,
       "link_id": 108,
-      "load": 0.03443782201405152,
+      "load": 0.034437822014051524,
       "t": 1,
-      "total_demand": 29.409899999999993
+      "total_demand": 29.4099
     },
     {
       "capacity": 301.0,
@@ -2566,23 +2566,23 @@
     {
       "capacity": 638.0,
       "link_id": 116,
-      "load": 0.021275548589341692,
-      "t": 1,
-      "total_demand": 13.573799999999999
-    },
-    {
-      "capacity": 648.0,
-      "link_id": 117,
       "load": 0.0,
       "t": 1,
       "total_demand": 0.0
     },
     {
+      "capacity": 648.0,
+      "link_id": 117,
+      "load": 0.02094722222222222,
+      "t": 1,
+      "total_demand": 13.5738
+    },
+    {
       "capacity": 824.0,
       "link_id": 118,
-      "load": 0.16884866504854476,
+      "load": 0.19493094660194174,
       "t": 1,
-      "total_demand": 139.1313000000009
+      "total_demand": 160.6231
     },
     {
       "capacity": 899.0,
@@ -2629,16 +2629,16 @@
     {
       "capacity": 418.0,
       "link_id": 125,
-      "load": 0.24625478468899517,
+      "load": 0.24625478468899523,
       "t": 1,
-      "total_demand": 102.93449999999999
+      "total_demand": 102.9345
     },
     {
       "capacity": 480.0,
       "link_id": 126,
-      "load": 0.2733610416666666,
+      "load": 0.2733610416666667,
       "t": 1,
-      "total_demand": 131.21329999999995
+      "total_demand": 131.2133
     },
     {
       "capacity": 308.0,
@@ -2650,51 +2650,51 @@
     {
       "capacity": 937.0,
       "link_id": 128,
-      "load": 0.01448644610458912,
+      "load": 0.00724322305229456,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 6.786900000000003
     },
     {
       "capacity": 506.0,
       "link_id": 129,
-      "load": 0.04918043478260875,
+      "load": 0.049180434782608695,
       "t": 1,
-      "total_demand": 24.88530000000003
+      "total_demand": 24.8853
     },
     {
       "capacity": 576.0,
       "link_id": 130,
-      "load": 0.0,
+      "load": 0.17870572916666666,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 102.9345
     },
     {
       "capacity": 949.0,
       "link_id": 131,
-      "load": 0.10608240252897784,
+      "load": 0.25269072708113804,
       "t": 1,
-      "total_demand": 100.67219999999998
+      "total_demand": 239.8035
     },
     {
       "capacity": 886.0,
       "link_id": 132,
-      "load": 0.051067720090293464,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 45.24600000000001
+      "total_demand": 0.0
     },
     {
       "capacity": 599.0,
       "link_id": 133,
-      "load": 0.0,
+      "load": 0.1718439065108514,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 102.9345
     },
     {
       "capacity": 397.0,
       "link_id": 134,
-      "load": 0.0,
+      "load": 0.2592808564231738,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 102.9345
     },
     {
       "capacity": 218.0,
@@ -2720,9 +2720,9 @@
     {
       "capacity": 757.0,
       "link_id": 138,
-      "load": 0.13597688243064737,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 102.93450000000007
+      "total_demand": 0.0
     },
     {
       "capacity": 222.0,
@@ -2741,9 +2741,9 @@
     {
       "capacity": 461.0,
       "link_id": 141,
-      "load": 0.0,
+      "load": 0.0981475054229935,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 45.246
     },
     {
       "capacity": 346.0,
@@ -2762,9 +2762,9 @@
     {
       "capacity": 595.0,
       "link_id": 144,
-      "load": 0.0,
+      "load": 0.0760436974789916,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 45.246
     },
     {
       "capacity": 452.0,
@@ -2776,9 +2776,9 @@
     {
       "capacity": 375.0,
       "link_id": 146,
-      "load": 0.2473445333333331,
+      "load": 0.24734453333333334,
       "t": 1,
-      "total_demand": 92.75419999999991
+      "total_demand": 92.7542
     },
     {
       "capacity": 732.0,
@@ -2790,9 +2790,9 @@
     {
       "capacity": 536.0,
       "link_id": 148,
-      "load": 0.25957332089552243,
+      "load": 0.1920419776119403,
       "t": 1,
-      "total_demand": 139.1313
+      "total_demand": 102.9345
     },
     {
       "capacity": 416.0,
@@ -2811,9 +2811,9 @@
     {
       "capacity": 893.0,
       "link_id": 151,
-      "load": 0.2888039193729004,
+      "load": 0.17353572228443448,
       "t": 1,
-      "total_demand": 257.90190000000007
+      "total_demand": 154.9674
     },
     {
       "capacity": 196.0,
@@ -2825,9 +2825,9 @@
     {
       "capacity": 750.0,
       "link_id": 153,
-      "load": 0.0,
+      "load": 0.0180984,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 13.5738
     },
     {
       "capacity": 437.0,
@@ -2839,16 +2839,16 @@
     {
       "capacity": 554.0,
       "link_id": 155,
-      "load": 0.0,
+      "load": 0.18580234657039713,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 102.9345
     },
     {
       "capacity": 559.0,
       "link_id": 156,
-      "load": 0.0,
+      "load": 0.18414042933810376,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 102.9345
     },
     {
       "capacity": 283.0,
@@ -2860,9 +2860,9 @@
     {
       "capacity": 914.0,
       "link_id": 158,
-      "load": 0.0,
+      "load": 0.17573643326039387,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 160.6231
     },
     {
       "capacity": 817.0,
@@ -2888,9 +2888,9 @@
     {
       "capacity": 885.0,
       "link_id": 162,
-      "load": 0.11631016949152538,
+      "load": 0.11631016949152542,
       "t": 1,
-      "total_demand": 102.93449999999996
+      "total_demand": 102.9345
     },
     {
       "capacity": 460.0,
@@ -2979,9 +2979,9 @@
     {
       "capacity": 414.0,
       "link_id": 175,
-      "load": 0.06284154589371982,
+      "load": 0.33606594202898554,
       "t": 1,
-      "total_demand": 26.016400000000004
+      "total_demand": 139.1313
     },
     {
       "capacity": 101.0,
@@ -3063,16 +3063,16 @@
     {
       "capacity": 973.0,
       "link_id": 187,
-      "load": 0.2685461459403905,
+      "load": 0.37433699897225076,
       "t": 1,
-      "total_demand": 261.2954
+      "total_demand": 364.2299
     },
     {
       "capacity": 789.0,
       "link_id": 188,
-      "load": 0.1921088719898605,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 151.57389999999995
+      "total_demand": 0.0
     },
     {
       "capacity": 298.0,
@@ -3084,9 +3084,9 @@
     {
       "capacity": 818.0,
       "link_id": 190,
-      "load": 0.011062591687041547,
+      "load": 0.12583679706601467,
       "t": 1,
-      "total_demand": 9.049199999999985
+      "total_demand": 102.9345
     },
     {
       "capacity": 502.0,
@@ -3098,16 +3098,16 @@
     {
       "capacity": 689.0,
       "link_id": 192,
-      "load": 0.013133817126270014,
+      "load": 0.03283454281567489,
       "t": 1,
-      "total_demand": 9.04920000000004
+      "total_demand": 22.623
     },
     {
       "capacity": 542.0,
       "link_id": 193,
-      "load": 0.0,
+      "load": 0.27965664206642066,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 151.5739
     },
     {
       "capacity": 441.0,
@@ -3119,9 +3119,9 @@
     {
       "capacity": 924.0,
       "link_id": 195,
-      "load": 0.04896753246753248,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 45.24600000000001
+      "total_demand": 0.0
     },
     {
       "capacity": 917.0,
@@ -3133,9 +3133,9 @@
     {
       "capacity": 829.0,
       "link_id": 197,
-      "load": 0.010915802171290725,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 9.049200000000011
+      "total_demand": 0.0
     },
     {
       "capacity": 111.0,
@@ -3168,9 +3168,9 @@
     {
       "capacity": 676.0,
       "link_id": 202,
-      "load": 0.13219053254437868,
+      "load": 0.1321905325443787,
       "t": 1,
-      "total_demand": 89.36079999999998
+      "total_demand": 89.3608
     },
     {
       "capacity": 195.0,
@@ -3189,37 +3189,37 @@
     {
       "capacity": 944.0,
       "link_id": 205,
-      "load": 0.00718951271186441,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 6.786900000000003
+      "total_demand": 0.0
     },
     {
       "capacity": 874.0,
       "link_id": 206,
-      "load": 0.007765331807780324,
+      "load": 0.11777402745995423,
       "t": 1,
-      "total_demand": 6.786900000000003
+      "total_demand": 102.9345
     },
     {
       "capacity": 989.0,
       "link_id": 207,
-      "load": 0.0,
+      "load": 0.16240960566228513,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 160.6231
     },
     {
       "capacity": 418.0,
       "link_id": 208,
-      "load": 0.0,
+      "load": 0.0216488038277512,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 9.0492
     },
     {
       "capacity": 784.0,
       "link_id": 209,
-      "load": 0.17746339285714288,
+      "load": 0.20487640306122448,
       "t": 1,
-      "total_demand": 139.1313
+      "total_demand": 160.6231
     },
     {
       "capacity": 150.0,
@@ -3252,9 +3252,9 @@
     {
       "capacity": 586.0,
       "link_id": 214,
-      "load": 0.04439658703071678,
+      "load": 0.23742542662116042,
       "t": 1,
-      "total_demand": 26.016400000000033
+      "total_demand": 139.1313
     },
     {
       "capacity": 929.0,
@@ -3273,23 +3273,23 @@
     {
       "capacity": 651.0,
       "link_id": 217,
-      "load": 0.20155652841781832,
+      "load": 0.3596740399385561,
       "t": 1,
-      "total_demand": 131.21329999999972
+      "total_demand": 234.14780000000002
     },
     {
       "capacity": 921.0,
       "link_id": 218,
-      "load": 0.02701986970684042,
+      "load": 0.02701986970684039,
       "t": 1,
-      "total_demand": 24.88530000000003
+      "total_demand": 24.8853
     },
     {
       "capacity": 644.0,
       "link_id": 219,
-      "load": 0.021077329192546592,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 0.0
     },
     {
       "capacity": 896.0,
@@ -3343,16 +3343,16 @@
     {
       "capacity": 539.0,
       "link_id": 227,
-      "load": 0.025183302411873852,
+      "load": 0.281213172541744,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 151.5739
     },
     {
       "capacity": 791.0,
       "link_id": 228,
-      "load": 0.0,
+      "load": 0.0328905183312263,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 26.0164
     },
     {
       "capacity": 466.0,
@@ -3392,9 +3392,9 @@
     {
       "capacity": 866.0,
       "link_id": 234,
-      "load": 0.015674133949191694,
+      "load": 0.030042032332563515,
       "t": 1,
-      "total_demand": 13.573800000000006
+      "total_demand": 26.016400000000004
     },
     {
       "capacity": 278.0,
@@ -3406,9 +3406,9 @@
     {
       "capacity": 907.0,
       "link_id": 236,
-      "load": 0.2556620727673641,
+      "load": 0.2830990077177508,
       "t": 1,
-      "total_demand": 231.8854999999992
+      "total_demand": 256.7708
     },
     {
       "capacity": 317.0,
@@ -3434,9 +3434,9 @@
     {
       "capacity": 622.0,
       "link_id": 240,
-      "load": 0.0,
+      "load": 0.2436879421221865,
       "t": 1,
-      "total_demand": 0.0
+      "total_demand": 151.5739
     },
     {
       "capacity": 180.0,
@@ -3483,9 +3483,9 @@
     {
       "capacity": 751.0,
       "link_id": 247,
-      "load": 0.2018294274300932,
+      "load": 0.0,
       "t": 1,
-      "total_demand": 151.57389999999998
+      "total_demand": 0.0
     },
     {
       "capacity": 727.0,
@@ -3503,66 +3503,1210 @@
     }
   ],
   "max_link_id": 27,
-  "max_link_load": 0.9435434146341446,
+  "max_link_load": 0.9435434146341464,
   "max_link_slot": 0,
   "max_load_history": [
     [
       {
         "iter": 0,
-        "max_load": 1.0000012077294687
+        "max_load": 1.0000012077294687,
+        "op": "start"
       },
       {
-        "iter": 7,
-        "max_load": 0.9821682926829269
+        "iter": 1,
+        "max_load": 0.9821682926829269,
+        "op": "insert"
       },
       {
-        "iter": 17,
-        "max_load": 0.944427990430622
+        "iter": 4,
+        "max_load": 0.944427990430622,
+        "op": "extend"
       },
       {
-        "iter": 150,
-        "max_load": 0.9435434146341464
+        "iter": 5,
+        "max_load": 0.9435434146341464,
+        "op": "extend"
       }
     ],
     [
       {
         "iter": 0,
-        "max_load": 0.6235112195121951
+        "max_load": 0.6235112195121951,
+        "op": "start"
       },
       {
         "iter": 3,
-        "max_load": 0.435924584717608
+        "max_load": 0.4409563944530046,
+        "op": "change"
       },
       {
         "iter": 4,
-        "max_load": 0.41408125
+        "max_load": 0.435924584717608,
+        "op": "change"
+      },
+      {
+        "iter": 5,
+        "max_load": 0.41408125,
+        "op": "insert"
       }
     ]
   ],
+  "nbhd_switches": [
+    [
+      {
+        "iter": 1,
+        "op": "insert"
+      },
+      {
+        "iter": 2,
+        "op": "change"
+      },
+      {
+        "iter": 3,
+        "op": "delete"
+      },
+      {
+        "iter": 4,
+        "op": "extend"
+      },
+      {
+        "iter": 6,
+        "op": "insert"
+      },
+      {
+        "iter": 7,
+        "op": "change"
+      },
+      {
+        "iter": 8,
+        "op": "delete"
+      },
+      {
+        "iter": 9,
+        "op": "extend"
+      },
+      {
+        "iter": 10,
+        "op": "insert"
+      },
+      {
+        "iter": 11,
+        "op": "change"
+      },
+      {
+        "iter": 12,
+        "op": "delete"
+      },
+      {
+        "iter": 13,
+        "op": "extend"
+      },
+      {
+        "iter": 14,
+        "op": "shake"
+      },
+      {
+        "iter": 15,
+        "op": "delete"
+      },
+      {
+        "iter": 17,
+        "op": "extend"
+      },
+      {
+        "iter": 18,
+        "op": "insert"
+      },
+      {
+        "iter": 19,
+        "op": "change"
+      },
+      {
+        "iter": 20,
+        "op": "delete"
+      },
+      {
+        "iter": 21,
+        "op": "extend"
+      },
+      {
+        "iter": 22,
+        "op": "insert"
+      },
+      {
+        "iter": 23,
+        "op": "change"
+      },
+      {
+        "iter": 24,
+        "op": "delete"
+      },
+      {
+        "iter": 25,
+        "op": "extend"
+      },
+      {
+        "iter": 26,
+        "op": "shake"
+      },
+      {
+        "iter": 27,
+        "op": "extend"
+      },
+      {
+        "iter": 28,
+        "op": "insert"
+      },
+      {
+        "iter": 29,
+        "op": "change"
+      },
+      {
+        "iter": 31,
+        "op": "delete"
+      },
+      {
+        "iter": 32,
+        "op": "extend"
+      },
+      {
+        "iter": 33,
+        "op": "insert"
+      },
+      {
+        "iter": 35,
+        "op": "change"
+      },
+      {
+        "iter": 36,
+        "op": "delete"
+      },
+      {
+        "iter": 37,
+        "op": "extend"
+      },
+      {
+        "iter": 38,
+        "op": "shake"
+      },
+      {
+        "iter": 39,
+        "op": "extend"
+      },
+      {
+        "iter": 40,
+        "op": "insert"
+      },
+      {
+        "iter": 41,
+        "op": "change"
+      },
+      {
+        "iter": 42,
+        "op": "delete"
+      },
+      {
+        "iter": 43,
+        "op": "extend"
+      },
+      {
+        "iter": 45,
+        "op": "insert"
+      },
+      {
+        "iter": 46,
+        "op": "change"
+      },
+      {
+        "iter": 47,
+        "op": "delete"
+      },
+      {
+        "iter": 48,
+        "op": "shake"
+      },
+      {
+        "iter": 49,
+        "op": "extend"
+      },
+      {
+        "iter": 50,
+        "op": "insert"
+      },
+      {
+        "iter": 51,
+        "op": "change"
+      },
+      {
+        "iter": 52,
+        "op": "delete"
+      },
+      {
+        "iter": 54,
+        "op": "extend"
+      },
+      {
+        "iter": 55,
+        "op": "insert"
+      },
+      {
+        "iter": 56,
+        "op": "change"
+      },
+      {
+        "iter": 57,
+        "op": "extend"
+      },
+      {
+        "iter": 58,
+        "op": "insert"
+      },
+      {
+        "iter": 59,
+        "op": "change"
+      },
+      {
+        "iter": 60,
+        "op": "delete"
+      },
+      {
+        "iter": 61,
+        "op": "shake"
+      },
+      {
+        "iter": 62,
+        "op": "extend"
+      },
+      {
+        "iter": 63,
+        "op": "insert"
+      },
+      {
+        "iter": 64,
+        "op": "change"
+      },
+      {
+        "iter": 65,
+        "op": "delete"
+      },
+      {
+        "iter": 66,
+        "op": "extend"
+      },
+      {
+        "iter": 67,
+        "op": "insert"
+      },
+      {
+        "iter": 68,
+        "op": "change"
+      },
+      {
+        "iter": 69,
+        "op": "delete"
+      },
+      {
+        "iter": 70,
+        "op": "extend"
+      },
+      {
+        "iter": 71,
+        "op": "insert"
+      },
+      {
+        "iter": 72,
+        "op": "change"
+      },
+      {
+        "iter": 73,
+        "op": "delete"
+      },
+      {
+        "iter": 75,
+        "op": "extend"
+      },
+      {
+        "iter": 76,
+        "op": "insert"
+      },
+      {
+        "iter": 77,
+        "op": "change"
+      },
+      {
+        "iter": 78,
+        "op": "shake"
+      },
+      {
+        "iter": 79,
+        "op": "delete"
+      },
+      {
+        "iter": 80,
+        "op": "extend"
+      },
+      {
+        "iter": 81,
+        "op": "insert"
+      },
+      {
+        "iter": 82,
+        "op": "change"
+      },
+      {
+        "iter": 83,
+        "op": "delete"
+      },
+      {
+        "iter": 84,
+        "op": "extend"
+      },
+      {
+        "iter": 86,
+        "op": "insert"
+      },
+      {
+        "iter": 87,
+        "op": "change"
+      },
+      {
+        "iter": 88,
+        "op": "delete"
+      },
+      {
+        "iter": 89,
+        "op": "shake"
+      },
+      {
+        "iter": 90,
+        "op": "extend"
+      },
+      {
+        "iter": 91,
+        "op": "insert"
+      },
+      {
+        "iter": 92,
+        "op": "change"
+      },
+      {
+        "iter": 93,
+        "op": "delete"
+      },
+      {
+        "iter": 94,
+        "op": "extend"
+      },
+      {
+        "iter": 95,
+        "op": "insert"
+      },
+      {
+        "iter": 96,
+        "op": "change"
+      },
+      {
+        "iter": 97,
+        "op": "delete"
+      },
+      {
+        "iter": 98,
+        "op": "shake"
+      },
+      {
+        "iter": 99,
+        "op": "extend"
+      },
+      {
+        "iter": 100,
+        "op": "insert"
+      },
+      {
+        "iter": 101,
+        "op": "change"
+      },
+      {
+        "iter": 102,
+        "op": "delete"
+      },
+      {
+        "iter": 103,
+        "op": "insert"
+      },
+      {
+        "iter": 104,
+        "op": "change"
+      },
+      {
+        "iter": 105,
+        "op": "delete"
+      },
+      {
+        "iter": 106,
+        "op": "extend"
+      },
+      {
+        "iter": 107,
+        "op": "shake"
+      },
+      {
+        "iter": 108,
+        "op": "robust"
+      },
+      {
+        "iter": 111,
+        "op": "kick"
+      },
+      {
+        "iter": 112,
+        "op": "robust"
+      },
+      {
+        "iter": 115,
+        "op": "kick"
+      },
+      {
+        "iter": 116,
+        "op": "robust"
+      },
+      {
+        "iter": 120,
+        "op": "kick"
+      },
+      {
+        "iter": 121,
+        "op": "robust"
+      },
+      {
+        "iter": 125,
+        "op": "kick"
+      },
+      {
+        "iter": 126,
+        "op": "robust"
+      },
+      {
+        "iter": 129,
+        "op": "kick"
+      },
+      {
+        "iter": 130,
+        "op": "robust"
+      },
+      {
+        "iter": 134,
+        "op": "kick"
+      },
+      {
+        "iter": 135,
+        "op": "robust"
+      },
+      {
+        "iter": 138,
+        "op": "kick"
+      },
+      {
+        "iter": 139,
+        "op": "robust"
+      },
+      {
+        "iter": 145,
+        "op": "kick"
+      },
+      {
+        "iter": 146,
+        "op": "robust"
+      },
+      {
+        "iter": 150,
+        "op": "kick"
+      },
+      {
+        "iter": 151,
+        "op": "robust"
+      },
+      {
+        "iter": 154,
+        "op": "kick"
+      },
+      {
+        "iter": 155,
+        "op": "robust"
+      },
+      {
+        "iter": 159,
+        "op": "kick"
+      },
+      {
+        "iter": 160,
+        "op": "robust"
+      },
+      {
+        "iter": 163,
+        "op": "kick"
+      },
+      {
+        "iter": 164,
+        "op": "robust"
+      },
+      {
+        "iter": 167,
+        "op": "kick"
+      },
+      {
+        "iter": 168,
+        "op": "robust"
+      },
+      {
+        "iter": 171,
+        "op": "kick"
+      },
+      {
+        "iter": 172,
+        "op": "robust"
+      },
+      {
+        "iter": 175,
+        "op": "kick"
+      },
+      {
+        "iter": 176,
+        "op": "robust"
+      },
+      {
+        "iter": 179,
+        "op": "kick"
+      },
+      {
+        "iter": 180,
+        "op": "robust"
+      },
+      {
+        "iter": 183,
+        "op": "kick"
+      },
+      {
+        "iter": 184,
+        "op": "robust"
+      },
+      {
+        "iter": 187,
+        "op": "kick"
+      },
+      {
+        "iter": 188,
+        "op": "robust"
+      },
+      {
+        "iter": 191,
+        "op": "kick"
+      },
+      {
+        "iter": 192,
+        "op": "robust"
+      },
+      {
+        "iter": 195,
+        "op": "kick"
+      },
+      {
+        "iter": 196,
+        "op": "robust"
+      },
+      {
+        "iter": 199,
+        "op": "kick"
+      },
+      {
+        "iter": 200,
+        "op": "robust"
+      },
+      {
+        "iter": 204,
+        "op": "kick"
+      },
+      {
+        "iter": 205,
+        "op": "robust"
+      },
+      {
+        "iter": 209,
+        "op": "kick"
+      },
+      {
+        "iter": 210,
+        "op": "robust"
+      },
+      {
+        "iter": 213,
+        "op": "kick"
+      },
+      {
+        "iter": 214,
+        "op": "robust"
+      },
+      {
+        "iter": 218,
+        "op": "kick"
+      },
+      {
+        "iter": 219,
+        "op": "robust"
+      },
+      {
+        "iter": 222,
+        "op": "kick"
+      },
+      {
+        "iter": 223,
+        "op": "robust"
+      },
+      {
+        "iter": 226,
+        "op": "kick"
+      },
+      {
+        "iter": 227,
+        "op": "robust"
+      },
+      {
+        "iter": 231,
+        "op": "kick"
+      },
+      {
+        "iter": 232,
+        "op": "robust"
+      },
+      {
+        "iter": 235,
+        "op": "kick"
+      },
+      {
+        "iter": 236,
+        "op": "robust"
+      },
+      {
+        "iter": 239,
+        "op": "kick"
+      },
+      {
+        "iter": 240,
+        "op": "robust"
+      }
+    ],
+    [
+      {
+        "iter": 1,
+        "op": "delete"
+      },
+      {
+        "iter": 2,
+        "op": "insert"
+      },
+      {
+        "iter": 3,
+        "op": "change"
+      },
+      {
+        "iter": 5,
+        "op": "insert"
+      },
+      {
+        "iter": 6,
+        "op": "change"
+      },
+      {
+        "iter": 7,
+        "op": "delete"
+      },
+      {
+        "iter": 8,
+        "op": "insert"
+      },
+      {
+        "iter": 9,
+        "op": "change"
+      },
+      {
+        "iter": 10,
+        "op": "delete"
+      },
+      {
+        "iter": 11,
+        "op": "insert"
+      },
+      {
+        "iter": 12,
+        "op": "shake"
+      },
+      {
+        "iter": 13,
+        "op": "insert"
+      },
+      {
+        "iter": 14,
+        "op": "change"
+      },
+      {
+        "iter": 15,
+        "op": "delete"
+      },
+      {
+        "iter": 17,
+        "op": "insert"
+      },
+      {
+        "iter": 18,
+        "op": "change"
+      },
+      {
+        "iter": 19,
+        "op": "shake"
+      },
+      {
+        "iter": 20,
+        "op": "insert"
+      },
+      {
+        "iter": 21,
+        "op": "change"
+      },
+      {
+        "iter": 22,
+        "op": "delete"
+      },
+      {
+        "iter": 23,
+        "op": "insert"
+      },
+      {
+        "iter": 24,
+        "op": "change"
+      },
+      {
+        "iter": 25,
+        "op": "delete"
+      },
+      {
+        "iter": 26,
+        "op": "shake"
+      },
+      {
+        "iter": 27,
+        "op": "insert"
+      },
+      {
+        "iter": 28,
+        "op": "change"
+      },
+      {
+        "iter": 29,
+        "op": "delete"
+      },
+      {
+        "iter": 30,
+        "op": "change"
+      },
+      {
+        "iter": 31,
+        "op": "delete"
+      },
+      {
+        "iter": 32,
+        "op": "insert"
+      },
+      {
+        "iter": 33,
+        "op": "shake"
+      },
+      {
+        "iter": 34,
+        "op": "change"
+      },
+      {
+        "iter": 35,
+        "op": "delete"
+      },
+      {
+        "iter": 36,
+        "op": "insert"
+      },
+      {
+        "iter": 37,
+        "op": "change"
+      },
+      {
+        "iter": 38,
+        "op": "delete"
+      },
+      {
+        "iter": 39,
+        "op": "insert"
+      },
+      {
+        "iter": 40,
+        "op": "shake"
+      },
+      {
+        "iter": 41,
+        "op": "insert"
+      },
+      {
+        "iter": 42,
+        "op": "change"
+      },
+      {
+        "iter": 43,
+        "op": "delete"
+      },
+      {
+        "iter": 44,
+        "op": "change"
+      },
+      {
+        "iter": 45,
+        "op": "delete"
+      },
+      {
+        "iter": 46,
+        "op": "insert"
+      },
+      {
+        "iter": 47,
+        "op": "shake"
+      },
+      {
+        "iter": 48,
+        "op": "delete"
+      },
+      {
+        "iter": 49,
+        "op": "insert"
+      },
+      {
+        "iter": 50,
+        "op": "change"
+      },
+      {
+        "iter": 52,
+        "op": "delete"
+      },
+      {
+        "iter": 53,
+        "op": "insert"
+      },
+      {
+        "iter": 54,
+        "op": "shake"
+      },
+      {
+        "iter": 55,
+        "op": "change"
+      },
+      {
+        "iter": 56,
+        "op": "delete"
+      },
+      {
+        "iter": 57,
+        "op": "insert"
+      },
+      {
+        "iter": 59,
+        "op": "change"
+      },
+      {
+        "iter": 60,
+        "op": "delete"
+      },
+      {
+        "iter": 61,
+        "op": "shake"
+      },
+      {
+        "iter": 62,
+        "op": "insert"
+      },
+      {
+        "iter": 63,
+        "op": "change"
+      },
+      {
+        "iter": 64,
+        "op": "delete"
+      },
+      {
+        "iter": 65,
+        "op": "insert"
+      },
+      {
+        "iter": 66,
+        "op": "change"
+      },
+      {
+        "iter": 67,
+        "op": "delete"
+      },
+      {
+        "iter": 68,
+        "op": "shake"
+      },
+      {
+        "iter": 69,
+        "op": "insert"
+      },
+      {
+        "iter": 70,
+        "op": "change"
+      },
+      {
+        "iter": 71,
+        "op": "delete"
+      },
+      {
+        "iter": 72,
+        "op": "change"
+      },
+      {
+        "iter": 73,
+        "op": "delete"
+      },
+      {
+        "iter": 74,
+        "op": "insert"
+      },
+      {
+        "iter": 75,
+        "op": "shake"
+      },
+      {
+        "iter": 76,
+        "op": "delete"
+      },
+      {
+        "iter": 77,
+        "op": "insert"
+      },
+      {
+        "iter": 78,
+        "op": "change"
+      },
+      {
+        "iter": 79,
+        "op": "insert"
+      },
+      {
+        "iter": 80,
+        "op": "change"
+      },
+      {
+        "iter": 81,
+        "op": "delete"
+      },
+      {
+        "iter": 82,
+        "op": "shake"
+      },
+      {
+        "iter": 83,
+        "op": "insert"
+      },
+      {
+        "iter": 84,
+        "op": "change"
+      },
+      {
+        "iter": 85,
+        "op": "delete"
+      },
+      {
+        "iter": 86,
+        "op": "change"
+      },
+      {
+        "iter": 87,
+        "op": "delete"
+      },
+      {
+        "iter": 88,
+        "op": "insert"
+      },
+      {
+        "iter": 89,
+        "op": "shake"
+      },
+      {
+        "iter": 90,
+        "op": "change"
+      },
+      {
+        "iter": 91,
+        "op": "delete"
+      },
+      {
+        "iter": 92,
+        "op": "insert"
+      },
+      {
+        "iter": 93,
+        "op": "change"
+      },
+      {
+        "iter": 94,
+        "op": "delete"
+      },
+      {
+        "iter": 95,
+        "op": "insert"
+      },
+      {
+        "iter": 96,
+        "op": "change"
+      },
+      {
+        "iter": 97,
+        "op": "delete"
+      },
+      {
+        "iter": 98,
+        "op": "shake"
+      },
+      {
+        "iter": 99,
+        "op": "change"
+      },
+      {
+        "iter": 100,
+        "op": "delete"
+      },
+      {
+        "iter": 101,
+        "op": "insert"
+      },
+      {
+        "iter": 102,
+        "op": "change"
+      },
+      {
+        "iter": 103,
+        "op": "delete"
+      },
+      {
+        "iter": 104,
+        "op": "insert"
+      },
+      {
+        "iter": 105,
+        "op": "shake"
+      },
+      {
+        "iter": 106,
+        "op": "insert"
+      },
+      {
+        "iter": 107,
+        "op": "change"
+      },
+      {
+        "iter": 108,
+        "op": "delete"
+      }
+    ]
+  ],
+  "op_stats": {
+    "later": {
+      "change": {
+        "calls": 32,
+        "improved": 2,
+        "peak_drop": 0.18758663479458715,
+        "seconds": 0.00015474000000000003
+      },
+      "delete": {
+        "calls": 31,
+        "improved": 1,
+        "peak_drop": 0.0,
+        "seconds": 0.00026007599999999987
+      },
+      "insert": {
+        "calls": 31,
+        "improved": 1,
+        "peak_drop": 0.021843334717607965,
+        "seconds": 0.0002831709999999999
+      },
+      "shake": {
+        "calls": 14,
+        "improved": 14,
+        "peak_drop": 0.0,
+        "seconds": 9.608900000000001e-05
+      }
+    },
+    "slot0": {
+      "change": {
+        "calls": 23,
+        "improved": 1,
+        "peak_drop": 0.0008845757964756062,
+        "seconds": 0.0005261539999999999
+      },
+      "delete": {
+        "calls": 25,
+        "improved": 5,
+        "peak_drop": 0.0,
+        "seconds": 0.00013654699999999997
+      },
+      "extend": {
+        "calls": 27,
+        "improved": 5,
+        "peak_drop": 0.04127860543820738,
+        "seconds": 0.0030727569999999997
+      },
+      "insert": {
+        "calls": 23,
+        "improved": 1,
+        "peak_drop": 0.01783291504654172,
+        "seconds": 0.00044234200000000003
+      },
+      "kick": {
+        "calls": 30,
+        "improved": 30,
+        "peak_drop": -0.02122981911541455,
+        "seconds": 0.007714671
+      },
+      "robust": {
+        "calls": 105,
+        "improved": 43,
+        "peak_drop": 0.01857609172598773,
+        "seconds": 0.072314984
+      },
+      "shake": {
+        "calls": 9,
+        "improved": 9,
+        "peak_drop": -0.004422878982378031,
+        "seconds": 8.542499999999999e-05
+      }
+    }
+  },
   "paths": [
     {
       "d": 0,
       "feasible": true,
       "links": [
         46,
-        227,
-        29,
-        116
+        91,
+        153,
+        192
       ],
       "routed_demand": 20.3607,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        14
-      ]
+      "w": []
     },
     {
       "d": 1,
       "feasible": true,
       "links": [
+        8,
         114,
-        146,
-        8
+        146
       ],
       "routed_demand": 102.9345,
       "t": 0,
@@ -3574,60 +4718,66 @@
       "feasible": true,
       "links": [
         88,
-        148,
-        68,
-        128,
-        232,
-        205,
-        5
+        94,
+        131,
+        175,
+        214
       ],
       "routed_demand": 119.9018,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        33
+        15
       ]
     },
     {
       "d": 3,
       "feasible": true,
       "links": [
-        109,
-        223,
-        42,
-        166,
         13,
+        32,
+        109,
+        128,
+        177,
         230
       ],
       "routed_demand": 92.7542,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        35
+        16
       ]
     },
     {
       "d": 4,
       "feasible": true,
       "links": [
-        80,
-        151,
-        87
+        68,
+        85,
+        87,
+        130,
+        134,
+        148,
+        206,
+        217
       ],
       "routed_demand": 234.1478,
       "t": 0,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        22,
+        5
+      ]
     },
     {
       "d": 5,
       "feasible": true,
       "links": [
-        30,
-        234,
-        28,
         25,
-        228
+        28,
+        30,
+        228,
+        234
       ],
       "routed_demand": 414.0005,
       "t": 0,
@@ -3651,37 +4801,43 @@
       "d": 7,
       "feasible": true,
       "links": [
-        236,
-        126,
-        125,
-        96,
         52,
-        57
+        57,
+        96,
+        125,
+        126,
+        236
       ],
       "routed_demand": 201.3445,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        27
+        26
       ]
     },
     {
       "d": 8,
       "feasible": true,
       "links": [
-        82,
-        115,
-        225,
-        69,
         27,
         53,
-        97
+        73,
+        97,
+        133,
+        155,
+        162,
+        168,
+        187,
+        190
       ],
       "routed_demand": 193.4264,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        20,
+        19,
+        5,
+        36,
+        38,
         13
       ]
     },
@@ -3689,11 +4845,11 @@
       "d": 9,
       "feasible": true,
       "links": [
+        35,
+        81,
         88,
         131,
-        236,
-        35,
-        81
+        236
       ],
       "routed_demand": 175.3281,
       "t": 0,
@@ -3715,50 +4871,47 @@
       "d": 11,
       "feasible": true,
       "links": [
-        249,
-        207,
-        209,
-        118
+        5,
+        166,
+        202
       ],
       "routed_demand": 173.0658,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        5
-      ]
+      "w": []
     },
     {
       "d": 12,
       "feasible": true,
       "links": [
         6,
-        206,
-        23,
-        103,
-        79
+        32,
+        79,
+        128
       ],
       "routed_demand": 7.918,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        11
-      ]
+      "w": []
     },
     {
       "d": 13,
       "feasible": true,
       "links": [
         36,
-        92,
-        74,
         41,
-        83
+        83,
+        118,
+        158,
+        207,
+        209
       ],
       "routed_demand": 260.1642,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        37
+        8,
+        25
       ]
     },
     {
@@ -3789,27 +4942,23 @@
       "d": 16,
       "feasible": true,
       "links": [
-        106,
-        132,
-        72,
-        195,
-        91
+        91,
+        141,
+        144
       ],
       "routed_demand": 85.9673,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        36
-      ]
+      "w": []
     },
     {
       "d": 17,
       "feasible": true,
       "links": [
-        124,
         60,
-        244,
-        187
+        124,
+        187,
+        244
       ],
       "routed_demand": 131.2133,
       "t": 0,
@@ -3820,32 +4969,28 @@
       "d": 18,
       "feasible": true,
       "links": [
+        7,
         192,
-        197,
-        39,
-        190,
-        7
+        208
       ],
       "routed_demand": 65.6066,
       "t": 0,
       "total_metric": 0.0,
-      "w": [
-        19
-      ]
+      "w": []
     },
     {
       "d": 19,
       "feasible": true,
       "links": [
-        247,
-        188,
-        85
+        193,
+        227,
+        240
       ],
       "routed_demand": 100.6722,
       "t": 0,
       "total_metric": 0.0,
       "w": [
-        32
+        0
       ]
     },
     {
@@ -3853,24 +4998,22 @@
       "feasible": true,
       "links": [
         46,
-        227,
-        29,
-        116
+        91,
+        153,
+        192
       ],
       "routed_demand": 13.5738,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        14
-      ]
+      "w": []
     },
     {
       "d": 1,
       "feasible": true,
       "links": [
+        8,
         114,
-        146,
-        8
+        146
       ],
       "routed_demand": 92.7542,
       "t": 1,
@@ -3882,59 +5025,75 @@
       "feasible": true,
       "links": [
         88,
-        148,
-        68,
-        209,
-        118
+        94,
+        131,
+        175,
+        214
       ],
       "routed_demand": 139.1313,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        5
+        15
       ]
     },
     {
       "d": 3,
       "feasible": true,
       "links": [
-        217,
-        236,
-        126,
         13,
-        230
+        32,
+        33,
+        126,
+        217,
+        230,
+        236
       ],
       "routed_demand": 131.2133,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        30
+        27,
+        16
       ]
     },
     {
       "d": 4,
       "feasible": true,
       "links": [
-        80,
-        151,
-        87
+        68,
+        85,
+        87,
+        130,
+        134,
+        148,
+        206,
+        217
       ],
       "routed_demand": 102.9345,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        22,
+        5
+      ]
     },
     {
       "d": 5,
       "feasible": true,
       "links": [
-        175,
-        214
+        25,
+        28,
+        30,
+        228,
+        234
       ],
       "routed_demand": 26.0164,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        12
+      ]
     },
     {
       "d": 6,
@@ -3951,44 +5110,56 @@
       "d": 7,
       "feasible": true,
       "links": [
-        94,
-        30,
-        218,
-        129,
-        69,
+        3,
+        18,
         27,
-        57
+        54,
+        57,
+        69,
+        129,
+        218,
+        236
       ],
       "routed_demand": 24.8853,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        1
+        31
       ]
     },
     {
       "d": 8,
       "feasible": true,
       "links": [
+        73,
+        125,
+        133,
+        155,
+        156,
         162,
-        138,
-        61,
-        125
+        187,
+        190
       ],
       "routed_demand": 102.9345,
       "t": 1,
       "total_metric": 0.0,
-      "w": []
+      "w": [
+        19,
+        5,
+        36,
+        38,
+        30
+      ]
     },
     {
       "d": 9,
       "feasible": true,
       "links": [
+        35,
+        81,
         88,
         131,
-        236,
-        35,
-        81
+        236
       ],
       "routed_demand": 100.6722,
       "t": 1,
@@ -4010,9 +5181,9 @@
       "d": 11,
       "feasible": true,
       "links": [
-        202,
+        5,
         166,
-        5
+        202
       ],
       "routed_demand": 89.3608,
       "t": 1,
@@ -4024,51 +5195,47 @@
       "feasible": true,
       "links": [
         6,
-        206,
-        16,
-        205,
-        79
+        32,
+        79,
+        128
       ],
       "routed_demand": 6.7869,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        8,
-        33
-      ]
+      "w": []
     },
     {
       "d": 13,
       "feasible": true,
       "links": [
         36,
-        92,
-        74,
         41,
-        83
+        83,
+        118,
+        158,
+        207,
+        209
       ],
       "routed_demand": 160.6231,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        37
+        8,
+        25
       ]
     },
     {
       "d": 14,
       "feasible": true,
       "links": [
-        11,
-        128,
-        219,
-        234
+        34,
+        91,
+        117
       ],
       "routed_demand": 13.5738,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        16
-      ]
+      "w": []
     },
     {
       "d": 15,
@@ -4085,27 +5252,23 @@
       "d": 16,
       "feasible": true,
       "links": [
-        106,
-        132,
-        72,
-        195,
-        91
+        91,
+        141,
+        144
       ],
       "routed_demand": 45.246,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        36
-      ]
+      "w": []
     },
     {
       "d": 17,
       "feasible": true,
       "links": [
-        124,
         60,
-        244,
-        187
+        124,
+        187,
+        244
       ],
       "routed_demand": 261.2954,
       "t": 1,
@@ -4116,35 +5279,31 @@
       "d": 18,
       "feasible": true,
       "links": [
+        7,
         192,
-        197,
-        39,
-        190,
-        7
+        208
       ],
       "routed_demand": 9.0492,
       "t": 1,
       "total_metric": 0.0,
-      "w": [
-        19
-      ]
+      "w": []
     },
     {
       "d": 19,
       "feasible": true,
       "links": [
-        247,
-        188,
-        85
+        193,
+        227,
+        240
       ],
       "routed_demand": 151.5739,
       "t": 1,
       "total_metric": 0.0,
       "w": [
-        32
+        0
       ]
     }
   ],
-  "solve_time_seconds": 0.120561778,
+  "solve_time_seconds": 0.086077244,
   "total_metric": 0.0
 }

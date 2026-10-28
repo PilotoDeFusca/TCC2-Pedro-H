@@ -4,7 +4,7 @@ LDFLAGS    :=
 
 TARGET     := solver
 SRCS       := main.cpp loader.cpp trivial_solution.cpp verifier.cpp amns.cpp classical_solution.cpp
-DEPS       := loader.h
+DEPS       := loader.h sr_core.h
 
 BUILD_DIR  := build
 OBJS       := $(addprefix $(BUILD_DIR)/, $(SRCS:.cpp=.o))

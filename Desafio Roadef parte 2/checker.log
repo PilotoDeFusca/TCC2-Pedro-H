@@ -1,24 +1,34 @@
-arguments: ./checker-v1.2.2-x86-64_linux --instance setA/setA-02 --verbose --pretty
+arguments: ./checker-v1.2.2-x86-64_linux --net setX/setX-12-net.json --tm setX/setX-12-tm.json --scenario setX/setX-12-scenario.json --srpaths setX_trivial/setX-12-srpaths.json --verbose
 Current dir: /mnt/c/Users/ph458/OneDrive/Documents/TCC/Desafio Roadef parte 2
 File verbosity level: 9
 date       time         ( uptime  ) [ thread name/id ]                   file:line     v| 
-2026-09-15 19:34:14.242 (   0.007s) [main thread     ]               loguru.h:2274  INFO| Logging to 'checker.log', mode: 'w', verbosity: 9
-2026-09-15 19:34:14.243 (   0.007s) [main thread     ]           validation.h:43    INFO| Validating network JSON format using schema 'embedded network schema'...
-2026-09-15 19:34:14.246 (   0.011s) [main thread     ]           validation.h:121   INFO| ✅ Network JSON format validation successful
-2026-09-15 19:34:14.246 (   0.011s) [main thread     ]           validation.h:136   INFO| Validating traffic matrix JSON format using schema 'embedded traffic matrix schema'...
-2026-09-15 19:34:14.248 (   0.013s) [main thread     ]           validation.h:202   INFO| ✅ Traffic matrix JSON format validation successful
-2026-09-15 19:34:14.249 (   0.013s) [main thread     ]           validation.h:217   INFO| Validating scenario JSON format using schema 'embedded scenario schema'...
-2026-09-15 19:34:14.250 (   0.015s) [main thread     ]           validation.h:298   INFO| ✅ Scenario JSON format validation successful
-2026-09-15 19:34:14.250 (   0.015s) [main thread     ]           validation.h:313   INFO| Validating SR paths JSON format using schema 'embedded SR paths schema'...
-2026-09-15 19:34:14.252 (   0.017s) [main thread     ]           validation.h:370   INFO| ✅ SR paths JSON format validation successful
-2026-09-15 19:34:14.252 (   0.017s) [main thread     ]              checker.h:51    INFO| Loading network topology from 'setA/setA-02-net.json'...
-2026-09-15 19:34:14.253 (   0.018s) [main thread     ]              checker.h:74    INFO| ✅ Network topology 'setA/setA-02-net.json' successfully loaded (30 nodes, 150 arcs)
-2026-09-15 19:34:14.253 (   0.018s) [main thread     ]              checker.h:81    INFO| Loading traffic matrix from 'setA/setA-02-tm.json'...
-2026-09-15 19:34:14.255 (   0.019s) [main thread     ]              checker.h:154   INFO| ✅ Demand graph 'setA/setA-02-tm.json' successfully loaded (45 demands)
-2026-09-15 19:34:14.255 (   0.020s) [main thread     ]              checker.h:199   INFO| Loading scenario from 'setA/setA-02-scenario.json'...
-2026-09-15 19:34:14.256 (   0.021s) [main thread     ]              checker.h:270   INFO| ✅ Input scenario 'setA/setA-02-scenario.json' loaded successfully (budget size 2, interventions 2)
-2026-09-15 19:34:14.256 (   0.021s) [main thread     ]              checker.h:320   INFO| Loading SR paths from 'setA/setA-02-srpaths.json'...
-2026-09-15 19:34:14.258 (   0.022s) [main thread     ]              checker.h:393   INFO| ✅ Input srpaths 'setA/setA-02-srpaths.json' loaded successfully (0 srpaths)
-2026-09-15 19:34:14.258 (   0.023s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 0 : 1 (inverse load score: inf)
-2026-09-15 19:34:14.258 (   0.023s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 1 : 1.0980781976744185 (inverse load score: inf)
-2026-09-15 19:34:14.259 (   0.023s) [main thread     ]               loguru.h:1983  INFO| atexit
+2026-10-27 21:39:43.516 (   0.008s) [main thread     ]               loguru.h:2274  INFO| Logging to 'checker.log', mode: 'w', verbosity: 9
+2026-10-27 21:39:43.516 (   0.008s) [main thread     ]           validation.h:43    INFO| Validating network JSON format using schema 'embedded network schema'...
+2026-10-27 21:39:43.536 (   0.027s) [main thread     ]           validation.h:121   INFO| ✅ Network JSON format validation successful
+2026-10-27 21:39:43.536 (   0.028s) [main thread     ]           validation.h:136   INFO| Validating traffic matrix JSON format using schema 'embedded traffic matrix schema'...
+2026-10-27 21:39:43.578 (   0.069s) [main thread     ]           validation.h:202   INFO| ✅ Traffic matrix JSON format validation successful
+2026-10-27 21:39:43.579 (   0.070s) [main thread     ]           validation.h:217   INFO| Validating scenario JSON format using schema 'embedded scenario schema'...
+2026-10-27 21:39:43.581 (   0.073s) [main thread     ]           validation.h:298   INFO| ✅ Scenario JSON format validation successful
+2026-10-27 21:39:43.582 (   0.073s) [main thread     ]           validation.h:313   INFO| Validating SR paths JSON format using schema 'embedded SR paths schema'...
+2026-10-27 21:39:43.731 (   0.222s) [main thread     ]           validation.h:370   INFO| ✅ SR paths JSON format validation successful
+2026-10-27 21:39:43.732 (   0.223s) [main thread     ]              checker.h:51    INFO| Loading network topology from 'setX/setX-12-net.json'...
+2026-10-27 21:39:43.743 (   0.235s) [main thread     ]              checker.h:74    INFO| ✅ Network topology 'setX/setX-12-net.json' successfully loaded (1263 nodes, 4454 arcs)
+2026-10-27 21:39:43.744 (   0.235s) [main thread     ]              checker.h:81    INFO| Loading traffic matrix from 'setX/setX-12-tm.json'...
+2026-10-27 21:39:43.766 (   0.258s) [main thread     ]              checker.h:154   INFO| ✅ Demand graph 'setX/setX-12-tm.json' successfully loaded (8653 demands)
+2026-10-27 21:39:43.767 (   0.258s) [main thread     ]              checker.h:199   INFO| Loading scenario from 'setX/setX-12-scenario.json'...
+2026-10-27 21:39:43.770 (   0.261s) [main thread     ]              checker.h:270   INFO| ✅ Input scenario 'setX/setX-12-scenario.json' loaded successfully (budget size 12, interventions 12)
+2026-10-27 21:39:43.770 (   0.262s) [main thread     ]              checker.h:320   INFO| Loading SR paths from 'setX_trivial/setX-12-srpaths.json'...
+2026-10-27 21:39:43.837 (   0.329s) [main thread     ]              checker.h:393   INFO| ✅ Input srpaths 'setX_trivial/setX-12-srpaths.json' loaded successfully (0 202026-1022026-10-27 21:39:51.805 (   8.127s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 0 : 0.9598559999999987 (inverse load score: 24.958305764258913)
+2026-10-27 21:39:51.905 (   8.227s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 1 : 0.9412719999999996 (inverse load score: 17.055983677954277)
+2026-10-27 21:39:52.004 (   8.327s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 2 : 0.9537460000000012 (inverse load score: 21.65558594745305)
+2026-10-27 21:39:52.103 (   8.426s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 3 : 0.932487 (inverse load score: 14.877213331961904)
+2026-10-27 21:39:52.201 (   8.524s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 4 : 0.9565529999999998 (inverse load score: 23.092073067202254)
+2026-10-27 21:39:52.294 (   8.616s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 5 : 0.867087000000001 (inverse load score: 7.588174983589752)
+2026-10-27 21:39:52.396 (   8.719s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 6 : 0.955948000000002 (inverse load score: 22.74295894814164)
+2026-10-27 21:39:52.494 (   8.816s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 7 : 0.9999839999999993 (inverse load score: 62601.610465577556)
+2026-10-27 21:39:52.593 (   8.915s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 8 : 0.9332299999999992 (inverse load score: 15.008042558915175)
+2026-10-27 21:39:52.700 (   9.022s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 9 : 0.9693630000000009 (inverse load score: 32.63926880588188)
+2026-10-27 21:39:52.795 (   9.118s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 10 : 0.9415189999999997 (inverse load score: 17.10252965936286)
+2026-10-27 21:39:52.889 (   9.211s) [main thread     ]              checker.h:472   INFO| Maximum Link Utilization (MLU) at 11 : 0.9638420000000004 (inverse load score: 27.672535936984797)
+2026-10-27 21:39:52.916 (   9.239s) [main thread     ]               loguru.h:1983  INFO| atexit
+| atexit

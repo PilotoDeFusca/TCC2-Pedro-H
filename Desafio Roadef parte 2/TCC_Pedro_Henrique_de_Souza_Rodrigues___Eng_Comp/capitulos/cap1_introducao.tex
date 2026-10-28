@@ -1,0 +1,28 @@
+\chapter{INTRODUÇÃO}
+\label{cap:introducao}
+
+\section{\uppercase{Motivação e Contextualização}}
+
+Operadoras de telecomunicações mantêm grandes redes IP/MPLS (\textit{Internet Protocol / Multiprotocol Label Switching}) com milhares de roteadores e enlaces, por onde trafegam dezenas de milhares de demandas entre pares origem-destino. Nessas redes, os pacotes são tradicionalmente encaminhados pelos caminhos mínimos calculados por um protocolo de roteamento interno (IGP, \textit{Interior Gateway Protocol}) a partir de pesos atribuídos aos enlaces. Esse esquema é simples de operar, mas dá pouco controle sobre a distribuição da carga: enlaces que pertencem a muitos caminhos mínimos ficam sobrecarregados enquanto outros permanecem ociosos.
+
+A Engenharia de Tráfego (TE, \textit{Traffic Engineering}) busca usar melhor a infraestrutura existente, evitando congestionamentos e garantindo qualidade de serviço. Uma métrica central é a utilização máxima dos enlaces (MLU, \textit{Maximum Link Utilization}), isto é, a carga do enlace mais carregado da rede. Reduzir a MLU dá margem para absorver picos de tráfego e falhas.
+
+O \textit{Segment Routing} (SR) é uma tecnologia que permite desviar o tráfego dos caminhos mínimos sem alterar os pesos do IGP: cada pacote carrega uma lista de nós intermediários (\textit{waypoints}) que deve visitar em ordem, e entre dois \textit{waypoints} consecutivos o encaminhamento continua sendo feito pelos caminhos mínimos. Com poucos \textit{waypoints} por demanda é possível redistribuir a carga de forma eficaz.
+
+O desafio EURO/ROADEF 2026, proposto pela Orange, acrescenta uma dimensão temporal a esse problema. O horizonte é dividido em períodos (\textit{time slots}); em cada período, o volume das demandas muda e alguns enlaces ficam indisponíveis por intervenções de manutenção. O esquema de SR pode ser reconfigurado de um período para o seguinte, mas cada mudança tem custo operacional, e o número de segmentos alterados entre períodos consecutivos é limitado por um orçamento. O problema resultante, chamado \textit{T-Adaptive Segment Routing} (T-ASR), combina a escolha de rotas, a resiliência a indisponibilidades e o controle das reconfigurações.
+
+\section{\uppercase{Objetivos}}
+
+O objetivo geral deste trabalho é desenvolver e avaliar heurísticas de busca em vizinhança para o problema T-ASR do desafio EURO/ROADEF 2026, capazes de produzir esquemas de \textit{Segment Routing} válidos e com baixa utilização máxima dos enlaces em todos os períodos.
+
+Os objetivos específicos são:
+\begin{itemize}
+    \item modelar o cálculo de cargas exatamente como o avaliador oficial do desafio, incluindo a divisão de tráfego por múltiplos caminhos de mesmo custo (ECMP, \textit{Equal-Cost Multi-Path});
+    \item implementar duas meta-heurísticas sobre as mesmas vizinhanças: uma busca adaptativa em múltiplas vizinhanças (AMNS, \textit{Adaptive Multi-Neighborhood Search}) e uma Descida em Vizinhança Variável (VND, \textit{Variable Neighborhood Descent}) combinada com perturbações (VNS);
+    \item tratar a dependência entre períodos causada pelo orçamento de reconfiguração, planejando o primeiro período em função de todos os períodos seguintes;
+    \item comparar os métodos entre si e com uma solução trivial sem otimização, usando as instâncias públicas do desafio e o avaliador oficial.
+\end{itemize}
+
+\section{\uppercase{Organização do Trabalho}}
+
+O Capítulo~\ref{cap:fundamentacao} apresenta os conceitos de roteamento IGP, ECMP, \textit{Segment Routing}, engenharia de tráfego e as meta-heurísticas usadas, além de trabalhos relacionados. O Capítulo~\ref{cap:problema} descreve o problema T-ASR e seu modelo matemático. O Capítulo~\ref{cap:metodologia} detalha os métodos propostos e sua implementação. O Capítulo~\ref{cap:resultados} apresenta os experimentos computacionais e discute os resultados. Por fim, o Capítulo~\ref{cap:conclusao} traz as conclusões e os trabalhos futuros.

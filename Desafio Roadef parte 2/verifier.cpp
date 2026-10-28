@@ -1,5 +1,6 @@
 #include "loader.h"
 
+#include <iomanip>
 #include <iostream>
 #include <sstream>
 #include <unordered_map>
@@ -21,14 +22,15 @@ static void segment_pairs(int s, int t, const vector<int>& w,
     segs.clear();
     if (s == t && w.empty())
         return;
+    // Like the official checker, every consecutive pair is a segment, even a
+    // repeated waypoint (x, x): the solvers never emit one, and this catches
+    // it if they do.
     int prev = s;
     for (int x : w) {
-        if (x == prev) continue;
         segs.insert(pack_seg(prev, x));
         prev = x;
     }
-    if (prev != t)
-        segs.insert(pack_seg(prev, t));
+    segs.insert(pack_seg(prev, t));
 }
 
 static int segment_distance(int s, int t, const vector<int>& a, const vector<int>& b)
@@ -56,7 +58,48 @@ static const DemandPath* find_path(const Solution& sol, int slot, int demand_ind
     return nullptr;
 }
 
-// For each slot, get the path assigned to demand d (or nullptr if none)
+// Traffic per link that no routing can avoid at `slot`: from a source whose
+// only usable out-link is that link (or into a target whose only usable
+// in-link is), followed along single-link chains. Same rule as the solvers.
+static unordered_map<int, double> forced_flow(const Instance& inst, int slot)
+{
+    unordered_set<int> down;
+    for (const auto& iv : inst.scenario.interventions)
+        if (iv.t == slot) down.insert(iv.links.begin(), iv.links.end());
+
+    int N = 0;
+    for (const auto& n : inst.net.nodes) N = max(N, n.id + 1);
+    vector<vector<pair<int, int>>> out(N), in(N);   // (link id, other end)
+    for (const auto& l : inst.net.links) {
+        if (down.count(l.id)) continue;
+        out[l.from].push_back({l.id, l.to});
+        in[l.to].push_back({l.id, l.from});
+        if (!inst.net.directed) {
+            out[l.to].push_back({l.id, l.from});
+            in[l.from].push_back({l.id, l.to});
+        }
+    }
+
+    unordered_map<int, double> forced;
+    for (const auto& dem : inst.demands) {
+        const double traffic = (slot < (int)dem.v.size()) ? dem.v[slot] : 0.0;
+        if (traffic <= 0.0) continue;
+        unordered_set<int> must;
+        int u = dem.s;
+        for (int g = 0; g < N && u != dem.t && out[u].size() == 1; ++g) {
+            must.insert(out[u][0].first);
+            u = out[u][0].second;
+        }
+        int v = dem.t;
+        for (int g = 0; g < N && v != dem.s && in[v].size() == 1; ++g) {
+            must.insert(in[v][0].first);
+            v = in[v][0].second;
+        }
+        for (int lid : must)
+            forced[lid] += traffic;
+    }
+    return forced;
+}
 
 VerificationReport verify_solution(const Solution& sol, const Instance& inst)
 {
@@ -65,20 +108,36 @@ VerificationReport verify_solution(const Solution& sol, const Instance& inst)
     rep.ok = true;
 
     // --- 1. Capacity violations ---
-    // For each (slot, link), check load > 1.0
+    // For each (slot, link), check load > 1.0. If every unit of flow on the
+    // link is forced (no routing could avoid it), report it as
+    // "capacity_unavoidable": a note that does not make the solution fail.
+    unordered_map<int, unordered_map<int, double>> forced_by_slot;
     for (const auto& ll : sol.link_loads) {
         if (ll.load > 1.0 + 1e-9) {
-            rep.ok = false;
+            auto fit = forced_by_slot.find(ll.time_slot);
+            if (fit == forced_by_slot.end())
+                fit = forced_by_slot.emplace(ll.time_slot,
+                                             forced_flow(inst, ll.time_slot)).first;
+            auto lit = fit->second.find(ll.link_id);
+            const double forced = (lit != fit->second.end()) ? lit->second : 0.0;
+            const bool unavoidable = ll.total_demand <= forced * (1.0 + 1e-9) + 1e-12;
+
+            if (!unavoidable)
+                rep.ok = false;
             VerificationIssue iss;
-            iss.kind         = "capacity";
+            iss.kind         = unavoidable ? "capacity_unavoidable" : "capacity";
             iss.time_slot    = ll.time_slot;
             iss.demand_index = -1;
             iss.link_id      = ll.link_id;
             ostringstream oss;
             oss << "Link " << ll.link_id
                 << " at slot " << ll.time_slot
-                << " has load " << ll.load
+                << " has load " << setprecision(10) << ll.load << setprecision(6)
                 << " (" << ll.total_demand << "/" << ll.capacity << ")";
+            if (unavoidable)
+                oss << ", all of it forced (only usable link for its demands)";
+            else if (forced > 0.0)
+                oss << ", forced lower bound " << forced / ll.capacity;
             iss.message = oss.str();
             rep.issues.push_back(iss);
         }
@@ -226,15 +285,19 @@ void print_verification(const VerificationReport& rep)
 {
     cout << "\n=== Verification of " << rep.instance_name << " ===\n";
 
-    if (rep.ok) {
+    if (rep.ok && rep.issues.empty()) {
         cout << "  OK: no issues detected.\n";
         return;
     }
 
-    cout << "  FAILED: " << rep.issues.size() << " issue(s)\n";
+    if (rep.ok)
+        cout << "  OK: " << rep.issues.size() << " note(s), no avoidable issues\n";
+    else
+        cout << "  FAILED: " << rep.issues.size() << " issue(s)\n";
 
     // Group by kind for readability
-    for (const string& kind : {"capacity", "unserved", "intervention", "segments", "budget"}) {
+    for (const string& kind : {"capacity", "capacity_unavoidable", "unserved",
+                               "intervention", "segments", "budget"}) {
         int n = 0;
         for (const auto& iss : rep.issues)
             if (iss.kind == kind) ++n;
